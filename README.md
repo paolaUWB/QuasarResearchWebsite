@@ -3,7 +3,7 @@
 ## Hosting on UW Shared Host Servers
 
 ### Necessary software:
-* Cyberduck (https://cyberduck.io/)
+* Cyberduck (https://cyberduck.io/), or whatever secure file transfer software you prefer
 * Putty (if on windows)
 * SSH (if on Mac or Linux)
 
@@ -79,12 +79,12 @@
 
              sys.path.insert(0, '<THE_FILE_PATH_YOU_COPIED_DOWN>/flaskEnv/lib/python3.6/site-packages')
 
-             from from ResearchWebsite.app.__init__ import app
+             from ResearchWebsite.app.__init__ import app
 
              CGIHandler().run(app)
              ```
              Your sys.path. insert file should look something like this: `/nfs/bronfs/uwfs/da00/d18/guinek/flaskEnv/lib/python3.6/site-packages`
-             It's super important that you have the preceding backslash in front (or else nothing works)
+             It's super important that you have the preceding backslash in front (or else nothing works). Your import line (`from ResearchWebsite.app.__init__ import app`)       should reflect the path from your public_html folder to your __init__.py file in the flask project. 
          1. Save and close with:
              ```
              ctrl+x
