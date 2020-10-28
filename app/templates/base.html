@@ -13,8 +13,8 @@
 </head>
 
 <title>{% block title %}{% endblock %} - Quasar Research</title>
-
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark">
     <!--First navbar tab: UW homepage-->
     <a class="navbar-brand" href="#">
         <img src="{{url_for('static', filename='1024px-Washington_Huskies_logo.png')}}" width="45" height="30"/>
@@ -29,12 +29,12 @@
 
             <!--2nd navbar tab-->
             <li class="nav-item">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="{{ url_for('runit') }}">Home <span class="sr-only">(current)</span></a>
             </li>
 
             <!--3rd navbar tab-->
             <li class="nav-item">
-                <a class="nav-link" href="#">Bio/CV</a>
+                <a class="nav-link" href="{{ url_for('research_team') }}">Our Team</a>
             </li>
 
             <!--4th navbar tab with dropdown-->
@@ -61,12 +61,14 @@
 </div>
 </nav>
 <section class="content">
-    <header>
-        {% block header %}{%endblock %}
-    </header>
     {%block content %}{% endblock %}
 </section>
-
+<footer class="footer bg-dark">
+    <div class="container text-right text-white-50">
+        paola@uw.edu
+    </div>
+</footer>
+</body>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
 crossorigin="anonymous"></script>
