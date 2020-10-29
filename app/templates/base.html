@@ -44,8 +44,8 @@
                     Research
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="{{ url_for('quasar_research_about') }}">Quasar Research</a>
+                    <a class="dropdown-item" href="{{ url_for('data_access') }}">Data Access</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="#">Something else here</a>
                 </div>
@@ -63,7 +63,7 @@
 <section class="content">
     {%block content %}{% endblock %}
 </section>
-<footer class="footer bg-dark">
+<footer class="footer bg-dark mt-3">
     <div class="container text-right text-white-50">
         paola@uw.edu
     </div>

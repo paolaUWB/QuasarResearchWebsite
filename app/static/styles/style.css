@@ -9,6 +9,39 @@
   height: 60px;
   line-height: 60px;
 }
+.text-from-file {
+  white-space: pre-wrap;
+}
+
+.carousel .carousel-indicators li {
+  background-color: #fff;
+  background-color: rgba(70, 70, 70, 0.25);
+}
+
+.carousel .carousel-indicators .active {
+  background-color: rgba(70, 70, 70, 0.25);
+}
+.carousel-indicators {
+  bottom: -50px;
+}
+/* .carousel-control {
+  color: #bada55;
+} */
+
+.carousel-control-next {
+  right: -50px;
+}
+.carousel-control-prev {
+  left: -50px;
+}
+.carousel-control-next-icon {
+  filter: invert(1);
+}
+.carousel-control-prev-icon {
+  filter: invert(1);
+  left: 400px;
+}
+
 
 .top-buffer { margin-top:20px; }
 .bottom-buffer{margin-bottom: 30px;}
