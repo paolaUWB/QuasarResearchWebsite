@@ -11,14 +11,97 @@
     <div class="container">
         <div class="col-2"></div>
         <div class="col">
-
             <div class="about-section">
                 <h1>Data</h1>
                 <p>Information about the data here</p>
             </div>
+            <br>
+            <br>
             <div class="row">
+
+                <div class="col-6">
+                    
+                    <div class="input-group mb-3 ">
+                        <div class="input-group-prepend col-4">
+                        <span class="input-group-text col-12" id="inputGroup-sizing-default">{{ form.QSO.label }}</span>
+                        </div>
+                        {{ form.QSO }}
+                        <!-- <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"> -->
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend col-4">
+                          <span class="input-group-text col-12" id="inputGroup-sizing-default">{{ form.Plate_MJD_fiber.label }}</span>
+                        </div>
+                        {{ form.Plate_MJD_fiber }}
+                    </div>
+        
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend col-4">
+                          <span class="input-group-text col-12" id="inputGroup-sizing-default">{{ form.BI_EHVO.label  }}</span>
+                        </div>
+                        {{ form.BI_EHVO}}
+                    </div>
+        
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend col-4">
+                          <span class="input-group-text col-12" id="inputGroup-sizing-default">{{ form.V_max.label  }}</span>
+                        </div>
+                        {{ form.V_max }}
+                    </div>
+        
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend col-4">
+                          <span class="input-group-text col-12" id="inputGroup-sizing-default">{{ form.V_min.label  }}</span>
+                        </div>
+                        {{ form.V_min }}
+                    </div>
+        
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend col-4">
+                          <span class="input-group-text col-12" id="inputGroup-sizing-default">{{ form.EW.label }}</span>
+                        </div>
+                        {{ form.EW}}
+                    </div>
+        
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend col-4">
+                          <span class="input-group-text col-12" id="inputGroup-sizing-default">{{ form.Depth.label }}</span>
+                        </div>
+                        {{ form.Depth }}
+                    </div>
+
+                </div>
+
+                <div class="col">
+                    <!-- <div id="rectangle" style="width:200px; height:400px; background-color:blue"></div> -->
+                    <div class="box"></div>
+                </div>
                 
             </div>
+            <!-- <div class="row">
+                <form action="" method="POST">
+                    {{ form.QSO }} <br>
+
+                    {{ form.Plate_MJD_fiber.label }}
+                    {{ form.Plate_MJD_fiber }} <br>
+
+                    {{ form.BI_EHVO.label }}
+                    {{ form.BI_EHVO }} <br>
+
+                    {{ form.V_max.label }}
+                    {{ form.V_max }} <br>
+
+                    {{ form.V_min.label }}
+                    {{ form.V_min }} <br>
+
+                    {{ form.EW.label }}
+                    {{ form.EW }} <br>
+
+                    {{ form.Depth.label }}
+                    {{ form.Depth }} <br>
+                </form>
+            </div> -->
         </div>
               
         <div class="col-2"></div>

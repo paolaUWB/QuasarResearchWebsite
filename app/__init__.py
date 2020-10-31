@@ -2,9 +2,11 @@ import os
 
 from flask import Flask
 from flask import render_template, url_for
+from app.forms import DataAccessForm
+from app.config import Config
 
 app = Flask(__name__)
-
+app.config.from_object(Config)
 
 @app.route('/')
 def runit():
@@ -22,8 +24,10 @@ def quasar_research_about():
         content = f.read().decode('utf-8')
     return render_template('quasarResearchAbout.html', description=content)
 
-@app.route('/dataaccess/')
+@app.route('/dataaccess/', methods = ["GET", "POST"])
 def data_access():
-    return render_template('dataAccess.html')
+    form = DataAccessForm()
+    return render_template('dataAccess.html', form=form)
+
 if __name__ == '__main__':
     app.run()
