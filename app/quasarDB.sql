@@ -7,8 +7,22 @@
     ZEMDR9Q_PM FLOAT,
     ZEMHW10 FLOAT,
     ZEMHW10_PM FLOAT,
-    BALQSO VARCHAR(255) NOT NULL
+    BALQSO VARCHAR(255) NOT NULL,
+    GRAPH_IMG VARCHAR(255)
     );
+
+QSO	 PLATE-MJD-FIBER	 BI_EHVO	 V_max	 V_min	 EW	 Depth
+J000154.90-004956.4	 4216-55477-0166	200	-58200	-54700	400	0.2
+
+CREATE TABLE QuasarInfo_table2(
+    QSO VARCHAR(255),
+    PLATE_MJD_FIBER VARCHAR(255) NOT NULL,
+    BI_EHVO INT,
+    V_max INT,
+    V_min INT,
+    EW INT,
+    Depth FLOAT
+);
 
 -- https://www.tutorialspoint.com/how-to-get-the-datatype-of-mysql-table-columns#:~:text=You%20can%20get%20the%20MySQL,columns%E2%80%9D.&text=SELECT%20DATA_TYPE%20from%20INFORMATION_SCHEMA.,and%20table_name%20%3D%20'yourTableName'.
 /*https://medium.com/@andrewpongco/solving-the-mysql-server-is-running-with-the-secure-file-priv-option-so-it-cannot-execute-this-d319de864285
@@ -32,4 +46,24 @@ LOAD DATA LOCAL INFILE 'C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\table
 INTO TABLE QuasarInfo
 FIELDS TERMINATED BY ',' 
 LINES TERMINATED BY '\r\n'
+IGNORE 1 ROWS
+(QSO, PLATE_MJD_FIBER, ZEMDR9Q, @vZEMDR9Q_PM, @vZEMHW10, @vZEMHW10_PM, BALQSO, GRAPH_IMG)
+SET
+ZEMDR9Q_PM = NULLIF(@vZEMDR9Q_PM, ''),
+ZEMHW10 = NULLIF(@vZEMHW10, ''),
+ZEMHW10_PM = NULLIF(@vZEMHW10_PM, '');
+
+LOAD DATA LOCAL INFILE 'C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\table2.csv' 
+INTO TABLE QuasarInfo_table2
+FIELDS TERMINATED BY ',' 
+LINES TERMINATED BY '\r\n'
 IGNORE 1 ROWS;
+
+
+-- INSERT INTO quasarinfo(Graph_Images) 
+-- VALUES (LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\spec-3655-55240-0388_Fig40.pdf'))
+-- WHERE PLATE_MJD_FIBER = '3655-55240-0388'
+
+-- UPDATE quasarinfo
+-- SET quasarinfo.Graph_Images =LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\spec-3655-55240-0388_Fig40.pdf')
+-- WHERE PLATE_MJD_FIBER = 3655-55240-0388;

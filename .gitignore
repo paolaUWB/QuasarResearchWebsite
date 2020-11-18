@@ -1,2 +1,6 @@
 app/__pycache__/
 app/.vscode/
+.env.py
+quasars.csv
+app/tmp/
+test.txt

@@ -46,12 +46,25 @@
                         </div>
                     </div>
         
+                    
                     <div class="input-group mb-3">
                         <div class="input-group-prepend col-4">
                           <span class="input-group-text col-12" id="inputGroup-sizing-default">{{ form.ZEMHW10.label  }}</span>
                         </div>
-                            {{ form.ZEMHW10 }}
+                        <div class="col-3">
+                            {{ form.ZEMHW10_Min(placeholder = "Range min") }} 
+                        </div>
+                        <div class="col-3">
+                            {{ form.ZEMHW10_Max(placeholder = "Range max") }}
+                        </div>
                     </div>
+
+                    <!-- <div class="input-group mb-3">
+                        <div class="input-group-prepend col-4">
+                          <span class="input-group-text col-12" id="inputGroup-sizing-default">{{ form.ZEMHW10.label  }}</span>
+                        </div>
+                            {{ form.ZEMHW10 }}
+                    </div> -->
 
                 </div>
                 <div class="col-6">
@@ -64,16 +77,35 @@
                 </div> 
                 <br>
                 <div class="col-1"></div>
-                <div class="col-6">
-                    <p>{{ form.Submit() }}</p>
-                </div>
+
+                <!--download and submit butons-->
+                
+                <div class="container ">
+                    <div class="row">
+                        <div class="col-1"></div>
+                        <div class="col-sm">
+                            <!-- <input type ="submit" name="action" value="Submit"> -->
+                            {{ form.Submit }}
+                          </div>
+                          
+                      <div class="col-sm">
+                        <!-- <input type ="submit" name="action" value="Download checked data"> -->
+                        {{ form.Download }}
+                      </div>
+                          <div class="col-sm">
+                        </div>
+
+                    </div>
+                    <br>
+                  </div>
 
             </div>
             
             <div class="container">
-                <table class="table table-hover table-bordered table-sm ">
+                <table class="table table-hover table-bordered table-sm table-striped ">
                     <thead>
                       <tr>
+                        <th scope="col"></th>
                         <th scope="col">#</th>
                         <th scope="col">QSO</th>
                         <th scope="col">Plate-MJD-Fiber</th>
@@ -82,18 +114,93 @@
                         <th scope="col">BALQSO</th>
                       </tr>
                     </thead>
+                    
                     <tbody>
                         {% if data %}
 
                         {% for row in data %}
-                        <tr>
-                            <th scope="row">1</th>
+                        <tr data-toggle="collapse" data-target="#rowID{{ loop.index|string }}" class="clickable">
+                            <!--check box-->
+                            <td>
+                                <a>
+                                    <input type="checkbox" name="downloadItem" id="{{ row['QSO'] }}" value="{{ row['QSO'] }}">
+                                </a>
+                            </td>
+
+                            <!--row number-->
+                            <th scope="row">{{ loop.index }}</th>
+
+                            <!--data-->
                             <td>{{ row['QSO'] }}</td>
                             <td>{{ row['PLATE_MJD_FIBER'] }}</td>
-                            <td>{{ row['ZEMDR9Q'] }} pm {{ row['ZEMDR9Q_PM'] }}</td>
-                            <td>{{ row['ZEMHW10'] }}</td>
+                            <td>
+                                {{ row['ZEMDR9Q'] }} 
+                                {% if row['ZEMDR9Q_PM'] is not none %}
+                                    pm {{ row['ZEMDR9Q_PM'] }}                               
+                                {% endif %}
+                            </td>
+
+                            <td>
+                            
+                            {% if row['ZEMHW10'] is not none %}
+                                {{ row['ZEMHW10'] }}
+
+                                {% if  row['ZEMHW10_PM'] is not none %}
+                                    pm {{ row['ZEMHW10_PM'] }}
+                                {% endif %}
+                            {% else %} 
+                                -                       
+                            {% endif %}
+                        </td>
                             <td>{{ row['BALQSO'] }}</td>
                         </tr>
+                        
+                        <tr id= "rowID{{ loop.index|string }}" class="no-border collapse no-hover" >
+                                    <td colspan="1"></td>
+                                    <td colspan="4">
+                                        <div id= "rowID{{ loop.index|string }}" class="collapse no-border">
+                                        <embed class="d-block" src="{{ url_for('static', filename= row['GRAPH_IMG']) }}" style="overflow:hidden" scrolling="no" height="450" width="600">
+                                        </div>
+                                    </td>
+                                    
+                                    <td colspan="2">
+                                        <div id= "rowID{{ loop.index|string }}" class="collapse no-border">
+                                        <br>
+                                        <!-- <table class="table table-bordered table-sm no-hover">
+                                            <tr></tr>
+                                            <th colspan="2">Inner Table</th>
+                                            <tr>
+                                              <td>Hello</td>
+                                              <td>World</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Hello</td>
+                                                <td>World</td>
+                                              </tr>
+                                              <tr>
+                                                <td>Hello</td>
+                                                <td>World</td>
+                                              </tr>
+                                              <tr>
+                                                <td>Hello</td>
+                                                <td>World</td>
+                                              </tr>
+                                              <tr>
+                                                <td>Hello</td>
+                                                <td>World</td>
+                                              </tr>
+                                          </table> -->
+                                          <ul class="list-group list-group-flush">
+                                            <li class="list-group-item">Cras justo odio</li>
+                                            <li class="list-group-item">Dapibus ac facilisis in</li>
+                                            <li class="list-group-item">Morbi leo risus</li>
+                                            <li class="list-group-item">Porta ac consectetur ac</li>
+                                            <li class="list-group-item">Vestibulum at eros</li>
+                                          </ul>
+                                        </div>
+                                    </td>
+                        </tr>
+
                         {% endfor %}
                         {% endif %}
 
