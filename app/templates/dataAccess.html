@@ -17,17 +17,15 @@
             </div>
             <br>
             <br>
-            <div class="row">
-
-                <div class="col-6">
-                    
+            <form action = "" method = "POST">
+                <div class="row">
+                <div class="col-6">   
                     <div class="input-group mb-3 ">
                         <div class="input-group-prepend col-4">
                         <span class="input-group-text col-12" id="inputGroup-sizing-default">{{ form.QSO.label }}</span>
                         </div>
                         {{ form.QSO }}
-                        <!-- <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"> -->
-                    </div>
+                     </div>
 
                     <div class="input-group mb-3">
                         <div class="input-group-prepend col-4">
@@ -38,70 +36,178 @@
         
                     <div class="input-group mb-3">
                         <div class="input-group-prepend col-4">
-                          <span class="input-group-text col-12" id="inputGroup-sizing-default">{{ form.BI_EHVO.label  }}</span>
+                          <span class="input-group-text col-12" id="inputGroup-sizing-default">{{ form.ZEMDR9Q.label  }}</span>
                         </div>
-                        {{ form.BI_EHVO}}
+                        <div class="col-3">
+                            {{ form.ZEMDR9Q_Min(placeholder = "Range min") }} 
+                        </div>
+                        <div class="col-3">
+                            {{ form.ZEMDR9Q_Max(placeholder = "Range max") }}
+                        </div>
                     </div>
         
+                    
                     <div class="input-group mb-3">
                         <div class="input-group-prepend col-4">
-                          <span class="input-group-text col-12" id="inputGroup-sizing-default">{{ form.V_max.label  }}</span>
+                          <span class="input-group-text col-12" id="inputGroup-sizing-default">{{ form.ZEMHW10.label  }}</span>
                         </div>
-                        {{ form.V_max }}
-                    </div>
-        
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend col-4">
-                          <span class="input-group-text col-12" id="inputGroup-sizing-default">{{ form.V_min.label  }}</span>
+                        <div class="col-3">
+                            {{ form.ZEMHW10_Min(placeholder = "Range min") }} 
                         </div>
-                        {{ form.V_min }}
-                    </div>
-        
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend col-4">
-                          <span class="input-group-text col-12" id="inputGroup-sizing-default">{{ form.EW.label }}</span>
+                        <div class="col-3">
+                            {{ form.ZEMHW10_Max(placeholder = "Range max") }}
                         </div>
-                        {{ form.EW}}
-                    </div>
-        
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend col-4">
-                          <span class="input-group-text col-12" id="inputGroup-sizing-default">{{ form.Depth.label }}</span>
-                        </div>
-                        {{ form.Depth }}
                     </div>
 
-                </div>
+                    <!-- <div class="input-group mb-3">
+                        <div class="input-group-prepend col-4">
+                          <span class="input-group-text col-12" id="inputGroup-sizing-default">{{ form.ZEMHW10.label  }}</span>
+                        </div>
+                            {{ form.ZEMHW10 }}
+                    </div> -->
 
-                <div class="col">
-                    <!-- <div id="rectangle" style="width:200px; height:400px; background-color:blue"></div> -->
-                    <div class="box"></div>
                 </div>
+                <div class="col-6">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend col-4">
+                          <span class="input-group-text col-12" id="inputGroup-sizing-default">{{ form.BALQSO.label  }}</span>
+                        </div>
+                        {{ form.BALQSO }}
+                    </div>
+                </div> 
+                <br>
+                <div class="col-1"></div>
+
+                <!--download and submit butons-->
                 
+                <div class="container ">
+                    <div class="row">
+                        <div class="col-1"></div>
+                        <div class="col-sm">
+                            <!-- <input type ="submit" name="action" value="Submit"> -->
+                            {{ form.Submit }}
+                          </div>
+                          
+                      <div class="col-sm">
+                        <!-- <input type ="submit" name="action" value="Download checked data"> -->
+                        {{ form.Download }}
+                      </div>
+                          <div class="col-sm">
+                        </div>
+
+                    </div>
+                    <br>
+                  </div>
+
             </div>
-            <!-- <div class="row">
-                <form action="" method="POST">
-                    {{ form.QSO }} <br>
+            
+            <div class="container">
+                <table class="table table-hover table-bordered table-sm table-striped ">
+                    <thead>
+                      <tr>
+                        <th scope="col"></th>
+                        <th scope="col">#</th>
+                        <th scope="col">QSO</th>
+                        <th scope="col">Plate-MJD-Fiber</th>
+                        <th scope="col">ZEMDR9Q</th>
+                        <th scope="col">ZEMHW10</th>
+                        <th scope="col">BALQSO</th>
+                      </tr>
+                    </thead>
+                    
+                    <tbody>
+                        {% if data %}
 
-                    {{ form.Plate_MJD_fiber.label }}
-                    {{ form.Plate_MJD_fiber }} <br>
+                        {% for row in data %}
+                        <tr data-toggle="collapse" data-target="#rowID{{ loop.index|string }}" class="clickable">
+                            <!--check box-->
+                            <td>
+                                <a>
+                                    <input type="checkbox" name="downloadItem" id="{{ row['QSO'] }}" value="{{ row['QSO'] }}">
+                                </a>
+                            </td>
 
-                    {{ form.BI_EHVO.label }}
-                    {{ form.BI_EHVO }} <br>
+                            <!--row number-->
+                            <th scope="row">{{ loop.index }}</th>
 
-                    {{ form.V_max.label }}
-                    {{ form.V_max }} <br>
+                            <!--data-->
+                            <td>{{ row['QSO'] }}</td>
+                            <td>{{ row['PLATE_MJD_FIBER'] }}</td>
+                            <td>
+                                {{ row['ZEMDR9Q'] }} 
+                                {% if row['ZEMDR9Q_PM'] is not none %}
+                                    pm {{ row['ZEMDR9Q_PM'] }}                               
+                                {% endif %}
+                            </td>
 
-                    {{ form.V_min.label }}
-                    {{ form.V_min }} <br>
+                            <td>
+                            
+                            {% if row['ZEMHW10'] is not none %}
+                                {{ row['ZEMHW10'] }}
 
-                    {{ form.EW.label }}
-                    {{ form.EW }} <br>
+                                {% if  row['ZEMHW10_PM'] is not none %}
+                                    pm {{ row['ZEMHW10_PM'] }}
+                                {% endif %}
+                            {% else %} 
+                                -                       
+                            {% endif %}
+                        </td>
+                            <td>{{ row['BALQSO'] }}</td>
+                        </tr>
+                        
+                        <tr id= "rowID{{ loop.index|string }}" class="no-border collapse no-hover" >
+                                    <td colspan="1"></td>
+                                    <td colspan="4">
+                                        <div id= "rowID{{ loop.index|string }}" class="collapse no-border">
+                                        <embed class="d-block" src="{{ url_for('static', filename= row['GRAPH_IMG']) }}" style="overflow:hidden" scrolling="no" height="450" width="600">
+                                        </div>
+                                    </td>
+                                    
+                                    <td colspan="2">
+                                        <div id= "rowID{{ loop.index|string }}" class="collapse no-border">
+                                        <br>
+                                        <!-- <table class="table table-bordered table-sm no-hover">
+                                            <tr></tr>
+                                            <th colspan="2">Inner Table</th>
+                                            <tr>
+                                              <td>Hello</td>
+                                              <td>World</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Hello</td>
+                                                <td>World</td>
+                                              </tr>
+                                              <tr>
+                                                <td>Hello</td>
+                                                <td>World</td>
+                                              </tr>
+                                              <tr>
+                                                <td>Hello</td>
+                                                <td>World</td>
+                                              </tr>
+                                              <tr>
+                                                <td>Hello</td>
+                                                <td>World</td>
+                                              </tr>
+                                          </table> -->
+                                          <ul class="list-group list-group-flush">
+                                            <li class="list-group-item">Cras justo odio</li>
+                                            <li class="list-group-item">Dapibus ac facilisis in</li>
+                                            <li class="list-group-item">Morbi leo risus</li>
+                                            <li class="list-group-item">Porta ac consectetur ac</li>
+                                            <li class="list-group-item">Vestibulum at eros</li>
+                                          </ul>
+                                        </div>
+                                    </td>
+                        </tr>
 
-                    {{ form.Depth.label }}
-                    {{ form.Depth }} <br>
-                </form>
-            </div> -->
+                        {% endfor %}
+                        {% endif %}
+
+                    </tbody>
+                  </table>
+            </div>
+        </form>
         </div>
               
         <div class="col-2"></div>

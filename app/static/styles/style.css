@@ -2,6 +2,29 @@
   background-size: cover; 
 } 
 
+.table>thead>tr:nth-child(n){
+  background: #ccc
+}
+.table>tbody>tr:nth-child(4n+1){
+  background: white;
+}
+.table>tbody>tr:nth-child(4n+2){
+  background: white;
+}
+.table>tbody>tr:nth-child(4n){
+  background: whitesmoke;
+}
+table.table-hover tbody tr:hover {
+    background-color: lightgray; 
+}
+
+.table-hover>tbody>tr.no-hover:hover {
+  background-color: #ffffff !important;
+}
+
+.collapse-row.collapsed{
+  display: none;
+}
 .footer {
   position: fixed;
   bottom: 0;
@@ -24,9 +47,7 @@
 .carousel-indicators {
   bottom: -50px;
 }
-/* .carousel-control {
-  color: #bada55;
-} */
+
 
 .carousel-control-next {
   right: -50px;
@@ -128,14 +149,3 @@ html {
     display: block;
   }
 }
-/* h1 {color: red}
-.h1 {color: red}
-a {font-size: 24px;} */
-/* .jumbotron-content {
-  color: white;
-  style="background-image:url({{url_for('static', filename='Orion_nebula_horsehead_nebula.jpg')}})"
-}*/
-/* 
-.test{
-  color: brown;
-} */
