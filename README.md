@@ -3,7 +3,7 @@
 ## Hosting on UW Shared Host Servers
 
 ### Necessary software:
-* Cyberduck (https://cyberduck.io/), or whatever secure file transfer software you prefer
+* Github account with access to this github page
 * Putty (if on windows)
 * SSH (if on Mac or Linux)
 
@@ -30,23 +30,50 @@
         
     1. If you need more information, see https://itconnect.uw.edu/connect/web-publishing/shared-hosting/ssh/
  
+ 1. Setup MySQL on the school servers:
+    1. Follow directions at: https://itconnect.uw.edu/connect/web-publishing/shared-hosting/using-mysql-on-shared-uw-hosting/install-mysql/
+    1. Make sure to write down your root password and username
+    
  1. Set up a python virtual environment: 
      1. `cd ~/public_html`
      1. type into the prompt:
          1. `python3 -m venv flaskEnv` (this will take a couple of seconds to run)
          1. `source flaskEnv/bin/activate` You should now see something like: `(flaskEnv) vergil11$`
          1. `pip install flask`
-         1. `deactivate`
-         
+         1. `pip install PyMySQL`
+         1. `pip install Flask-WTF`
+         1. `pip install python-dotenv`
+             
  1. Add files to the web server
-     1. In the terminal create a new file directory to hold the website files with the following commands:
+     1. In the terminal clone files from github with the following commands:
          1. `cd ~/public_html`
-         1. `mkdir ResearchWebsite`
-     1. Open Cyberduck
-         1. Open Connection (use the same credentials as Putty)
-     1. Click and drag the 'app' folder from your computer files into the 'ResearchWebsite' folder on cyberduck
+         1. `git clone https://<YOUR_GITHUB_USERNAME>@github.com/Kathleen-G/QuasarResearchWebsite.git`
+         1. Enter your github password when prompted
+         
+     1. Check to see if all of the files were cloned
+         1. `ls`
+         1. You should see a new "QuasarResearchWebsite" directory in your public_html folder 
     
- 
+ 1. fix setup issues (to be continued later)
+ 1. create a .env file to store secret information
+     1. `cd ~/public_html/QuasarResearchWebsite`
+     1. `nano .env`
+     1. type the following: 
+        ```
+        SECRET_KEY= <WHATEVER_SECRET_KEY_YOU_WANT>
+        MYSQL_DATABASE_PASSWORD=<YOUR_MYSQL_DATABASE_ROOT_PASSWORD>
+            
+        ```
+     1. Save and close with the following commands:
+         ```
+         ctrl+x
+         y
+         enter
+         ```
+ 1. Update DB with graph images
+     1. `cd ~/public_html/QuasarResearchWebsite/app`
+     1. `python updateDatabase.py`
+     
  1. Edit htaccess and cgi files
      1. This next part is a little tricky and easy to make a mistake by leaving off slashes by accident. Be careful here!
      1. Make sure you are in your 'public_html' directory `cd ~/public_html`
