@@ -2,9 +2,11 @@ CREATE DATABASE IF NOT EXISTS quasarWebsite_db;
 USE quasarWebsite_db;
 
 DROP TABLE IF EXISTS quasarinfo;
+DROP TABLE IF EXISTS quasarinfo_table2;
+DROP TABLE IF EXISTS QuasarInfo;
 DROP TABLE IF EXISTS QuasarInfo_table2;
 
-CREATE TABLE QuasarInfo(
+CREATE TABLE quasarinfo(
     QSO VARCHAR(255) PRIMARY KEY,
     PLATE_MJD_FIBER VARCHAR(255) NOT NULL,
     ZEMDR9Q FLOAT NOT NULL,
@@ -15,7 +17,7 @@ CREATE TABLE QuasarInfo(
     GRAPH_IMG VARCHAR(255)
 );
 
-CREATE TABLE QuasarInfo_table2(
+CREATE TABLE quasarinfo_table2(
     QSO VARCHAR(255),
     PLATE_MJD_FIBER VARCHAR(255) NOT NULL,
     BI_EHVO INT,
@@ -65,7 +67,7 @@ SET GLOBAL local_infile = true;
 --For school servers:
 
 LOAD DATA LOCAL INFILE '/dw00/d18/guinek/QuasarResearchWebsite/app/csv_tables/table1.csv' 
-INTO TABLE QuasarInfo
+INTO TABLE quasarinfo
 FIELDS TERMINATED BY ',' 
 LINES TERMINATED BY '\n'
 IGNORE 1 ROWS
@@ -76,7 +78,7 @@ ZEMHW10 = NULLIF(@vZEMHW10, ''),
 ZEMHW10_PM = NULLIF(@vZEMHW10_PM, '');
 
 LOAD DATA LOCAL INFILE '/dw00/d18/guinek/QuasarResearchWebsite/app/csv_tables/table2.csv' 
-INTO TABLE QuasarInfo_table2
+INTO TABLE quasarinfo_table2
 FIELDS TERMINATED BY ',' 
 LINES TERMINATED BY '\n'
 IGNORE 1 ROWS;
