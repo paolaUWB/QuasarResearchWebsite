@@ -31,8 +31,9 @@ cursor = connect_db().cursor()
 
 #add file locations to
 
-directory = r'/dw00/d18/guinek/QuasarResearchWebsite/app/static/images/Graph_Images'
-
+basedir = os.path.abspath(os.path.dirname(__file__))
+GRAPH_IMAGES = os.path.join(basedir, 'static/images/Graph_Images')
+directory = GRAPH_IMAGES
 for entry in os.scandir(directory):
     #print(entry.path)
     if entry.path.endswith(".pdf") and entry.is_file():
