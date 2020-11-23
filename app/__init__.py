@@ -1,23 +1,27 @@
 import os
 import pymysql
 import csv
+import sys
 
 from flask import Flask
 from flask import render_template, url_for, g, request, send_file
-from app.forms import DataAccessForm
-from app.config import Config
 from dotenv import load_dotenv
 
 load_dotenv()
 
 
 app = Flask(__name__)
+
+from app.config import Config
+from app.config import APP_TMP
 app.config.from_object(Config)
+
+from QuasarResearchWebsite.app.forms import DataAccessForm
 
 def connect_db():
     return pymysql.connect(
-        host = 'localhost', user = 'root', password = os.environ.get('MYSQL_DATABASE_PASSWORD'),
-        database = 'test', autocommit = True, charset = 'utf8mb4',
+        host = 'vergil.u.washington.edu', user = 'root', password = os.environ.get('MYSQL_DATABASE_PASSWORD'),
+        database = 'quasarWebsite_db', autocommit = True, charset = 'utf8mb4',port=32345,
         cursorclass = pymysql.cursors.DictCursor) 
 
 def get_db():
@@ -42,6 +46,7 @@ def research_team():
     return render_template('researchTeam.html')
 
 @app.route('/quasarresearchabout/')
+
 def quasar_research_about():
     with app.open_resource('static/QuasarResearchAboutPageDescription.txt') as f:
         content = f.read().decode('utf-8')
@@ -66,21 +71,22 @@ def data_access():
                     else:
                         downloadItemsSQLList = downloadItemsSQLList + "'" + i + "')"
                     count+=1
-
                 sql = "SELECT * FROM quasarinfo WHERE TRIM(QSO) in %s" % (downloadItemsSQLList)
                 cursor = get_db().cursor(pymysql.cursors.DictCursor)
                 cursor.execute(sql)
-                
                 rows = cursor.fetchall()
+                try:
+                    fp =open(os.path.join(APP_TMP, 'quasars.csv'), 'w', newline='')
+                except Exception as e:
+                    return str(e)
 
-                fp = open('app/tmp/quasars.csv', 'w', newline='')
                 myFile = csv.writer(fp)
                 myFile.writerow(rows[0].keys())
                 for row in rows:
                     myFile.writerow(row.values())
                 fp.close()
                 try:
-                    return send_file('tmp/quasars.csv', attachment_filename='quasars.csv', as_attachment=True)
+                    return send_file(os.path.join(APP_TMP, 'quasars.csv'), attachment_filename='quasars.csv', as_attachment=True)
                 except Exception as e:
                     return str(e)
 
@@ -166,7 +172,6 @@ def data_access():
 
             if(sql):
                 cursor = get_db().cursor()
-                print(sql)
                 cursor.execute(sql, tuple(vars))
                 data = cursor.fetchall()
 
