@@ -185,8 +185,14 @@ def data_access():
 
         if data:
             return render_template('dataAccess.html', form=form, data=data)
-
-    return render_template('dataAccess.html', form=form)
+    else:
+        sql = "SELECT * FROM quasarinfo t1 inner join quasarinfo_table2 t2 on t1.QSO = t2.QSO"
+        cursor = get_db().cursor()
+        cursor.execute(sql)
+        data = cursor.fetchall()
+        print("got here")
+        print(data)
+        return render_template('dataAccess.html', form=form, data=data)
 
 if __name__ == '__main__':
     app.run()
