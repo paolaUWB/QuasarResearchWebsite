@@ -16,13 +16,20 @@ from app.config import Config
 from app.config import APP_TMP
 app.config.from_object(Config)
 
-from QuasarResearchWebsite.app.forms import DataAccessForm
+from app.forms import DataAccessForm
+
+# def connect_db():
+#     return pymysql.connect(
+#         host = 'vergil.u.washington.edu', user = 'root', password = os.environ.get('MYSQL_DATABASE_PASSWORD'),
+#         database = 'quasarWebsite_db', autocommit = True, charset = 'utf8mb4',port=32345,
+#         cursorclass = pymysql.cursors.DictCursor) 
 
 def connect_db():
+    pwd = os.environ.get('MYSQL_DATABASE_PASSWORD')
+    print("PSWD is: " + pwd)
     return pymysql.connect(
-        host = 'vergil.u.washington.edu', user = 'root', password = os.environ.get('MYSQL_DATABASE_PASSWORD'),
-        database = 'quasarWebsite_db', autocommit = True, charset = 'utf8mb4',port=32345,
-        cursorclass = pymysql.cursors.DictCursor) 
+        host = 'localhost', user = 'root', password = os.environ.get('MYSQL_DATABASE_PASSWORD'),
+        database = 'test', autocommit = True, charset = 'utf8mb4',cursorclass = pymysql.cursors.DictCursor) 
 
 def get_db():
     if not hasattr(g, 'db'):
