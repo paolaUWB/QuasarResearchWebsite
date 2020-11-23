@@ -16,13 +16,20 @@ from app.config import Config
 from app.config import APP_TMP
 app.config.from_object(Config)
 
-from QuasarResearchWebsite.app.forms import DataAccessForm
+from app.forms import DataAccessForm
+
+# def connect_db():
+#     return pymysql.connect(
+#         host = 'vergil.u.washington.edu', user = 'root', password = os.environ.get('MYSQL_DATABASE_PASSWORD'),
+#         database = 'quasarWebsite_db', autocommit = True, charset = 'utf8mb4',port=32345,
+#         cursorclass = pymysql.cursors.DictCursor) 
 
 def connect_db():
+    pwd = os.environ.get('MYSQL_DATABASE_PASSWORD')
+    print("PSWD is: " + pwd)
     return pymysql.connect(
-        host = 'vergil.u.washington.edu', user = 'root', password = os.environ.get('MYSQL_DATABASE_PASSWORD'),
-        database = 'quasarWebsite_db', autocommit = True, charset = 'utf8mb4',port=32345,
-        cursorclass = pymysql.cursors.DictCursor) 
+        host = 'localhost', user = 'root', password = os.environ.get('MYSQL_DATABASE_PASSWORD'),
+        database = 'test', autocommit = True, charset = 'utf8mb4',cursorclass = pymysql.cursors.DictCursor) 
 
 def get_db():
     if not hasattr(g, 'db'):
@@ -104,8 +111,9 @@ def data_access():
             vars = list()
 
             #Check QSO
+            # select * from quasarinfo t1 inner join quasarinfo_table2 t2 on t1.QSO = t2.QSO WHERE trim(t1.QSO) ='J231227.48+005231.7';
             if(len(QSO) > 0):
-                sql = "SELECT * FROM quasarinfo WHERE trim(QSO) = %s"
+                sql = "SELECT * FROM quasarinfo t1 inner join quasarinfo_table2 t2 on t1.QSO = t2.QSO WHERE trim(t1.QSO) = %s"
                 vars.append(QSO)
 
             #check MJD_Fiber
@@ -113,7 +121,7 @@ def data_access():
                 if(sql):
                     sql = sql + ' AND trim(PLATE_MJD_FIBER) = %s'
                 else:
-                    sql ='SELECT * FROM quasarinfo WHERE trim(PLATE_MJD_FIBER) = %s'
+                    sql ='SELECT * FROM quasarinfo t1 inner join quasarinfo_table2 t2 on t1.QSO = t2.QSO WHERE trim(t1.PLATE_MJD_FIBER) = %s'
                 vars.append(MDJ_FIBER)
 
             #Check ZEMDR9Q
@@ -121,7 +129,7 @@ def data_access():
                 if(sql):
                     sql = sql + ' AND ZEMDR9Q BETWEEN %s AND %s'
                 else:
-                    sql = 'SELECT * FROM quasarinfo WHERE ZEMDR9Q BETWEEN %s AND %s'
+                    sql = 'SELECT * FROM quasarinfo t1 inner join quasarinfo_table2 t2 on t1.QSO = t2.QSO WHERE t1.ZEMDR9Q BETWEEN %s AND %s'
                 vars.append(ZEMDR9Q_Min)
                 vars.append(ZEMDR9Q_Max)
 
@@ -129,14 +137,14 @@ def data_access():
                 if(sql):
                     sql = sql + ' AND ZEMDR9Q >= %s'
                 else:
-                    sql = 'SELECT * FROM quasarinfo WHERE ZEMDR9Q >= %s'
+                    sql = 'SELECT * FROM quasarinfo t1 inner join quasarinfo_table2 t2 on t1.QSO = t2.QSO WHERE t1.ZEMDR9Q >= %s'
                 vars.append(ZEMDR9Q_Min)
 
             elif (ZEMDR9Q_Max):
                 if(sql):
                     sql = sql + ' AND ZEMDR9Q <= %s'
                 else:
-                    sql = 'SELECT * FROM quasarinfo WHERE ZEMDR9Q <= %s '
+                    sql = 'SELECT * FROM quasarinfo t1 inner join quasarinfo_table2 t2 on t1.QSO = t2.QSO WHERE t1.ZEMDR9Q <= %s '
                 vars.append(ZEMDR9Q_Max)
 
             #Check ZEMHW10
@@ -144,7 +152,7 @@ def data_access():
                 if(sql):
                     sql = sql + ' AND ZEMHW10 BETWEEN %s AND %s'
                 else:
-                    sql = 'SELECT * FROM quasarinfo WHERE ZEMHW10 BETWEEN %s AND %s'
+                    sql = 'SELECT * FROM quasarinfo t1 inner join quasarinfo_table2 t2 on t1.QSO = t2.QSO WHERE t1.ZEMHW10 BETWEEN %s AND %s'
                 vars.append(ZEMHW10_Min)
                 vars.append(ZEMHW10_Max)
 
@@ -152,14 +160,14 @@ def data_access():
                 if(sql):
                     sql = sql + ' AND ZEMDR9Q >= %s'
                 else:
-                    sql = 'SELECT * FROM quasarinfo WHERE ZEMDR9Q >= %s'
+                    sql = 'SELECT * FROM quasarinfo t1 inner join quasarinfo_table2 t2 on t1.QSO = t2.QSO WHERE t1.ZEMDR9Q >= %s'
                 vars.append(ZEMHW10_Min)
 
             elif (ZEMHW10_Max):
                 if(sql):
                     sql = sql + ' AND ZEMDR9Q <= %s'
                 else:
-                    sql = 'SELECT * FROM quasarinfo WHERE ZEMDR9Q <= %s '
+                    sql = 'SELECT * FROM quasarinfo t1 inner join quasarinfo_table2 t2 on t1.QSO = t2.QSO WHERE t1.ZEMDR9Q <= %s '
                 vars.append(ZEMHW10_Max)
 
             #Check BALQSO
@@ -167,7 +175,7 @@ def data_access():
                 if(sql):
                     sql = sql + " AND trim(BALQSO) = %s"
                 else:
-                    sql = "SELECT * FROM quasarinfo WHERE trim(BALQSO) = %s"
+                    sql = "SELECT * FROM quasarinfo t1 inner join quasarinfo_table2 t2 on t1.QSO = t2.QSO WHERE trim(t1.BALQSO) = %s"
                 vars.append(BALQSO)
 
             if(sql):
