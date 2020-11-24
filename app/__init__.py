@@ -18,18 +18,19 @@ app.config.from_object(Config)
 
 from app.forms import DataAccessForm
 
-# def connect_db():
-#     return pymysql.connect(
-#         host = 'vergil.u.washington.edu', user = 'root', password = os.environ.get('MYSQL_DATABASE_PASSWORD'),
-#         database = 'quasarWebsite_db', autocommit = True, charset = 'utf8mb4',port=32345,
-#         cursorclass = pymysql.cursors.DictCursor) 
+port = os.environ.get('MYSQL_DATABASE_PORT')
 
 def connect_db():
-    pwd = os.environ.get('MYSQL_DATABASE_PASSWORD')
-    print("PSWD is: " + pwd)
-    return pymysql.connect(
-        host = 'localhost', user = 'root', password = os.environ.get('MYSQL_DATABASE_PASSWORD'),
-        database = 'test', autocommit = True, charset = 'utf8mb4',cursorclass = pymysql.cursors.DictCursor) 
+    port = os.environ.get('MYSQL_DATABASE_PORT')
+    if(port):
+        return pymysql.connect(
+            host = 'vergil.u.washington.edu', user = 'root', password = os.environ.get('MYSQL_DATABASE_PASSWORD'),
+            database = 'quasarWebsite_db', autocommit = True, charset = 'utf8mb4',port=32345,
+            cursorclass = pymysql.cursors.DictCursor) 
+    else:
+        return pymysql.connect(
+            host = 'localhost', user = 'root', password = os.environ.get('MYSQL_DATABASE_PASSWORD'),
+            database = 'test', autocommit = True, charset = 'utf8mb4',cursorclass = pymysql.cursors.DictCursor) 
 
 def get_db():
     if not hasattr(g, 'db'):
@@ -107,6 +108,12 @@ def data_access():
             ZEMHW10_Min = form.ZEMHW10_Min.data
             ZEMHW10_Max = form.ZEMHW10_Max.data
             BALQSO = form.BALQSO.data
+
+            BI_EHVO = form.BI_EHVO.data
+            V_MAX = form.V_max.data
+            V_MIN = form.V_min.data
+            EW = form.EW.data
+
             sql= None
             vars = list()
 
@@ -171,17 +178,55 @@ def data_access():
                 vars.append(ZEMHW10_Max)
 
             #Check BALQSO
-            if (len(BALQSO) > 0):
+            if (BALQSO):
                 if(sql):
                     sql = sql + " AND trim(BALQSO) = %s"
                 else:
                     sql = "SELECT * FROM quasarinfo t1 inner join quasarinfo_table2 t2 on t1.QSO = t2.QSO WHERE trim(t1.BALQSO) = %s"
                 vars.append(BALQSO)
 
+            #Check BI_EHVO
+            if(BI_EHVO):
+                if(sql):
+                    sql = sql + " AND trim(t2.BI_EHVO) = %s"
+                else:
+                    sql = "SELECT * FROM quasarinfo t1 inner join quasarinfo_table2 t2 on t1.QSO = t2.QSO WHERE trim(t2.BI_EHVO) = %s"
+                vars.append(BI_EHVO)
+
+            #Check V_Max
+            if(V_MAX):
+                if(sql):
+                    sql = sql + " AND trim(t2.V_MAX) <= %s"
+                else:
+                    sql = "SELECT * FROM quasarinfo t1 inner join quasarinfo_table2 t2 on t1.QSO = t2.QSO WHERE trim(t2.V_MAX) <= %s"
+                vars.append(V_MAX)
+        
+            #Check V_min
+            if(V_MIN):
+                if(sql):
+                    sql = sql + " AND trim(t2.V_MIN) >= %s"
+                else:
+                    sql = "SELECT * FROM quasarinfo t1 inner join quasarinfo_table2 t2 on t1.QSO = t2.QSO WHERE trim(t2.V_MIN) >= %s"
+                vars.append(V_MIN)
+
+            #Check EW
+            if(EW):
+                if(sql):
+                    sql = sql + " AND trim(t2.EW) = %s"
+                else:
+                    sql = "SELECT * FROM quasarinfo t1 inner join quasarinfo_table2 t2 on t1.QSO = t2.QSO WHERE trim(t2.EW) = %s"
+                vars.append(EW)
+
             if(sql):
                 cursor = get_db().cursor()
                 cursor.execute(sql, tuple(vars))
                 data = cursor.fetchall()
+            else:
+                sql = "SELECT * FROM quasarinfo t1 inner join quasarinfo_table2 t2 on t1.QSO = t2.QSO"
+                cursor = get_db().cursor()
+                cursor.execute(sql)
+                data = cursor.fetchall()
+                return render_template('dataAccess.html', form=form, data=data)
 
         if data:
             return render_template('dataAccess.html', form=form, data=data)
@@ -190,8 +235,6 @@ def data_access():
         cursor = get_db().cursor()
         cursor.execute(sql)
         data = cursor.fetchall()
-        print("got here")
-        print(data)
         return render_template('dataAccess.html', form=form, data=data)
 
 if __name__ == '__main__':
