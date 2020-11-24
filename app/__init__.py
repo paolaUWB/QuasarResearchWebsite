@@ -79,7 +79,8 @@ def data_access():
                     else:
                         downloadItemsSQLList = downloadItemsSQLList + "'" + i + "')"
                     count+=1
-                sql = "SELECT * FROM quasarinfo WHERE TRIM(QSO) in %s" % (downloadItemsSQLList)
+
+                sql = "SELECT * FROM quasarinfo t1 inner join quasarinfo_table2 t2 on t1.QSO = t2.QSO WHERE TRIM(t1.QSO) in %s" % (downloadItemsSQLList)
                 cursor = get_db().cursor(pymysql.cursors.DictCursor)
                 cursor.execute(sql)
                 rows = cursor.fetchall()
