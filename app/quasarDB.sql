@@ -27,46 +27,9 @@ CREATE TABLE quasarinfo_table2(
     Depth FLOAT
 );
 
--- https://www.tutorialspoint.com/how-to-get-the-datatype-of-mysql-table-columns#:~:text=You%20can%20get%20the%20MySQL,columns%E2%80%9D.&text=SELECT%20DATA_TYPE%20from%20INFORMATION_SCHEMA.,and%20table_name%20%3D%20'yourTableName'.
-/*https://medium.com/@andrewpongco/solving-the-mysql-server-is-running-with-the-secure-file-priv-option-so-it-cannot-execute-this-d319de864285
-//https://stackoverflow.com/questions/59993844/error-loading-local-data-is-disabled-this-must-be-enabled-on-both-the-client
-
-//SHOW VARIABLES LIKE 'secure_file_priv';
-
-//mysql --local-infile=1 -u root -p
-
-// DROP TABLE quasarinfo
-// SELECT * FROM quasarinfo; */
-
--- LOAD DATA LOCAL INFILE 'C:\Users\guine\Desktop\CapstoneResearch\table1.csv' 
--- INTO TABLE QuasarInfo
--- FIELDS TERMINATED BY ',' 
--- LINES TERMINATED BY '\n'
--- IGNORE 1 ROWS;
 SET GLOBAL local_infile = true;
 
--- uncomment below for windows computers 
-
--- LOAD DATA LOCAL INFILE 'C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\table1.csv' 
--- INTO TABLE QuasarInfo
--- FIELDS TERMINATED BY ',' 
--- LINES TERMINATED BY '\r\n'
--- IGNORE 1 ROWS
--- (QSO, PLATE_MJD_FIBER, ZEMDR9Q, @vZEMDR9Q_PM, @vZEMHW10, @vZEMHW10_PM, BALQSO, GRAPH_IMG)
--- SET
--- ZEMDR9Q_PM = NULLIF(@vZEMDR9Q_PM, ''),
--- ZEMHW10 = NULLIF(@vZEMHW10, ''),
--- ZEMHW10_PM = NULLIF(@vZEMHW10_PM, '');
-
--- LOAD DATA LOCAL INFILE 'C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\table2.csv' 
--- INTO TABLE QuasarInfo_table2
--- FIELDS TERMINATED BY ',' 
--- LINES TERMINATED BY '\r\n'
--- IGNORE 1 ROWS;
-
---For school servers:
-
-LOAD DATA LOCAL INFILE '/dw00/d18/guinek/QuasarResearchWebsite/app/csv_tables/table1.csv' 
+LOAD DATA LOCAL INFILE 'csv_tables/table1.csv' 
 INTO TABLE quasarinfo
 FIELDS TERMINATED BY ',' 
 LINES TERMINATED BY '\n'
@@ -77,17 +40,8 @@ ZEMDR9Q_PM = NULLIF(@vZEMDR9Q_PM, ''),
 ZEMHW10 = NULLIF(@vZEMHW10, ''),
 ZEMHW10_PM = NULLIF(@vZEMHW10_PM, '');
 
-LOAD DATA LOCAL INFILE '/dw00/d18/guinek/QuasarResearchWebsite/app/csv_tables/table2.csv' 
+LOAD DATA LOCAL INFILE 'csv_tables/table2.csv' 
 INTO TABLE quasarinfo_table2
 FIELDS TERMINATED BY ',' 
 LINES TERMINATED BY '\n'
 IGNORE 1 ROWS;
-
-
--- INSERT INTO quasarinfo(Graph_Images) 
--- VALUES (LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\spec-3655-55240-0388_Fig40.pdf'))
--- WHERE PLATE_MJD_FIBER = '3655-55240-0388'
-
--- UPDATE quasarinfo
--- SET quasarinfo.Graph_Images =LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\spec-3655-55240-0388_Fig40.pdf')
--- WHERE PLATE_MJD_FIBER = 3655-55240-0388;
