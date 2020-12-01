@@ -1,3 +1,4 @@
+
 CREATE DATABASE IF NOT EXISTS quasarWebsite_db;
 USE quasarWebsite_db;
 
