@@ -66,7 +66,8 @@ SET GLOBAL local_infile = true;
 
 --For school servers:
 
-LOAD DATA LOCAL INFILE '/dw00/d18/guinek/QuasarResearchWebsite/app/csv_tables/table1.csv' 
+--LOAD DATA LOCAL INFILE '/dw00/d18/guinek/QuasarResearchWebsite/app/csv_tables/table1.csv' 
+LOAD DATA LOCAL INFILE 'csv_tables/table1.csv'
 INTO TABLE quasarinfo
 FIELDS TERMINATED BY ',' 
 LINES TERMINATED BY '\n'
@@ -77,7 +78,8 @@ ZEMDR9Q_PM = NULLIF(@vZEMDR9Q_PM, ''),
 ZEMHW10 = NULLIF(@vZEMHW10, ''),
 ZEMHW10_PM = NULLIF(@vZEMHW10_PM, '');
 
-LOAD DATA LOCAL INFILE '/dw00/d18/guinek/QuasarResearchWebsite/app/csv_tables/table2.csv' 
+--LOAD DATA LOCAL INFILE '/dw00/d18/guinek/QuasarResearchWebsite/app/csv_tables/table2.csv' 
+LOAD DATA LOCAL INFILE 'csv_tables/table1.csv'
 INTO TABLE quasarinfo_table2
 FIELDS TERMINATED BY ',' 
 LINES TERMINATED BY '\n'

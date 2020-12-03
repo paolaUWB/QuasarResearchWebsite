@@ -38,7 +38,7 @@
                         <b> {{ form.ZEMHW10.label  }}:</b>
                     </div>
                     <div class="row">
-                        {{ form.ZEMDR9Q_Min(placeholder = "Range min") }}
+                        {{ form.ZEMHW10_Min(placeholder = "Range min") }}
                     </div>
                     <div class="row mt-1">
                         {{ form.ZEMHW10_Max(placeholder = "Range max") }}
@@ -51,10 +51,13 @@
                     </div>
 
                     <div class="row mt-2">
-                        <br> <b>{{ form.BI_EHVO.label }}:</b>
+                        <br><b> {{ form.BI_EHVO.label  }}:</b>
                     </div>
                     <div class="row">
-                        {{ form.BI_EHVO }}
+                        {{ form.BI_EHVO_min(placeholder = "Range min") }}
+                    </div>
+                    <div class="row mt-1">
+                        {{ form.BI_EHVO_max(placeholder = "Range max") }}
                     </div>
 
                     <div class="row mt-2">
@@ -71,7 +74,10 @@
                         <br> <b>{{ form.EW.label }}:</b>
                     </div>
                     <div class="row">
-                        {{ form.EW }}
+                        {{ form.EW_min(placeholder = "Range min") }}
+                    </div>
+                    <div class="row mt-1">
+                        {{ form.EW_max(placeholder = "Range max") }}
                     </div>
 
                     <div class="row mt-3">
@@ -83,6 +89,7 @@
                 </div>
             </div>
         </div>
+        
         <div class="custom-container container">
             <div class="col-12">
                 <div class="about-section">
@@ -94,7 +101,11 @@
                 <table class="table table-hover table-bordered table-sm table-striped">
                     <thead>
                         <tr>
-                            <th scope="col"></th>
+                            <th scope="col">
+                                <a>
+                                    <input type="checkbox" name="checkAll" id="checkAll">
+                                </a>
+                            </th>
                             <th scope="col">#</th>
                             <th scope="col">QSO</th>
                             <th scope="col">Plate-MJD-Fiber</th>
