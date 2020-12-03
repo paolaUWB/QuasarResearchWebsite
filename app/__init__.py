@@ -67,6 +67,7 @@ def quasar_research_about():
 def data_access():
     form = DataAccessForm(request.form)
     data = None
+    sql = None
     if request.method == "POST":
         if(form.Download.data):
             #Get the QSO for all checked rows
