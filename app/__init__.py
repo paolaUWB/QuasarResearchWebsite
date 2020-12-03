@@ -9,7 +9,6 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-
 app = Flask(__name__)
 
 from app.config import Config
@@ -22,12 +21,16 @@ port = os.environ.get('MYSQL_DATABASE_PORT')
 
 def connect_db():
     port = os.environ.get('MYSQL_DATABASE_PORT')
+    #Remote mysql server
     if(port):
+        print("world")
         return pymysql.connect(
             host = 'vergil.u.washington.edu', user = 'root', password = os.environ.get('MYSQL_DATABASE_PASSWORD'),
             database = 'quasarWebsite_db', autocommit = True, charset = 'utf8mb4',port=32345,
             cursorclass = pymysql.cursors.DictCursor) 
+    #local mysql server
     else:
+        print("hello")
         return pymysql.connect(
             host = 'localhost', user = 'root', password = os.environ.get('MYSQL_DATABASE_PASSWORD'),
             database = 'test', autocommit = True, charset = 'utf8mb4',cursorclass = pymysql.cursors.DictCursor) 
@@ -54,12 +57,12 @@ def research_team():
     return render_template('researchTeam.html')
 
 @app.route('/quasarresearchabout/')
-
 def quasar_research_about():
     with app.open_resource('static/QuasarResearchAboutPageDescription.txt') as f:
         content = f.read().decode('utf-8')
     return render_template('quasarResearchAbout.html', description=content)
 
+#Data access page
 @app.route('/dataaccess/', methods = ["GET", "POST"])
 def data_access():
     form = DataAccessForm(request.form)
@@ -110,10 +113,12 @@ def data_access():
             ZEMHW10_Max = form.ZEMHW10_Max.data
             BALQSO = form.BALQSO.data
 
-            BI_EHVO = form.BI_EHVO.data
+            BI_EHVO_min = form.BI_EHVO_min.data
+            BI_EHVO_max = form.BI_EHVO_max.data
             V_MAX = form.V_max.data
             V_MIN = form.V_min.data
-            EW = form.EW.data
+            EW_min = form.EW_min.data
+            EW_max = form.EW_max.data
 
             sql= None
             vars = list()
@@ -187,12 +192,28 @@ def data_access():
                 vars.append(BALQSO)
 
             #Check BI_EHVO
-            if(BI_EHVO):
+            if(BI_EHVO_min and BI_EHVO_max):
                 if(sql):
-                    sql = sql + " AND trim(t2.BI_EHVO) = %s"
+                    sql = sql + ' AND ZEMDR9Q BETWEEN %s AND %s'
                 else:
-                    sql = "SELECT * FROM quasarinfo t1 inner join quasarinfo_table2 t2 on t1.QSO = t2.QSO WHERE trim(t2.BI_EHVO) = %s"
-                vars.append(BI_EHVO)
+                    sql = 'SELECT * FROM quasarinfo t1 inner join quasarinfo_table2 t2 on t1.QSO = t2.QSO WHERE t2.BI_EHVO BETWEEN %s AND %s'
+                vars.append(BI_EHVO_min)
+                vars.append(BI_EHVO_max)
+
+            elif (BI_EHVO_min):
+                if(sql):
+                    sql = sql + ' AND BI_EHVO >= %s'
+                else:
+                    sql = 'SELECT * FROM quasarinfo t1 inner join quasarinfo_table2 t2 on t1.QSO = t2.QSO WHERE t2.BI_EHVO >= %s'
+                vars.append(BI_EHVO_min)
+
+            elif (BI_EHVO_max):
+                if(sql):
+                    sql = sql + ' AND BI_EHVO <= %s'
+                else:
+                    sql = 'SELECT * FROM quasarinfo t1 inner join quasarinfo_table2 t2 on t1.QSO = t2.QSO WHERE t2.BI_EHVO <= %s '
+                vars.append(BI_EHVO_max)
+
 
             #Check V_Max
             if(V_MAX):
@@ -211,32 +232,41 @@ def data_access():
                 vars.append(V_MIN)
 
             #Check EW
-            if(EW):
+            if(EW_min and EW_max):
                 if(sql):
-                    sql = sql + " AND trim(t2.EW) = %s"
+                    sql = sql + ' AND ZEMDR9Q BETWEEN %s AND %s'
                 else:
-                    sql = "SELECT * FROM quasarinfo t1 inner join quasarinfo_table2 t2 on t1.QSO = t2.QSO WHERE trim(t2.EW) = %s"
-                vars.append(EW)
+                    sql = 'SELECT * FROM quasarinfo t1 inner join quasarinfo_table2 t2 on t1.QSO = t2.QSO WHERE t2.EW BETWEEN %s AND %s'
+                vars.append(EW_min)
+                vars.append(EW_max)
 
-            if(sql):
-                cursor = get_db().cursor()
-                cursor.execute(sql, tuple(vars))
-                data = cursor.fetchall()
-            else:
-                sql = "SELECT * FROM quasarinfo t1 inner join quasarinfo_table2 t2 on t1.QSO = t2.QSO"
-                cursor = get_db().cursor()
-                cursor.execute(sql)
-                data = cursor.fetchall()
-                return render_template('dataAccess.html', form=form, data=data)
+            elif (EW_min):
+                if(sql):
+                    sql = sql + ' AND EW >= %s'
+                else:
+                    sql = 'SELECT * FROM quasarinfo t1 inner join quasarinfo_table2 t2 on t1.QSO = t2.QSO WHERE t2.EW >= %s'
+                vars.append(EW_min)
 
-        if data:
-            return render_template('dataAccess.html', form=form, data=data)
+            elif (EW_max):
+                if(sql):
+                    sql = sql + ' AND EW <= %s'
+                else:
+                    sql = 'SELECT * FROM quasarinfo t1 inner join quasarinfo_table2 t2 on t1.QSO = t2.QSO WHERE t2.EW <= %s '
+                vars.append(BI_EHVO_max)
+    if(sql):
+        cursor = get_db().cursor()
+        cursor.execute(sql, tuple(vars))
+        data = cursor.fetchall()
     else:
         sql = "SELECT * FROM quasarinfo t1 inner join quasarinfo_table2 t2 on t1.QSO = t2.QSO"
         cursor = get_db().cursor()
         cursor.execute(sql)
         data = cursor.fetchall()
+
+    if data:
         return render_template('dataAccess.html', form=form, data=data)
+            
+    return render_template('dataAccess.html', form=form)
 
 if __name__ == '__main__':
     app.run()

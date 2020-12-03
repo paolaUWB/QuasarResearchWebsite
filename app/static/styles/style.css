@@ -7,6 +7,7 @@
   /* height: 100%; Full-height: remove this if you want "auto" height */
   width: 100%; /*Set the width of the sidebar */
   padding: 20px 20px 20px 20px;
+  /* margin: 0px 0px 0px 20 */
   /*position: fixed; /*Fixed Sidebar (stay in place on scroll) */
   /* z-index: 1; Stay on top */
   /* top: 200; Stay at the top */
@@ -14,7 +15,7 @@
   background-color: rgb(165, 158, 158);
   /* overflow-x: hidden; Disable horizontal scroll */
   padding-top: 20px; 
-  margin: 100px 8px 6px 50px; 
+  margin: 100px 8px 6px 120px; 
 }
 
 /* The navigation menu links */

@@ -14,6 +14,7 @@
 
 <title>{% block title %}{% endblock %} - Quasar Research</title>
 <body>
+    
 <nav class="navbar navbar-expand-lg navbar-dark">
     <!--First navbar tab: UW homepage-->
     <a class="navbar-brand" href="#">
@@ -69,9 +70,16 @@
     </div>
 </footer>
 </body>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
     $("table.table td a").on('click', function (e) { e.stopPropagation(); })
+</script>
+
+<script>
+    $('#checkAll').click(function () {    
+         $('input:checkbox').prop('checked', this.checked);    
+    });
 </script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

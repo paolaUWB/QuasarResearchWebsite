@@ -17,11 +17,17 @@ class DataAccessForm(Form):
 
     #table 2
     BI_EHVO = IntegerField('BI_EHVO')
+    BI_EHVO_min = IntegerField('BI_EHVO_min')
+    BI_EHVO_max = IntegerField('BI_EHVO_max')
+
     V = IntegerField('V')
     V_max = IntegerField('V_max')
     V_min = IntegerField('V_min')
+
     EW = IntegerField('EW')
+    EW_min = IntegerField('EW_min')
+    EW_max = IntegerField('EW_max')
     Depth = FloatField('Depth')
 
-    Submit = SubmitField('Submit')
+    Submit = SubmitField('Filter')
     Download = SubmitField('Download checked data')
