@@ -13,7 +13,6 @@
         1. If you are a student, your server is Vergil
         1. If you are faculty, your server is Homer/Ovid
         
-1. Download website files (if you haven't already done so) at: https://github.com/Kathleen-G/QuasarResearchWebsite
 
 1. SSH into the school servers:
     1. If you are on Windows, open Putty
@@ -26,23 +25,13 @@
         1. Login as: `Your UW ID`
         1. Password: `Your UW password`
             1. If you are new to SSH, know that you won't actually see your password get typed. It'll look invisible but it is still getting input into the system.
-        1. Voila! You should be in now! Check that everything worked by typing `ls` into the command prompt. You should see two directories, "public_html" and "local_home"
+        1. Voila! You should be in now! Check that everything worked by typing `ls` into the command prompt. You should see one directory, "public_html"
         
     1. If you need more information, see https://itconnect.uw.edu/connect/web-publishing/shared-hosting/ssh/
  
  1. Setup MySQL on the school servers:
     1. Follow directions at: https://itconnect.uw.edu/connect/web-publishing/shared-hosting/using-mysql-on-shared-uw-hosting/install-mysql/
     1. Make sure to write down your root password and username
-    
- 1. Set up a python virtual environment: 
-     1. `cd ~/public_html`
-     1. type into the prompt:
-         1. `python3 -m venv flaskEnv` (this will take a couple of seconds to run)
-         1. `source flaskEnv/bin/activate` You should now see something like: `(flaskEnv) vergil11$`
-         1. `pip install flask`
-         1. `pip install PyMySQL`
-         1. `pip install Flask-WTF`
-         1. `pip install python-dotenv`
              
  1. Add files to the web server
      1. In the terminal clone files from github with the following commands:
@@ -54,7 +43,16 @@
          1. `ls`
          1. You should see a new "QuasarResearchWebsite" directory in your public_html folder 
     
- 1. fix setup issues (to be continued later)
+ 1. Set up a python virtual environment: 
+     1. `cd ~/public_html`
+     1. type into the prompt:
+         1. `python3 -m venv flaskEnv` (this will take a couple of seconds to run)
+         1. `source flaskEnv/bin/activate` You should now see something like: `(flaskEnv) vergil11$`
+         1. `pip install flask`
+         1. `pip install PyMySQL`
+         1. `pip install Flask-WTF`
+         1. `pip install python-dotenv`
+         
  1. create a .env file to store secret information
      1. `cd ~/public_html/QuasarResearchWebsite`
      1. `nano .env`
@@ -62,6 +60,7 @@
         ```
         SECRET_KEY= <WHATEVER_SECRET_KEY_YOU_WANT>
         MYSQL_DATABASE_PASSWORD=<YOUR_MYSQL_DATABASE_ROOT_PASSWORD>
+        MYSQL_DATABASE_PORT = <YOUR_MYSQL_DATABASE_PORT>
             
         ```
      1. Save and close with the following commands:
@@ -70,9 +69,13 @@
          y
          enter
          ```
- 1. Update DB with graph images
+         
+ 1. Setup DB
      1. `cd ~/public_html/QuasarResearchWebsite/app`
-     1. `python updateDatabase.py`
+     1. Create and update the database with the following command (it will run the commands in the .sql file) `~/mysql/bin/mysql < quasarDB.sql -u root -p --verbose`  
+     1. Update DB with graph images
+         1. `cd ~/public_html/QuasarResearchWebsite/app`
+         1. `python updateDatabase.py`
      
  1. Edit htaccess and cgi files
      1. This next part is a little tricky and easy to make a mistake by leaving off slashes by accident. Be careful here!
@@ -91,27 +94,27 @@
              enter
              ```
      1. Now we need to create the CGI file
-         1. First, let's copy down the absolute path to our python virtual environment
-             1. `cd ~/public_html`
-             1. `pwd flaskEnv`
-                 1. copy this into a notepad file or whatever program you want (we'll need this for the next step)
+         1. `cd ~/public_html`
+
          1. Type `pico main.cgi' into the terminal
-         1. In this file, type the following (be careful!)
+         1. Copy and paste this into the file (you can paste in Putty by clicking left and right mouse buttons at the same time) 
              ```
-             #!/usr/local/bin/python3.6
-             import sys, os
-             import cgi;
-             import cgitb; cgitb.enable()
-             from wsgiref.handlers import CGIHandler
 
-             sys.path.insert(0, '<THE_FILE_PATH_YOU_COPIED_DOWN>/flaskEnv/lib/python3.6/site-packages')
+            #!flaskEnv/bin/python3
 
-             from ResearchWebsite.app.__init__ import app
+            import sys, os
+            import cgi;
+            import cgitb; cgitb.enable()
+            from wsgiref.handlers import CGIHandler
 
-             CGIHandler().run(app)
+            sys.path.insert(0, 'QuasarResearchWebsite')
+            sys.path.insert(0, 'QuasarResearchWebsite/app')
+
+            from app.__init__ import app
+            CGIHandler().run(app)
+
              ```
-             Your sys.path. insert file should look something like this: `/nfs/bronfs/uwfs/da00/d18/guinek/flaskEnv/lib/python3.6/site-packages`
-             It's super important that you have the preceding backslash in front (or else nothing works). Your import line (`from ResearchWebsite.app.__init__ import app`)       should reflect the path from your public_html folder to your __init__.py file in the flask project. 
+
          1. Save and close with:
              ```
              ctrl+x
