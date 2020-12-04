@@ -45,20 +45,24 @@ def close_db(error):
     if hasattr(g, 'db'):
         g.db.close()
 
-
+#Home page
 @app.route('/')
 def runit():
-    with app.open_resource('static/HomeResearchDescription.txt') as f:
+    with app.open_resource('static/descriptionText/HomeResearchDescription.txt') as f:
         content = f.read().decode('utf-8')
     return render_template('home.html', description=content)
 
+#Team page
 @app.route('/researchteam/')
 def research_team():
-    return render_template('researchTeam.html')
+    with app.open_resource('static\descriptionText\\teamMembersDescriptions\paolaDescription.txt') as f:
+        paolaContent = f.read().decode('utf-8')
+    return render_template('researchTeam.html', paolaDescription = paolaContent)
 
+#Research About/description page
 @app.route('/quasarresearchabout/')
 def quasar_research_about():
-    with app.open_resource('static/QuasarResearchAboutPageDescription.txt') as f:
+    with app.open_resource('static/descriptionText/QuasarResearchAboutPageDescription.txt') as f:
         content = f.read().decode('utf-8')
     return render_template('quasarResearchAbout.html', description=content)
 
@@ -68,6 +72,10 @@ def data_access():
     form = DataAccessForm(request.form)
     data = None
     sql = None
+
+    with app.open_resource('static/descriptionText/DataAccessDescription.txt') as f:
+        content = f.read().decode('utf-8')
+
     if request.method == "POST":
         if(form.Download.data):
             #Get the QSO for all checked rows
@@ -219,17 +227,17 @@ def data_access():
             #Check V_Max
             if(V_MAX):
                 if(sql):
-                    sql = sql + " AND trim(t2.V_MAX) <= %s"
+                    sql = sql + " AND trim(t2.V_MAX) >= %s"
                 else:
-                    sql = "SELECT * FROM quasarinfo t1 inner join quasarinfo_table2 t2 on t1.QSO = t2.QSO WHERE trim(t2.V_MAX) <= %s"
+                    sql = "SELECT * FROM quasarinfo t1 inner join quasarinfo_table2 t2 on t1.QSO = t2.QSO WHERE trim(t2.V_MAX) >= %s"
                 vars.append(V_MAX)
         
             #Check V_min
             if(V_MIN):
                 if(sql):
-                    sql = sql + " AND trim(t2.V_MIN) >= %s"
+                    sql = sql + " AND trim(t2.V_MIN) <= %s"
                 else:
-                    sql = "SELECT * FROM quasarinfo t1 inner join quasarinfo_table2 t2 on t1.QSO = t2.QSO WHERE trim(t2.V_MIN) >= %s"
+                    sql = "SELECT * FROM quasarinfo t1 inner join quasarinfo_table2 t2 on t1.QSO = t2.QSO WHERE trim(t2.V_MIN) <= %s"
                 vars.append(V_MIN)
 
             #Check EW
@@ -265,9 +273,9 @@ def data_access():
         data = cursor.fetchall()
 
     if data:
-        return render_template('dataAccess.html', form=form, data=data)
+        return render_template('dataAccess.html', form=form, data=data, description=content)
             
-    return render_template('dataAccess.html', form=form)
+    return render_template('dataAccess.html', form=form, description=content)
 
 if __name__ == '__main__':
     app.run()
