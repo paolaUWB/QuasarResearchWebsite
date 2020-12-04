@@ -55,8 +55,11 @@ def runit():
 #Team page
 @app.route('/researchteam/')
 def research_team():
-    with app.open_resource('static\descriptionText\\teamMembersDescriptions\paolaDescription.txt') as f:
-        paolaContent = f.read().decode('utf-8')
+    try:
+        with app.open_resource('static/descriptionText/teamMembersDescriptions/paolaDescription.txt') as f:
+            paolaContent = f.read().decode('utf-8')
+    except Exception as e:
+        print(e)
     return render_template('researchTeam.html', paolaDescription = paolaContent)
 
 #Research About/description page
