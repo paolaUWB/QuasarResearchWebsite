@@ -128,7 +128,7 @@
               
      1. Check to see if it worked by going to your UW url. It will be https://students.washington.edu/<YOUR_UW_NETID>/
     
-### Instructions for local setup (Windows):
+## Instructions for local setup (Windows):
     
 1. Install MySQL https://dev.mysql.com/downloads/installer/ (install the second option useing all default options)
     
@@ -153,18 +153,30 @@
      1. Open a new terminal in visual studio
      1. In the terminal `python3 -m venv flaskEnv` (this will take a couple of seconds to run)
      1. `flaskEnv/Scripts/activate` You should now see something like: `(flaskEnv) PS C:\Users\guine\Desktop\test\QuasarResearchWebsite> `
-            1. You may recieve an error message stating "running scripts is disabled on this system"
-            1. To fix this open Windows PowerShell with administration privileges
-                1. To open, search "PowerShell" in the Windows Start menu and select "Run as administrator" from the context menu
-            1. Enter 'set-executionpolicy remotesigned' to PowerShell
-            1. When asked "Do you want to change the execution policy?", respond with 'Y' for yes
+         1. You may recieve an error message stating "running scripts is disabled on this system"
+         1. To fix this open Windows PowerShell with administration privileges
+             1. To open, search "PowerShell" in the Windows Start menu and select "Run as administrator" from the context menu
+         1. Enter 'set-executionpolicy remotesigned' to PowerShell
+         1. When asked "Do you want to change the execution policy?", respond with 'Y' for yes
      1. `pip install flask`
      1. `pip install PyMySQL`
      1. `pip install Flask-WTF`
      1. `pip install python-dotenv`
          
      1. For more instructions on using python environments in visual studio, see https://code.visualstudio.com/docs/python/environments
-         
+     
+1. Add the secret environment variables:
+    1. Create a new file in QuasarResearchWebsite/app/  and name it .env
+    1. Add your secrets to the file with the following: 
+    ```
+    SECRET_KEY=<WHATEVER YOU WANT>
+    MYSQL_DATABASE_PASSWORD=<YOUR MYSQL DB/ROOT PASSWORD>
+    ```
+    
+1. Setup the MySQL database:
+    1. In the VSCode command line, start mysql with `& cmd.exe /c "mysql -u root -p --verbose --local-infile=1 < app/quasarDB_win.sql"`, and enter your password for root user
+    1. `python updateDatabase_win.py` (this will update the paths to the images in the database)
+    
 1. Now check to see if things are working. In the visual studio terminal type `flask run` 
     1. If everything is working you should see something like:
         ```
@@ -176,8 +188,8 @@
         * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
         ```
     1. Follow the link on the last line to see if it runs. Your default internet browser should open to the home page of the website. 
-        
-1. Setup the MySQL database:
+    1. Check that the images are loading correctly by going to the "Data Access" page, clicking on a row and seeing if the image shows up.
+    1. Voila! Hopefully it is working :)
     
        
        
