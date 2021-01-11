@@ -191,7 +191,7 @@
     1. Check that the images are loading correctly by going to the "Data Access" page, clicking on a row and seeing if the image shows up.
     1. Voila! Hopefully it is working :)
     
-       
+   ## Troubleshooting (Windows):
        
 
  
