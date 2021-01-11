@@ -5,5 +5,5 @@ app/.vscode/
 quasars.csv
 app/tmp/
 test.txt
-app/flaskEnv/
+flaskEnv/
 app/.env
