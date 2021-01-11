@@ -29,7 +29,7 @@ cursor = connect_db().cursor()
 #         cursor.execute(sql)
 
 
-#add file locations to
+#add file locations to database
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 GRAPH_IMAGES = os.path.join(basedir, 'static/images/Graph_Images')

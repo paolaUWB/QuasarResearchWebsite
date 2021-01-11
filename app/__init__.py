@@ -30,10 +30,10 @@ def connect_db():
             cursorclass = pymysql.cursors.DictCursor) 
     #local mysql server
     else:
-        print("hello")
+        #print("hello")
         return pymysql.connect(
             host = 'localhost', user = 'root', password = os.environ.get('MYSQL_DATABASE_PASSWORD'),
-            database = 'test', autocommit = True, charset = 'utf8mb4',cursorclass = pymysql.cursors.DictCursor) 
+            database = 'quasarWebsite_db', autocommit = True, charset = 'utf8mb4',cursorclass = pymysql.cursors.DictCursor) 
 
 def get_db():
     if not hasattr(g, 'db'):
