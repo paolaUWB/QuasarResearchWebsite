@@ -175,7 +175,7 @@
     
 1. Setup the MySQL database:
     1. In the VSCode command line, start mysql with `& cmd.exe /c "mysql -u root -p --verbose --local-infile=1 < app/quasarDB_win.sql"`, and enter your password for root user
-    1. `python updateDatabase_win.py` (this will update the paths to the images in the database)
+    1. `python app/updateDatabase_win.py` (this will update the paths to the images in the database)
     
 1. Now check to see if things are working. In the visual studio terminal type `flask run` 
     1. If everything is working you should see something like:
