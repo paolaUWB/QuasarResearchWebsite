@@ -7,7 +7,7 @@
 * Putty (if on windows)
 * SSH (if on Mac or Linux)
 
-### Instructions:
+### Instructions for school server setup:
 1. Activate your UW shared web hosting.
     1. Follow instructions at https://itconnect.uw.edu/connect/web-publishing/shared-hosting/activating-shared-web-hosting/
         1. If you are a student, your server is Vergil
@@ -127,6 +127,54 @@
               1. `chmod 755 __init__.py`
               
      1. Check to see if it worked by going to your UW url. It will be https://students.washington.edu/<YOUR_UW_NETID>/
+    
+### Instructions for local setup (Windows):
+    
+1. Install MySQL https://dev.mysql.com/downloads/installer/ (install the second option useing all default options)
+    
+1. Install visual studio code https://code.visualstudio.com/ (or whatever your preferred IDE is)
+    
+1. Install Git if you don't already have it: https://git-scm.com/download/win
          
+1. Clone this repository 
+     1. Open the command prompt
+     1. cd to whatever folder you want to have the project in 
+     1. `git clone https://<YOUR_GITHUB_USERNAME>@github.com/Kathleen-G/QuasarResearchWebsite.git`
+         
+1. Check to see if all of the files were cloned
+     1. `dir`
+     1. You should see a new "QuasarResearchWebsite" directory
+         
+1. Open project in visual studio code
+     1. Open visual studio code
+     1. File -> Open folder and then navigate to the QuasarResearchWebsite folder that you just cloned
+         
+1. Set up flask environment:
+     1. Open a new terminal in visual studio
+     1. In the terminal `python3 -m venv flaskEnv` (this will take a couple of seconds to run)
+     1. `flaskEnv/Scripts/activate` You should now see something like: `(flaskEnv) PS C:\Users\guine\Desktop\test\QuasarResearchWebsite> `
+     1. `pip install flask`
+     1. `pip install PyMySQL`
+     1. `pip install Flask-WTF`
+     1. `pip install python-dotenv`
+         
+     1. For more instructions on using python environments in visual studio, see https://code.visualstudio.com/docs/python/environments
+         
+1. Now check to see if things are working. In the visual studio terminal type `flask run` 
+    1. If everything is working you should see something like:
+        ```
+        (flaskEnv) PS C:\Users\guine\Desktop\test\QuasarResearchWebsite> flask run
+        * Environment: production
+        WARNING: This is a development server. Do not use it in a production deployment.
+        Use a production WSGI server instead.
+        * Debug mode: off
+        * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+        ```
+    1. Follow the link on the last line to see if it runs. Your default internet browser should open to the home page of the website. 
+        
+1. Setup the MySQL database:
+    
+       
+       
 
  
