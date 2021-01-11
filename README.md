@@ -195,8 +195,7 @@
    1. Setup MySQL on the school servers:
              
    1. If you recieve the error message: "running scripts is disabled on this system"
-         1. You may recieve an error message stating "
-         1. To fix this open Windows PowerShell with administration privileges
+         1. Open Windows PowerShell with administration privileges
              1. To open, search "PowerShell" in the Windows Start menu and select "Run as administrator" from the context menu
          1. Enter 'set-executionpolicy remotesigned' to PowerShell
          1. When asked "Do you want to change the execution policy?", respond with 'Y' for yes  
