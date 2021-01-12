@@ -199,5 +199,15 @@
              1. To open, search "PowerShell" in the Windows Start menu and select "Run as administrator" from the context menu
          1. Enter 'set-executionpolicy remotesigned' to PowerShell
          1. When asked "Do you want to change the execution policy?", respond with 'Y' for yes  
+         
+   1. To add the mysql exe file to the path
+         1. type "path" into the windows search bar and click "edit the system environment variables"
+         1. click on environment variables
+         1. click on path, then edit, then new
+         1. then add the path 'C:\Program Files\MySQL\MySQL Shell 8.0\bin\' to the list 
+         1. click ok/apply
+         1. restart your computer
+
+
 
  
