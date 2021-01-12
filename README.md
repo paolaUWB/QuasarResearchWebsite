@@ -192,7 +192,7 @@
     1. Voila! Hopefully it is working :)
     
    ## Troubleshooting (Windows):
-   1. Setup MySQL on the school servers:
+   1. To update and access most recent files enter 'git pull' into the terminal when you are in your QuasarResearchWebsite folder
              
    1. If you recieve the error message: "running scripts is disabled on this system"
          1. Open Windows PowerShell with administration privileges
