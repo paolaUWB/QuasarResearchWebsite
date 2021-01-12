@@ -190,7 +190,13 @@
     1. Follow the link on the last line to see if it runs. Your default internet browser should open to the home page of the website. 
     1. Check that the images are loading correctly by going to the "Data Access" page, clicking on a row and seeing if the image shows up.
     1. Voila! Hopefully it is working :)
-    
+   
+   ## Troubleshooting (School Server):
+   1. Basic MySQL Administration
+: https://itconnect.uw.edu/connect/web-publishing/shared-hosting/using-mysql-on-shared-uw-hosting/basic-mysql-administration/
+   
+   1. Troubleshooting Steps: https://itconnect.uw.edu/connect/web-publishing/shared-hosting/troubleshooting/
+   
    ## Troubleshooting (Windows):
    1. To update and access most recent files enter `git pull` into the terminal when you are in your QuasarResearchWebsite folder
              
