@@ -204,6 +204,7 @@
              1. To open, search "PowerShell" in the Windows Start menu and select "Run as administrator" from the context menu
          1. Enter `set-executionpolicy remotesigned` to PowerShell
          1. When asked "Do you want to change the execution policy?", respond with `Y` for yes  
+         1. For more information visit: https://www.faqforge.com/windows/windows-powershell-running-scripts-is-disabled-on-this-system/
          
    1. To add the mysql exe file to the path
          1. type "path" into the windows search bar and click "edit the system environment variables"
