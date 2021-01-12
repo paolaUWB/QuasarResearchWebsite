@@ -192,31 +192,31 @@
     1. Voila! Hopefully it is working :)
     
    ## Troubleshooting (Windows):
-   1. To update and access most recent files enter 'git pull' into the terminal when you are in your QuasarResearchWebsite folder
+   1. To update and access most recent files enter `git pull` into the terminal when you are in your QuasarResearchWebsite folder
              
    1. If you recieve the error message: "running scripts is disabled on this system"
          1. Open Windows PowerShell with administration privileges
              1. To open, search "PowerShell" in the Windows Start menu and select "Run as administrator" from the context menu
-         1. Enter 'set-executionpolicy remotesigned' to PowerShell
-         1. When asked "Do you want to change the execution policy?", respond with 'Y' for yes  
+         1. Enter `set-executionpolicy remotesigned` to PowerShell
+         1. When asked "Do you want to change the execution policy?", respond with `Y` for yes  
          
    1. To add the mysql exe file to the path
          1. type "path" into the windows search bar and click "edit the system environment variables"
          1. click on environment variables
          1. click on path, then edit, then new
-         1. then add the paths 'C:\Program Files\MySQL\MySQL Shell 8.0\bin\' and 'C:\Program Files\MySQL\MySQL Server 8.0\bin\' to the list 
+         1. then add the paths `C:\Program Files\MySQL\MySQL Shell 8.0\bin\` and `C:\Program Files\MySQL\MySQL Server 8.0\bin\` to the list 
          1. click ok/apply
          1. restart your computer
 
-    1. If you recieve the error mesage: 'module not found'
-         1. Type 'python -m pip list' into VS Code's terminal
+    1. If you recieve the error mesage: `module not found`
+         1. Type `python -m pip list` into VS Code's terminal
          1. This will list all installed packages
-         1. If the package you need is not in the list, enter 'pip install [package name]' to the terminal
-            1. For example, if you need to install PyMySql, enter 'pip install PyMySQL' to the terminal
+         1. If the package you need is not in the list, enter `pip install [package name]` to the terminal
+            1. For example, if you need to install PyMySql, enter `pip install PyMySQL` to the terminal
     
     1. Setting the virtual enviroment in VS Code
          1. type "path" into the windows search bar and click "edit the system environment variables"
-         1. Use 'CTRL + SHIFT + P' 
+         1. Use `CTRL + SHIFT + P`
          1. click on "Python: select interpreter"
          1. Select the path that has flaskEnv/Scripts/ in the path name
          1. To learn more check this page: https://code.visualstudio.com/docs/python/environments
