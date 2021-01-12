@@ -209,9 +209,13 @@
          1. restart your computer
 
     1. If you recieve the error mesage: 'module not found'
+         1. Type 'python -m pip list' into VS Code's terminal
+         1. This will list all installed packages
+         1. If the package you need is not in the list, enter 'pip install [package name]' to the terminal
+            1. For example, if you need to insta'l PyMySql, enter 'pip install PyMySQL' to the terminal
     
     1. Setting the virtual enviroment in VS Code
-    1. type "path" into the windows search bar and click "edit the system environment variables"
+         1. type "path" into the windows search bar and click "edit the system environment variables"
          1. Use 'CTRL + SHIFT + P' 
          1. click on "Python: select interpreter"
          1. Select the path that has flaskEnv/Scripts/ in the path name
