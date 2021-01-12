@@ -204,10 +204,18 @@
          1. type "path" into the windows search bar and click "edit the system environment variables"
          1. click on environment variables
          1. click on path, then edit, then new
-         1. then add the path 'C:\Program Files\MySQL\MySQL Shell 8.0\bin\' to the list 
+         1. then add the paths 'C:\Program Files\MySQL\MySQL Shell 8.0\bin\' and 'C:\Program Files\MySQL\MySQL Server 8.0\bin\' to the list 
          1. click ok/apply
          1. restart your computer
 
-
-
+    1. If you recieve the error mesage: 'module not found'
+    
+    1. Setting the virtual enviroment in VS Code
+    1. type "path" into the windows search bar and click "edit the system environment variables"
+         1. Use 'CTRL + SHIFT + P' 
+         1. click on "Python: select interpreter"
+         1. Select the path that has flaskEnv/Scripts/ in the path name
+         1. To learn more check this page: https://code.visualstudio.com/docs/python/environments
+    
+        
  
