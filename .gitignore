@@ -7,3 +7,5 @@ app/tmp/
 test.txt
 flaskEnv/
 app/.env
+.vscode/
+flaskEn/
