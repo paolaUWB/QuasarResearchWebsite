@@ -198,6 +198,17 @@
    
    ## Troubleshooting (Windows):
    1. To update and access most recent files enter `git pull` into the terminal when you are in your QuasarResearchWebsite folder
+   
+   1. To push your most recent files to the master branch
+        1. Enter `git status` to list out files that have been added/changed. the names of the files should be red
+        1. Add files that are unecessary to the project  to .gitignore
+        1. Enter `git status` To list out files again to check if those files were removed. 
+        1. Enter `git add .` To the terminal. 
+        1. Enter `git status` to the terminal. The names of the files should now be green.
+        1. Enter git `commit -m "message"`. You can change the message to anything you want but it should be somewhat descriptive.
+        1. Enter git `push to the terminal. 
+            1. If this is your first time doing so you should type in "git push --set-upstream origin YourBranch". Change "YourBranch" to the actual name of the branch.
+        1. Go to the Github repository to merge your request
              
    1. If you recieve the error message: "running scripts is disabled on this system"
          1. Open Windows PowerShell with administration privileges
