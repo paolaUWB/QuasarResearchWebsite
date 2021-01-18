@@ -45,7 +45,36 @@ def close_db(error):
     if hasattr(g, 'db'):
         g.db.close()
 
-#Note: should move to routes.py later 
+#Home page
+@app.route('/')
+def runit():
+    with app.open_resource('static/descriptionText/HomeResearchDescription.txt') as f:
+        content = f.read().decode('utf-8')
+    return render_template('home.html', description=content)
+
+#Login Page
+@app.route('/login/')
+def login():
+    form = LoginForm(request.form)
+    return render_template('login.html', title='Sign In', form=form)
+
+#Team page
+@app.route('/researchteam/')
+def research_team():
+    try:
+        with app.open_resource('static/descriptionText/teamMembersDescriptions/paolaDescription.txt') as f:
+            paolaContent = f.read().decode('utf-8')
+    except Exception as e:
+        print(e)
+    return render_template('researchTeam.html', paolaDescription = paolaContent)
+
+#Research About/description page
+@app.route('/quasarresearchabout/')
+def quasar_research_about():
+    with app.open_resource('static/descriptionText/QuasarResearchAboutPageDescription.txt') as f:
+        content = f.read().decode('utf-8')
+    return render_template('quasarResearchAbout.html', description=content)
+
 #Data access page
 @app.route('/dataaccess/', methods = ["GET", "POST"])
 def data_access():
@@ -256,8 +285,6 @@ def data_access():
         return render_template('dataAccess.html', form=form, data=data, description=content)
             
     return render_template('dataAccess.html', form=form, description=content)
-
-from app import routes
 
 if __name__ == '__main__':
     app.run()
