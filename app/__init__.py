@@ -1,9 +1,7 @@
-# trying to push!
-
 import os
 import pymysql
 import csv
-import sysl
+import sys
 
 from flask import Flask
 from flask import render_template, url_for, g, request, send_file
@@ -18,6 +16,7 @@ from app.config import APP_TMP
 app.config.from_object(Config)
 
 from app.forms import DataAccessForm
+from app.forms import LoginForm
 
 port = os.environ.get('MYSQL_DATABASE_PORT')
 
@@ -32,7 +31,6 @@ def connect_db():
             cursorclass = pymysql.cursors.DictCursor) 
     #local mysql server
     else:
-        #print("hello")
         return pymysql.connect(
             host = 'localhost', user = 'root', password = os.environ.get('MYSQL_DATABASE_PASSWORD'),
             database = 'quasarWebsite_db', autocommit = True, charset = 'utf8mb4',cursorclass = pymysql.cursors.DictCursor) 
@@ -53,6 +51,12 @@ def runit():
     with app.open_resource('static/descriptionText/HomeResearchDescription.txt') as f:
         content = f.read().decode('utf-8')
     return render_template('home.html', description=content)
+
+#Login Page
+@app.route('/login/')
+def login():
+    form = LoginForm(request.form)
+    return render_template('login.html', title='Sign In', form=form)
 
 #Team page
 @app.route('/researchteam/')
