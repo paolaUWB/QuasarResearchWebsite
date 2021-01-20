@@ -4,7 +4,7 @@ import csv
 import sys
 
 from flask import Flask
-from flask import render_template, url_for, g, request, send_file
+from flask import render_template, url_for, g, request, send_file, flash, redirect
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -53,9 +53,13 @@ def runit():
     return render_template('home.html', description=content)
 
 #Login Page
-@app.route('/login/')
+@app.route('/login/', methods=['GET', 'POST'])
 def login():
     form = LoginForm(request.form)
+    if form.validate_on_submit():
+        flash('Login requested for user {}'.format(
+            form.username.data))
+        return redirect(url_for('runit'))
     return render_template('login.html', title='Sign In', form=form)
 
 #Team page
