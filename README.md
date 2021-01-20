@@ -123,7 +123,7 @@
              ```
           1. Change the file permissions to allow the server to execute the program with `chmod 755 main.cgi`
           1. Now change the file permissions for the python init file with the following commands: 
-              1. `cd ~/public_html/ResearchWebsite/app`
+              1. `cd ~/public_html/QuasarResearchWebsite/app`
               1. `chmod 755 __init__.py`
               
      1. Check to see if it worked by going to your UW url. It will be https://students.washington.edu/<YOUR_UW_NETID>/
