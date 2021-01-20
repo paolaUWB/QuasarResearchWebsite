@@ -55,11 +55,14 @@ def runit():
 #Login Page
 @app.route('/login/', methods=['GET', 'POST'])
 def login():
-    form = LoginForm(request.form)
-    if form.validate_on_submit():
-        flash('Login requested for user {}'.format(
-            form.username.data))
-        return redirect(url_for('runit'))
+    try:
+        form = LoginForm(request.form)
+        if form.validate_on_submit():
+            flash('Login requested for user {}'.format(
+                form.username.data))
+            return redirect(url_for('runit'))
+    except Exception as e:
+        print(e)
     return render_template('login.html', title='Sign In', form=form)
 
 #Team page
