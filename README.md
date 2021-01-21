@@ -96,7 +96,7 @@
      1. Now we need to create the CGI file
          1. `cd ~/public_html`
 
-         1. Type `pico main.cgi' into the terminal
+         1. Type `pico main.cgi` into the terminal
          1. Copy and paste this into the file (you can paste in Putty by clicking left and right mouse buttons at the same time) 
              ```
 
