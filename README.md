@@ -53,6 +53,8 @@
          1. `pip install Flask-WTF`
          1. `pip install python-dotenv`
          1. `pip install flask-sqlalchemy`
+         1. `pip install flask-migrate`
+         1. `pip install flask-login`
          
  1. create a .env file to store secret information
      1. `cd ~/public_html/QuasarResearchWebsite`
@@ -163,6 +165,9 @@
      1. `pip install PyMySQL`
      1. `pip install Flask-WTF`
      1. `pip install python-dotenv`
+     1. `pip install flask-sqlalchemy`
+     1. `pip install flask-migrate`
+     1. `pip install flask-login`
          
      1. For more instructions on using python environments in visual studio, see https://code.visualstudio.com/docs/python/environments
      
