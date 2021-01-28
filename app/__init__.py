@@ -20,6 +20,7 @@ from app.forms import LoginForm
 
 port = os.environ.get('MYSQL_DATABASE_PORT')
 
+#If won't connect properly to MYSQL, change port number
 def connect_db():
     port = os.environ.get('MYSQL_DATABASE_PORT')
     #Remote mysql server
@@ -27,7 +28,7 @@ def connect_db():
         print("world")
         return pymysql.connect(
             host = 'vergil.u.washington.edu', user = 'root', password = os.environ.get('MYSQL_DATABASE_PASSWORD'),
-            database = 'quasarWebsite_db', autocommit = True, charset = 'utf8mb4',port=32345,
+            database = 'quasarWebsite_db', autocommit = True, charset = 'utf8mb4',port=32445, 
             cursorclass = pymysql.cursors.DictCursor) 
     #local mysql server
     else:
