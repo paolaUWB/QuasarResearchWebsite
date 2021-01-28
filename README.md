@@ -202,6 +202,10 @@
    
    1. Troubleshooting Steps: https://itconnect.uw.edu/connect/web-publishing/shared-hosting/troubleshooting/
    
+   1. If the Data Access page doesn't work (E.g. "Internal Server Error", data not displaying, etc.)
+        1. Go to __init__.py
+        1. Change the port number in the method connect_db() to have your port number
+   
    ## Troubleshooting (Windows):
    1. To update and access most recent files enter `git pull` into the terminal when you are in your QuasarResearchWebsite folder
    
