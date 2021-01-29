@@ -52,6 +52,9 @@
          1. `pip install PyMySQL`
          1. `pip install Flask-WTF`
          1. `pip install python-dotenv`
+         1. `pip install flask-sqlalchemy`
+         1. `pip install flask-migrate`
+         1. `pip install flask-login`
          
  1. create a .env file to store secret information
      1. `cd ~/public_html/QuasarResearchWebsite`
@@ -96,7 +99,7 @@
      1. Now we need to create the CGI file
          1. `cd ~/public_html`
 
-         1. Type `pico main.cgi' into the terminal
+         1. Type `pico main.cgi` into the terminal
          1. Copy and paste this into the file (you can paste in Putty by clicking left and right mouse buttons at the same time) 
              ```
 
@@ -123,7 +126,7 @@
              ```
           1. Change the file permissions to allow the server to execute the program with `chmod 755 main.cgi`
           1. Now change the file permissions for the python init file with the following commands: 
-              1. `cd ~/public_html/ResearchWebsite/app`
+              1. `cd ~/public_html/QuasarResearchWebsite/app`
               1. `chmod 755 __init__.py`
               
      1. Check to see if it worked by going to your UW url. It will be https://students.washington.edu/<YOUR_UW_NETID>/
@@ -162,6 +165,9 @@
      1. `pip install PyMySQL`
      1. `pip install Flask-WTF`
      1. `pip install python-dotenv`
+     1. `pip install flask-sqlalchemy`
+     1. `pip install flask-migrate`
+     1. `pip install flask-login`
          
      1. For more instructions on using python environments in visual studio, see https://code.visualstudio.com/docs/python/environments
      
@@ -196,8 +202,23 @@
    
    1. Troubleshooting Steps: https://itconnect.uw.edu/connect/web-publishing/shared-hosting/troubleshooting/
    
+   1. If the Data Access page doesn't work (E.g. "Internal Server Error", data not displaying, etc.)
+        1. Go to __init__.py
+        1. Change the port number in the method connect_db() to have your port number
+   
    ## Troubleshooting (Windows):
    1. To update and access most recent files enter `git pull` into the terminal when you are in your QuasarResearchWebsite folder
+   
+   1. To push your most recent files to the master branch
+        1. Enter `git status` to list out files that have been added/changed. the names of the files should be red
+        1. Add files that are unecessary to the project  to .gitignore
+        1. Enter `git status` To list out files again to check if those files were removed. 
+        1. Enter `git add .` To the terminal. 
+        1. Enter `git status` to the terminal. The names of the files should now be green.
+        1. Enter git `commit -m "message"`. You can change the message to anything you want but it should be somewhat descriptive.
+        1. Enter git `push to the terminal. 
+            1. If this is your first time doing so you should type in "git push --set-upstream origin YourBranch". Change "YourBranch" to the actual name of the branch.
+        1. Go to the Github repository to merge your request
              
    1. If you recieve the error message: "running scripts is disabled on this system"
          1. Open Windows PowerShell with administration privileges
