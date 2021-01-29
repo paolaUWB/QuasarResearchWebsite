@@ -1,4 +1,3 @@
-
 {% extends 'base.html' %}
 
 <!--next commented section is for if you want to change the title 
@@ -9,145 +8,154 @@
 {% endblock %} -->
 
 {% block content %}
-    <div class="container">
-        <div class="col-2"></div>
-        <div class="col">
-
-            <div class="about-section">
-                <h1>Our Team</h1>
-              </div>
-              
-              <div class="row"> 
-                <div class="col-4"> </div>
-                <div class="col-4">
-                  <div class="card h-100">
-                      <img  class=  "card-img-top" src="{{url_for('static', filename='images/teamPictures/hres081616_0370.jpg')}}" alt="Paola" style="object-fit:cover;" height="250px">
-                      <div class="container">
-                        <h2>Dr. Paola Rodriguez Hidalgo</h2>
-                        <p class="title">Assistant Professor</p>
-                        <p>{{ paolaDescription }}</p>
-                      </div>
-                    </div>
-                </div> 
-
-                <div class="col-4">
-                  <div class="card h-100">
-                      <img  class=  "card-img-top" src="{{url_for('static', filename='images/teamPictures/retik.jpg')}}" alt="Paola" style="object-fit:cover;" height="250px">
-                      <div class="container">
-                        <h2>Arkady Retik</h2>
-                        <p class="title">Assistant Professor</p>
-                        <p>{{ paolaDescription }}</p>
-                      </div>
-                    </div>
-                </div>
-              </div> 
-              <div class="col-4"> </div>
-              </div>
-              <div class="row top-buffer "></div>
-              <div class="row mb-4">
-                <div class="col-4">
-                  <div class="card h-100">
-                    <img src="{{url_for('static', filename='images/teamPictures/audrey_website.png')}}" alt="Audrey" style="object-fit:cover;" height="250px">
-                    <div class="container">
-                      <h2>Audrey Nguyen</h2>
-                      <p class="title">Computer Science (Web Dev)</p>
-                      <p class="title">January 2021 - Present</p>
-                      <p>Audrey is a senior student majoring in Computer Science and Software Engineering and minoring in Business Administration.</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-4">
-                  <div class="card h-100">
-                    <img src="{{url_for('static', filename='images/teamPictures/wendy_website.jpeg')}}" alt="Wendy" style="object-fit:cover;" height="250px">
-                    <div class="container">
-                      <h2>Wendy F Garcia Naranjo</h2>
-                      <p class="title">Physics</p>
-                      <p class="title">January 2021 - Present</p>
-                      <p>Wendy is a junior student at the University of Washington majoring in Physics.</p>
-                    </div>
-                  </div>
-                </div>
-              
-                <div class="col-4">
-                  <div class="card h-100">
-                    <img src="{{url_for('static', filename='images/teamPictures/mikel_website.jpeg')}}" alt="Mikel" style="object-fit:cover;" height="250px">
-                    <div class="container">
-                      <h2>Mikel M Charles</h2>
-                      <p class="title">Physics</p>
-                      <p class="title">January 2021 - Present</p>
-                      <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-                    </div>
-                  </div>
-                </div>
-
-        </div>
-        <div class="col">
-
-          <div class="about-section">
-              <h1>Former Contributors</h1>
-            </div>  
-            <div class="row"> 
-
-              <div class="col-4"> </div>
-              <div class="col-4">
-                <div class="card h-100">
-                    <img  class=  "card-img-top" src="{{url_for('static', filename='images/teamPictures/david_website.png')}}" alt="David" style="object-fit:cover;" height="250px">
-                    <div class="container">
-                      <h2>David Nguyen</h2>
-                      <p class="title">Computer Science (Algorithm Guru)</p>
-                      <p class="title">June 2020 - August 2020</p>
-                      <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-                    </div>
-                  </div>
-                </div> 
-                <div class="col-4"> </div>
-            </div>          
-            <div class="row mb-4">
-
-              <div class="col-4">
-                <div class="card h-100">
-                  <!-- <img src="{{url_for('static', filename='placeholder_website_pic.jpg')}}" alt="Can" style="object-fit:cover;" height="250px"> -->
-                  <img src="{{url_for('static', filename='images/teamPictures/can_website.png')}}" alt="Can" style="object-fit:cover;" height="250px">
-                  <div class="container">
-                    <h2>Can Tosun </h2>
-                    <p class="title">June 2020 - December 2020</p>
-                    <p class="title">Computer Science (Algorithm Guru)</p>
-                    <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-                  </div>
-                </div>
-              </div>
-              
-              <div class="col-4">
-                <div class="card h-100">
-                  <img src="{{url_for('static', filename='images/teamPictures/daria_website_pic.jpg')}}" alt="Daria" style="object-fit:cover;" height="250px">
-                  <div class="container">
-                    <h2>Daria Voblikova</h2>
-                    <p class="title">September 2020 - December 2020</p>
-                    <p class="title">Computer Science (Algorithm Guru)</p>
-                    <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-                  </div>
-                </div>
-              </div>
-              
-                <div class="col-4">
-
-                
-                <div class="card h-100">
-                  <img src="{{url_for('static', filename='images/teamPictures/kathleen_website_pic.jpg')}}" alt="Kathleen" style="object-fit:cover;" height="250px">
-                  <div class="container">
-                    <h2>Kathleen Guinee</h2>
-                    <p class="title">Computer Science (Web Dev)</p>
-                    <p class="title">September 2020 - December 2020</p>
-                    <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-      </div>
-        <div class="col-2"></div>
-        <div class="row bottom-buffer"></div>
+<div class="container">
+  <div class="col-2"></div>
+  <div class="col">
+    <div class="about-section">
+      <h1>Our Team</h1>
     </div>
-    <div class="row bottom-buffer"></div>
+
+    <!-- PROFESSORS -->
+    <div class="row mb-4">
+      <div class="col-2"></div>
+      <div class="col-4">
+        <div class="card h-100">
+          <img  class=  "card-img-top" src="{{url_for('static', filename='images/teamPictures/hres081616_0370.jpg')}}" alt="Paola" style="object-fit:cover;" height="250px">
+          <div class="container">
+            <h2>Dr. Paola Rodriguez Hidalgo</h2>
+            <p class="title">Assistant Professor</p>
+            <p>{{ paolaDescription }}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-4">
+        <div class="card h-100">
+          <img  class=  "card-img-top" src="{{url_for('static', filename='images/teamPictures/retik.jpg')}}" alt="Arkady" style="object-fit:cover;" height="250px">
+            <div class="container">
+              <h2>Arkady Retik</h2>
+              <p class="title">Assistant Professor</p>
+              <p>{{ retikDescription }}</p>
+            </div>
+        </div>
+      </div>
+      <div class="col-2"></div>
+    </div>
+
+    <div class="col-4"> </div>
+  </div>
+
+  <!-- CURRENT STUDENTS -->
+  <div class="row top-buffer "></div>
+  <div class="row mb-4">
+    <div class="col-4">
+      <div class="card h-100">
+        <img src="{{url_for('static', filename='images/teamPictures/audrey_website.png')}}" alt="Audrey"
+          style="object-fit:cover;" height="250px">
+        <div class="container">
+          <h2>Audrey Nguyen</h2>
+          <p class="title">Computer Science (Web Dev)</p>
+          <p class="title">January 2021 - Present</p>
+          <p>{{ audreyDescription }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-4">
+      <div class="card h-100">
+        <img src="{{url_for('static', filename='images/teamPictures/wendy_website.jpeg')}}" alt="Wendy"
+          style="object-fit:cover;" height="250px">
+        <div class="container">
+          <h2>Wendy F Garcia Naranjo</h2>
+          <p class="title">Physics</p>
+          <p class="title">January 2021 - Present</p>
+          <p>{{ wendyDescription }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-4">
+      <div class="card h-100">
+        <img src="{{url_for('static', filename='images/teamPictures/mikel_website.jpeg')}}" alt="Mikel"
+          style="object-fit:cover;" height="250px">
+        <div class="container">
+          <h2>Mikel M Charles</h2>
+          <p class="title">Physics</p>
+          <p class="title">January 2021 - Present</p>
+          <p>{{ mikelDescription }}</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="col">
+
+    <div class="about-section">
+      <h1>Former Contributors</h1>
+    </div>
+
+    <!-- FORMER STUDENTS -->
+    <div class="row mb-4">
+      <div class="col-4"> </div>
+      <div class="col-4">
+        <div class="card h-100">
+          <img class="card-img-top" src="{{url_for('static', filename='images/teamPictures/david_website.png')}}"
+            alt="David" style="object-fit:cover;" height="250px">
+          <div class="container">
+            <h2>David Nguyen</h2>
+            <p class="title">Computer Science (Algorithm Guru)</p>
+            <p class="title">June 2020 - August 2020</p>
+            <p>{{ davidDescription }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-4"> </div>
+    </div>
+    <div class="row mb-4">
+      <div class="col-4">
+        <div class="card h-100">
+          <!-- <img src="{{url_for('static', filename='placeholder_website_pic.jpg')}}" alt="Can" style="object-fit:cover;" height="250px"> -->
+          <img src="{{url_for('static', filename='images/teamPictures/can_website.png')}}" alt="Can"
+            style="object-fit:cover;" height="250px">
+          <div class="container">
+            <h2>Can Tosun </h2>
+            <p class="title">June 2020 - December 2020</p>
+            <p class="title">Computer Science (Algorithm Guru)</p>
+            <p>{{ canDescription }}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-4">
+        <div class="card h-100">
+          <img src="{{url_for('static', filename='images/teamPictures/daria_website_pic.jpg')}}" alt="Daria"
+            style="object-fit:cover;" height="250px">
+          <div class="container">
+            <h2>Daria Voblikova</h2>
+            <p class="title">September 2020 - December 2020</p>
+            <p class="title">Computer Science (Algorithm Guru)</p>
+            <p>{{ dariaDescription }}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-4">
+        <div class="card h-100">
+          <img src="{{url_for('static', filename='images/teamPictures/kathleen_website_pic.jpg')}}" alt="Kathleen"
+            style="object-fit:cover;" height="250px">
+          <div class="container">
+            <h2>Kathleen Guinee</h2>
+            <p class="title">Computer Science (Web Dev)</p>
+            <p class="title">September 2020 - December 2020</p>
+            <p>{{ kathleenDescription }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="col-2"></div>
+  <div class="row bottom-buffer"></div>
+</div>
+<div class="row bottom-buffer"></div>
 {% endblock %}

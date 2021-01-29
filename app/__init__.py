@@ -71,11 +71,33 @@ def login():
 @app.route('/researchteam/')
 def research_team():
     try:
+        # PROFESSORS
         with app.open_resource('static/descriptionText/teamMembersDescriptions/paolaDescription.txt') as f:
             paolaContent = f.read().decode('utf-8')
+        with app.open_resource('static/descriptionText/teamMembersDescriptions/retikDescription.txt') as f:
+            retikContent = f.read().decode('utf-8')
+        
+        #STUDENTS
+        with app.open_resource('static/descriptionText/teamMembersDescriptions/canDescription.txt') as f:
+            canContent = f.read().decode('utf-8')
+        with app.open_resource('static/descriptionText/teamMembersDescriptions/canDescription.txt') as f:
+            dariaContent = f.read().decode('utf-8')
+        with app.open_resource('static/descriptionText/teamMembersDescriptions/canDescription.txt') as f:
+            kathleenContent = f.read().decode('utf-8')
+        with app.open_resource('static/descriptionText/teamMembersDescriptions/canDescription.txt') as f:
+            audreyContent = f.read().decode('utf-8')
+        with app.open_resource('static/descriptionText/teamMembersDescriptions/canDescription.txt') as f:
+            wendyContent = f.read().decode('utf-8')
+        with app.open_resource('static/descriptionText/teamMembersDescriptions/canDescription.txt') as f:
+            mikelContent = f.read().decode('utf-8')
+        with app.open_resource('static/descriptionText/teamMembersDescriptions/canDescription.txt') as f:
+            davidContent = f.read().decode('utf-8')
     except Exception as e:
         print(e)
-    return render_template('researchTeam.html', paolaDescription = paolaContent)
+    return render_template('researchTeam.html', paolaDescription = paolaContent, retikDescription = retikContent, 
+                            canDescription = canContent, dariaDescription = dariaContent, kathleenDescription = kathleenContent,
+                            audreyDescription = audreyContent, wendyDescription = wendyContent, mikelDescription = mikelContent,
+                            davidDescription = davidContent,)
 
 #Research About/description page
 @app.route('/quasarresearchabout/')
