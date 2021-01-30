@@ -80,17 +80,17 @@ def research_team():
         #STUDENTS
         with app.open_resource('static/descriptionText/teamMembersDescriptions/canDescription.txt') as f:
             canContent = f.read().decode('utf-8')
-        with app.open_resource('static/descriptionText/teamMembersDescriptions/canDescription.txt') as f:
+        with app.open_resource('static/descriptionText/teamMembersDescriptions/dariaDescription.txt') as f:
             dariaContent = f.read().decode('utf-8')
-        with app.open_resource('static/descriptionText/teamMembersDescriptions/canDescription.txt') as f:
+        with app.open_resource('static/descriptionText/teamMembersDescriptions/kathleenDescription.txt') as f:
             kathleenContent = f.read().decode('utf-8')
-        with app.open_resource('static/descriptionText/teamMembersDescriptions/canDescription.txt') as f:
+        with app.open_resource('static/descriptionText/teamMembersDescriptions/audreyDescription.txt') as f:
             audreyContent = f.read().decode('utf-8')
-        with app.open_resource('static/descriptionText/teamMembersDescriptions/canDescription.txt') as f:
+        with app.open_resource('static/descriptionText/teamMembersDescriptions/wendyDescription.txt') as f:
             wendyContent = f.read().decode('utf-8')
-        with app.open_resource('static/descriptionText/teamMembersDescriptions/canDescription.txt') as f:
+        with app.open_resource('static/descriptionText/teamMembersDescriptions/mikelDescription.txt') as f:
             mikelContent = f.read().decode('utf-8')
-        with app.open_resource('static/descriptionText/teamMembersDescriptions/canDescription.txt') as f:
+        with app.open_resource('static/descriptionText/teamMembersDescriptions/davidDescription.txt') as f:
             davidContent = f.read().decode('utf-8')
     except Exception as e:
         print(e)
