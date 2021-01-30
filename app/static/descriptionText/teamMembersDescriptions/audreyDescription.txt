@@ -1,1 +1,2 @@
-Some text that describes me lorem ipsum ipsum lorem.
+I am a student majoring in Computer Science and Software Engineering and minoring in Business Administration. My passion is combining creativity and code together to make something special!
+In this project, I am developing the website. I am currently working on incorporating an authentication system for this website.
