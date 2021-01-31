@@ -4,12 +4,14 @@ import csv
 import sys
 
 from flask import Flask
+from flask_sso import SSO
 from flask import render_template, url_for, g, request, send_file, flash, redirect
 from dotenv import load_dotenv
 
 load_dotenv()
 
 app = Flask(__name__)
+ext = SSO(app=app)
 
 from app.config import Config
 from app.config import APP_TMP

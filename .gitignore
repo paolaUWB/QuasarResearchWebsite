@@ -9,3 +9,4 @@ flaskEnv/
 app/.env
 .vscode/
 flaskEn/
+app/static/descriptionText/uselessfile.txt
