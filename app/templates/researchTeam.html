@@ -1,12 +1,11 @@
+<!-- 
+  TITLE: Research Team Page
+  CONTRIBUTORS: Kathleen Guinee, Audrey Nguyen
+  DESCRIPTION: Displays the members of the research team
+  NOTES: Before adding more colums, read this: https://www.w3schools.com/bootstrap4/bootstrap_grid_examples.asp
+-->
+
 {% extends 'base.html' %}
-
-<!--next commented section is for if you want to change the title 
-    of the homepage (keeping here in case needed later)-->
-
-<!-- {% block header %}
-    <h1>{% block title %}Home {% endblock %}</h1>
-{% endblock %} -->
-
 {% block content %}
 <div class="container">
   <div class="col-2"></div>
@@ -15,12 +14,16 @@
       <h1>Our Team</h1>
     </div>
 
-    <!-- PROFESSORS -->
+    <!-- PROFESSOR PROFILES -->
     <div class="row mb-4">
+      <!-- Spacer -->
       <div class="col-2"></div>
+
+      <!-- Prof. Paola -->
       <div class="col-4">
         <div class="card h-100">
-          <img  class=  "card-img-top" src="{{url_for('static', filename='images/teamPictures/hres081616_0370.jpg')}}" alt="Paola" style="object-fit:cover;" height="250px">
+          <img class="card-img-top" src="{{url_for('static', filename='images/teamPictures/hres081616_0370.jpg')}}"
+            alt="Paola" style="object-fit:cover;" height="250px">
           <div class="container">
             <h2>Dr. Paola Rodriguez Hidalgo</h2>
             <p class="title">Assistant Professor</p>
@@ -29,25 +32,29 @@
         </div>
       </div>
 
+      <!-- Prof. Retik -->
       <div class="col-4">
         <div class="card h-100">
-          <img  class=  "card-img-top" src="{{url_for('static', filename='images/teamPictures/retik.jpg')}}" alt="Arkady" style="object-fit:cover;" height="250px">
-            <div class="container">
-              <h2>Arkady Retik</h2>
-              <p class="title">Assistant Professor</p>
-              <p>{{ retikDescription }}</p>
-            </div>
+          <img class="card-img-top" src="{{url_for('static', filename='images/teamPictures/retik.jpg')}}" alt="Arkady"
+            style="object-fit:cover;" height="250px">
+          <div class="container">
+            <h2>Arkady Retik</h2>
+            <p class="title">Assistant Professor</p>
+            <p>{{ retikDescription }}</p>
+          </div>
         </div>
       </div>
+      <!-- Spacer -->
       <div class="col-2"></div>
     </div>
 
     <div class="col-4"> </div>
   </div>
 
-  <!-- CURRENT STUDENTS -->
+  <!-- CURRENT STUDENT PROFILES-->
   <div class="row top-buffer "></div>
   <div class="row mb-4">
+    <!-- Audrey -->
     <div class="col-4">
       <div class="card h-100">
         <img src="{{url_for('static', filename='images/teamPictures/audrey_website.png')}}" alt="Audrey"
@@ -57,11 +64,12 @@
           <p class="title">Computer Science (Web Dev)</p>
           <p class="title">January 2021 - Present</p>
           <p>{{ audreyDescription }}</p>
-          <p>You can connect with with me on: <a href ="https://www.linkedin.com/in/anmn">LinkedIn</a></p>
+          <p>You can connect with with me on: <a href="https://www.linkedin.com/in/anmn">LinkedIn</a></p>
         </div>
       </div>
     </div>
 
+    <!-- Wendy -->
     <div class="col-4">
       <div class="card h-100">
         <img src="{{url_for('static', filename='images/teamPictures/wendy_website.jpeg')}}" alt="Wendy"
@@ -75,6 +83,7 @@
       </div>
     </div>
 
+    <!-- Mikel -->
     <div class="col-4">
       <div class="card h-100">
         <img src="{{url_for('static', filename='images/teamPictures/mikel_website.jpg')}}" alt="Mikel"
@@ -95,9 +104,12 @@
       <h1>Former Contributors</h1>
     </div>
 
-    <!-- FORMER STUDENTS -->
+    <!-- FORMER STUDENT PROFILES -->
     <div class="row mb-4">
+      <!-- Spacer -->
       <div class="col-4"> </div>
+
+      <!-- David -->
       <div class="col-4">
         <div class="card h-100">
           <img class="card-img-top" src="{{url_for('static', filename='images/teamPictures/david_website.png')}}"
@@ -110,9 +122,12 @@
           </div>
         </div>
       </div>
+      <!-- Spacer -->
       <div class="col-4"> </div>
     </div>
+
     <div class="row mb-4">
+      <!-- Can -->
       <div class="col-4">
         <div class="card h-100">
           <!-- <img src="{{url_for('static', filename='placeholder_website_pic.jpg')}}" alt="Can" style="object-fit:cover;" height="250px"> -->
@@ -127,6 +142,7 @@
         </div>
       </div>
 
+      <!-- Daria -->
       <div class="col-4">
         <div class="card h-100">
           <img src="{{url_for('static', filename='images/teamPictures/daria_website_pic.jpg')}}" alt="Daria"
@@ -140,6 +156,7 @@
         </div>
       </div>
 
+      <!-- Kathleen -->
       <div class="col-4">
         <div class="card h-100">
           <img src="{{url_for('static', filename='images/teamPictures/kathleen_website_pic.jpg')}}" alt="Kathleen"
