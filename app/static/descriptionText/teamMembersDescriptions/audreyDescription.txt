@@ -1,2 +1,2 @@
-I am a student majoring in Computer Science and Software Engineering and minoring in Business Administration. My passion is combining creativity and code together to make something special!
-In this project, I am developing the website. I am currently working on incorporating an authentication system for this website.
+Audrey is a student majoring in Computer Science and Software Engineering and minoring in Business Administration. Her passion is combining creativity and code together. 
+In this project, she is developing the website and is currently working on incorporating an authentication system.
