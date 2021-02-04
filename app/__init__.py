@@ -8,7 +8,6 @@ from flask import render_template, url_for, g, request, send_file, flash, redire
 from dotenv import load_dotenv
 from functools import wraps
 
-from app.forms import LoginForm
 from app.forms import DataAccessForm
 from app.config import APP_TMP
 from app.config import Config
@@ -56,33 +55,18 @@ def close_db(error):
 
 # AUTHENTICATION METHODS
 
-# Checks the authentication
-def check_auth(username, password):
-    """This function is called to check if a username /
-    password combination is valid.
-    """
-    return username == 'admin' and password == 'secret'
-
-# Authenticates the user
-def authenticate():
-    """Sends a 401 response that enables basic auth"""
-    return Response(
-        'Could not verify your access level for that URL.\n'
-        'You have to login with proper credentials', 401,
-        {'WWW-Authenticate': 'Basic realm="Login Required"'})
-
 # Requires authentication
 # Use for selecting which pages get to be authenticated
-def requires_auth(f):
-    @wraps(f)
-    def decorated(*args, **kwargs):
-        auth = request.authorization
-        if not auth or not check_auth(auth.username, auth.password):
-            return authenticate()
-        return f(*args, **kwargs)
-    return decorated
+def require_login(func):
+    @wraps(func)
+    def redirect_to_login(*args, **kwargs):
+        if "email" not in session:
+            return redirect(url_for("login"))
+        return func()
 
-# ROUTES
+    return redirect_to_login
+
+# WEBSITE PAGE ROUTES
 
 # Home page route
 @app.route('/')
@@ -92,17 +76,10 @@ def runit():
     return render_template('home.html', description=content)
 
 # Login Page route
+# want it to redirect to shibboleth
 @app.route('/login/', methods=['GET', 'POST'])
 def login():
-    try:
-        form = LoginForm(request.form)
-        if form.validate_on_submit():
-            flash('Login requested for user {}'.format(
-                form.username.data))
-            return redirect(url_for('runit'))
-    except Exception as e:
-        print(e)
-    return render_template('login.html', title='Sign In', form=form)
+    return
 
 # Team page route
 @app.route('/researchteam/')
@@ -366,9 +343,9 @@ def data_access():
 
 # Test page route
 @app.route('/test/')
-@requires_auth
+@require_login
 def test():
-    return render_template('protected/test.html', title='Test page')
+    return render_template('test.html', title='Test page')
 
 
 # Runs the app
