@@ -20,7 +20,7 @@ class DataAccessForm(Form):
     BI_EHVO_min = IntegerField('BI_EHVO_min')
     BI_EHVO_max = IntegerField('BI_EHVO_max')
 
-    V = IntegerField('V')
+    V = IntegerField('v')
     V_max = IntegerField('V_max')
     V_min = IntegerField('V_min')
 
