@@ -8,6 +8,7 @@ from flask import render_template, url_for, g, request, send_file, flash, redire
 from dotenv import load_dotenv
 from functools import wraps
 
+from app.forms import LoginForm
 from app.forms import DataAccessForm
 from app.config import APP_TMP
 from app.config import Config
@@ -77,7 +78,7 @@ def runit():
 
 # Login Page route
 # want it to redirect to shibboleth
-@app.route('/login/', methods=['GET', 'POST'])
+@app.route('/login/')
 def login():
     return
 
