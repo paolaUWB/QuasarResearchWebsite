@@ -5,6 +5,7 @@ import sys
 
 from app import app
 
+from . import connect_db, get_db, close_db
 from flask import Flask
 from flask import render_template, url_for, g, request, send_file, flash, redirect
 from dotenv import load_dotenv
