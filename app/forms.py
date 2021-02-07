@@ -3,6 +3,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, IntegerField, FloatField, SubmitField, FieldList, BooleanField
 from wtforms.validators import DataRequired
 
+# Search form for the data access page
 class DataAccessForm(Form):
     #table 1
     QSO = StringField('QSO')
@@ -32,8 +33,9 @@ class DataAccessForm(Form):
     Submit = SubmitField('Filter')
     Download = SubmitField('Download checked data')
 
-
+# Login form for the website
 class LoginForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
     password = PasswordField('Password', validators=[DataRequired()])
+    remember_me = BooleanField('Remember Me')
     submit = SubmitField('Sign In')

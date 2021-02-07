@@ -7,17 +7,19 @@ from flask import Flask
 from flask import render_template, url_for, g, request, send_file, flash, redirect
 from dotenv import load_dotenv
 from functools import wraps
+from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
 
-from app.forms import LoginForm
-from app.forms import DataAccessForm
-from app.config import APP_TMP
-from app.config import Config
+from app.forms import LoginForm, DataAccessForm
+from app.config import APP_TMP, Config
 
 load_dotenv()
 
 app = Flask(__name__)
 
 app.config.from_object(Config)
+db = SQLAlchemy(app)
+migrate = Migrate(app, db)
 
 port = os.environ.get('MYSQL_DATABASE_PORT')
 
@@ -77,10 +79,29 @@ def runit():
     return render_template('home.html', description=content)
 
 # Login Page route
-# want it to redirect to shibboleth
 @app.route('/login/')
 def login():
-    return
+    try:
+        form = LoginForm(request.form)
+        if form.validate_on_submit():
+            user = User.query.filter_by(username=form.username.data).first()
+            if user is None or not user.check_password(form.password.data):
+                flash('Invalid username or password')
+                return redirect(url_for('login'))
+            login_user(user, remember=form.remember_me.data)
+            next_page = request.args.get('next')
+            if not next_page or url_parse(next_page).netloc != '':
+                next_page = url_for('index')
+            return redirect(next_page)
+    except Exception as e:
+        print(e)
+    return render_template('login.html', title='Sign In', form=form)
+
+# Logout Page route
+@app.route('/logout/')
+def logout():
+    logout_user()
+    return redirect(url_for('index'))
 
 # Team page route
 @app.route('/researchteam/')
@@ -353,3 +374,11 @@ def test():
 if __name__ == '__main__':
     app.debug = True
     app.run()
+
+from app import models, app, db
+from app.models import User
+
+# creates a shell context that adds the database instance and models to the shell session
+@app.shell_context_processor
+def make_shell_context():
+    return {'db': db, 'User': User}
