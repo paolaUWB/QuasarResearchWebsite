@@ -197,7 +197,70 @@
     1. Check that the images are loading correctly by going to the "Data Access" page, clicking on a row and seeing if the image shows up.
     1. Voila! Hopefully it is working :)
    
-   ## Troubleshooting (School Server):
+   ## User Management
+   1. The user database and login system follows these two tutorials
+   
+        1. https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-iv-database
+        
+        1. https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-v-user-logins
+        
+   
+   1. To view all users
+        1. `flask shell`
+        
+        1. See list of all usernames
+            1. `users = User.query.all()`
+            1. `users`
+            
+        1. See list of ids of users
+            1. `users = User.query.all()`
+            1. ```
+               for u in users:
+               ...     print(u.id, u.username)
+               ...
+               ```
+   
+   1. To add a user
+   
+        1. `flask shell`
+   
+        1. `u = User(username='INSERT USERNAME HERE', email='INSERT EMAIL HERE')`
+   
+        1. `u.set_password('INSERT PASSWORD HERE')`
+   
+        1. `db.session.add(u)`
+   
+        1. `db.session.commit()`
+        
+        
+   1. To delete all users
+    
+        1. `flask shell`
+        
+        1. `users = User.query.all()`
+   
+        1. ```
+           for u in users:
+           ...     db.session.delete(u)
+           ...
+           ```
+   
+        1. `db.session.commit()`
+        
+     1. To delete a specific user
+     
+        1. `flask shell`
+        
+        1. Find the id of the user you want to delete. 
+        
+        1. `u = User.query.get(INSERT ID HERE)`
+        
+        1. `db.session.delete(u)`
+        
+        1. `db.session.commit()`
+   
+   
+## Troubleshooting (School Server):
    1. Basic MySQL Administration: https://itconnect.uw.edu/connect/web-publishing/shared-hosting/using-mysql-on-shared-uw-hosting/basic-mysql-administration/
    
    1. Troubleshooting Steps: https://itconnect.uw.edu/connect/web-publishing/shared-hosting/troubleshooting/
@@ -206,7 +269,7 @@
         1. Go to __init__.py
         1. Change the port number in the method connect_db() to have your port number
    
-   ## Troubleshooting (Windows):
+## Troubleshooting (Windows):
    1. To update and access most recent files enter `git pull` into the terminal when you are in your QuasarResearchWebsite folder
    
    1. To push your most recent files to the master branch
