@@ -1,3 +1,7 @@
+# TITLE: Config
+# CONTRIBUTORS: Kathleen Guinee, Audrey Nguyen
+# DESCRIPTION: Configuration file for the website
+
 import os
 from dotenv import load_dotenv
 load_dotenv()

@@ -1,3 +1,7 @@
+# TITLE: __init__
+# CONTRIBUTORS: Kathleen Guinee, Audrey Nguyen
+# DESCRIPTION: Runs the website
+
 import os
 import pymysql
 import csv
