@@ -6,13 +6,10 @@ import sys
 from flask import Flask
 from flask import render_template, url_for, g, request, send_file, flash, redirect
 from dotenv import load_dotenv
-from functools import wraps
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
-from flask_login import LoginManager, current_user, login_user, login_required
-from werkzeug.urls import url_parse
+from flask_login import LoginManager, login_required
 
-from app.forms import LoginForm, DataAccessForm
 from app.config import APP_TMP, Config
 
 load_dotenv()

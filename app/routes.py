@@ -1,22 +1,12 @@
-import os
-import pymysql
-import csv
-import sys
-
 from app import app
+from app import login
 
 from . import connect_db, get_db, close_db
-from flask import Flask
 from flask import render_template, url_for, g, request, send_file, flash, redirect
-from dotenv import load_dotenv
-from functools import wraps
-from flask_sqlalchemy import SQLAlchemy
-from flask_migrate import Migrate
 from flask_login import LoginManager, current_user, login_user, login_required
 from werkzeug.urls import url_parse
 
 from app.forms import LoginForm, DataAccessForm
-from app.config import APP_TMP, Config
 from app.models import User
 
 # WEBSITE PAGE ROUTES
@@ -29,7 +19,7 @@ def runit():
     return render_template('home.html', description=content)
 
 # Login Page route
-@app.route('/login/')
+@app.route('/login/', methods=['GET', 'POST'])
 def login():
     try:
         if current_user.is_authenticated:
