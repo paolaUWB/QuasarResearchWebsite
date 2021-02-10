@@ -252,7 +252,7 @@
         1. `db.session.commit()`
    
    
-   ## Troubleshooting (School Server):
+## Troubleshooting (School Server):
    1. Basic MySQL Administration: https://itconnect.uw.edu/connect/web-publishing/shared-hosting/using-mysql-on-shared-uw-hosting/basic-mysql-administration/
    
    1. Troubleshooting Steps: https://itconnect.uw.edu/connect/web-publishing/shared-hosting/troubleshooting/
@@ -261,7 +261,7 @@
         1. Go to __init__.py
         1. Change the port number in the method connect_db() to have your port number
    
-   ## Troubleshooting (Windows):
+## Troubleshooting (Windows):
    1. To update and access most recent files enter `git pull` into the terminal when you are in your QuasarResearchWebsite folder
    
    1. To push your most recent files to the master branch
