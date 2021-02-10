@@ -3,7 +3,7 @@ from app import login
 
 from . import connect_db, get_db, close_db
 from flask import render_template, url_for, g, request, send_file, flash, redirect
-from flask_login import LoginManager, current_user, login_user, login_required
+from flask_login import LoginManager, current_user, login_user, login_required, logout_user
 from werkzeug.urls import url_parse
 
 from app.forms import LoginForm, DataAccessForm
