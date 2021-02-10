@@ -214,10 +214,10 @@
         1. List ids of users
             1. `users = User.query.all()`
             1. ```
-           for u in users:
-           ...     print(u.id, u.username)
-           ...
-           ```
+               for u in users:
+               ...     print(u.id, u.username)
+               ...
+               ```
    
    1. To add a user
    
