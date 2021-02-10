@@ -206,12 +206,13 @@
         
    
    1. To view all users
-   
-        1. With a query
+        1. `flask shell`
+        
+        1. See list of all usernames
             1. `users = User.query.all()`
             1. `users`
             
-        1. List ids of users
+        1. See list of ids of users
             1. `users = User.query.all()`
             1. ```
                for u in users:
@@ -231,8 +232,11 @@
    
         1. `db.session.commit()`
         
-   1. To remove all users
-   
+        
+   1. To delete all users
+    
+        1. `flask shell`
+        
         1. `users = User.query.all()`
    
         1. ```
@@ -241,14 +245,18 @@
            ...
            ```
    
-        1. `posts = Post.query.all()`
-   
-        1. ```
-           for p in posts:
-           ...     db.session.delete(p)
-           ...
-           ```
-   
+        1. `db.session.commit()`
+        
+     1. To delete a specific user
+     
+        1. `flask shell`
+        
+        1. Find the id of the user you want to delete. 
+        
+        1. `u = User.query.get(INSERT ID HERE)`
+        
+        1. `db.session.delete(u)`
+        
         1. `db.session.commit()`
    
    
