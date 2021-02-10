@@ -1,12 +1,16 @@
+# TITLE: Routes
+# CONTRIBUTORS: Kathleen Guinee, Audrey Nguyen
+# DESCRIPTION: Contains the website routes
+
 from app import app
 from app import login
 
-from . import connect_db, get_db, close_db
+from . import connect_db, get_db, close_db, db
 from flask import render_template, url_for, g, request, send_file, flash, redirect
 from flask_login import LoginManager, current_user, login_user, login_required, logout_user
 from werkzeug.urls import url_parse
 
-from app.forms import LoginForm, DataAccessForm
+from app.forms import LoginForm, DataAccessForm, RegistrationForm
 from app.models import User
 
 # WEBSITE PAGE ROUTES
@@ -44,6 +48,21 @@ def login():
 def logout():
     logout_user()
     return redirect(url_for('runit'))
+
+# Registration route
+@app.route('/register/', methods=['GET', 'POST'])
+def register():
+    if current_user.is_authenticated:
+        return redirect(url_for('index'))
+    form = RegistrationForm()
+    if form.validate_on_submit():
+        user = User(username=form.username.data, email=form.email.data)
+        user.set_password(form.password.data)
+        db.session.add(user)
+        db.session.commit()
+        flash('Congratulations, you are now a registered user!')
+        return redirect(url_for('login'))
+    return render_template('register.html', title='Register', form=form)
 
 # Team page route
 @app.route('/researchteam/')

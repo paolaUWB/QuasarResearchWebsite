@@ -7,12 +7,6 @@ DROP TABLE IF EXISTS quasarinfo_table2;
 DROP TABLE IF EXISTS QuasarInfo;
 DROP TABLE IF EXISTS QuasarInfo_table2;
 
-CREATE TABLE users(
-    UN VARCHAR(50) PRIMARY KEY,
-    PW VARCHAR(255),
-    EMAIL VARCHAR(100)
-) DEFAULT CHARSET=utf8;
-
 INSERT INTO `users` (`UN`, `PW`, `EMAIL`) VALUES ('test', 'test', 'test@test.com')
 
 CREATE TABLE quasarinfo(

@@ -1,3 +1,7 @@
+# TITLE: Models
+# CONTRIBUTORS: Audrey Nguyen
+# DESCRIPTION: Contains the user model for the login system
+
 from app import login, db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
@@ -18,6 +22,7 @@ class User(UserMixin, db.Model):
     def check_password(self, password):
         return check_password_hash(self.password_hash, password) 
 
+# Returns the user based on id submitted
 @login.user_loader
 def load_user(id):
     return User.query.get(int(id))

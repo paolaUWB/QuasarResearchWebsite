@@ -1,3 +1,6 @@
+# TITLE: Update database
+# CONTRIBUTORS: Kathleen Guinee
+# DESCRIPTION: Updates the database for Windows
 
 import os
 import pymysql

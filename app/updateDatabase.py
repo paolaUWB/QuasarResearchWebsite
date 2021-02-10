@@ -1,3 +1,7 @@
+# TITLE: Update database
+# CONTRIBUTORS: Kathleen Guinee
+# DESCRIPTION: Updates the database for Linux
+
 import os
 import pymysql
 from dotenv import load_dotenv
