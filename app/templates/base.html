@@ -57,15 +57,13 @@
 
             <!--5th navbar tab-->
             <li class="nav-item">
-                <!--NOTE: 
-                    Need to update the if condition so it can achieve the below functionality.
-                    If the user is not logged in/is anonymous the login link will display. 
+                <!--NOTE: If the user is not logged in/is anonymous the login link will display. 
                     Otherwise, if the user is logged in, the logout link will display
                 -->
                 {% if current_user.is_anonymous%}
                 <a class="nav-link" href="{{ url_for('login') }}">Sign In</a>
                 {% else %}
-                <a class="nav-link" href="https://idp.u.washington.edu/idp/profile/Logout">Logout</a>
+                <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
                 {% endif %}
             </li>
         </ul>
