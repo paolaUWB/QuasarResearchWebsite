@@ -1,6 +1,11 @@
 # TITLE: Routes
 # CONTRIBUTORS: Kathleen Guinee, Audrey Nguyen
 # DESCRIPTION: Contains the website routes
+# If you want to restrict a page to logged in users only, use the decorator @login_required
+# EXAMPLE: 
+#           @app.route('/route/')
+#           @login_required
+#           @def route()
 
 from app import app
 from app import login
