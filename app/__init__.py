@@ -1,7 +1,7 @@
 # TITLE: __init__
 # CONTRIBUTORS: Kathleen Guinee, Audrey Nguyen
 # DESCRIPTION: Runs the website
-
+# Hi
 import os
 import pymysql
 import csv
@@ -32,6 +32,7 @@ port = os.environ.get('MYSQL_DATABASE_PORT')
 
 # Connects to the database
 # If won't connect properly to MYSQL, change the port number to match yours
+# EXAMPLE: port=12345
 def connect_db():
     port = os.environ.get('MYSQL_DATABASE_PORT')
     # Remote mysql server
@@ -39,7 +40,7 @@ def connect_db():
         print("world")
         return pymysql.connect(
             host='vergil.u.washington.edu', user='root', password=os.environ.get('MYSQL_DATABASE_PASSWORD'),
-            database='quasarWebsite_db', autocommit=True, charset='utf8mb4', port='MYSQL_DATABASE_PORT',
+            database='quasarWebsite_db', autocommit=True, charset='utf8mb4', port=32445,
             cursorclass=pymysql.cursors.DictCursor)
     # local mysql server
     else:
@@ -51,7 +52,7 @@ def connect_db():
 # Gets the database
 def get_db():
     if not hasattr(g, 'db'):
-        g.db = connect_db()
+        g.db = connecgitt_db()
     return g.db
 
 # Closes the database
