@@ -39,7 +39,7 @@ def connect_db():
         print("world")
         return pymysql.connect(
             host='vergil.u.washington.edu', user='root', password=os.environ.get('MYSQL_DATABASE_PASSWORD'),
-            database='quasarWebsite_db', autocommit=True, charset='utf8mb4', port=32445,
+            database='quasarWebsite_db', autocommit=True, charset='utf8mb4', port='MYSQL_DATABASE_PORT',
             cursorclass=pymysql.cursors.DictCursor)
     # local mysql server
     else:
