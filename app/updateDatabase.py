@@ -33,7 +33,6 @@ cursor = connect_db().cursor()
 
 
 #add file locations to database
-
 basedir = os.path.abspath(os.path.dirname(__file__))
 GRAPH_IMAGES = os.path.join(basedir, 'static/images/Graph_Images')
 directory = GRAPH_IMAGES
