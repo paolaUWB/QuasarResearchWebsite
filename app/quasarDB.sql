@@ -7,6 +7,8 @@ DROP TABLE IF EXISTS quasarinfo_table2;
 DROP TABLE IF EXISTS QuasarInfo;
 DROP TABLE IF EXISTS QuasarInfo_table2;
 
+INSERT INTO `users` (`UN`, `PW`, `EMAIL`) VALUES ('test', 'test', 'test@test.com')
+
 CREATE TABLE quasarinfo(
     QSO VARCHAR(255) PRIMARY KEY,
     PLATE_MJD_FIBER VARCHAR(255) NOT NULL,
