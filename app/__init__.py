@@ -1,7 +1,7 @@
 # TITLE: __init__
 # CONTRIBUTORS: Kathleen Guinee, Audrey Nguyen
 # DESCRIPTION: Runs the website
-
+# Hi
 import os
 import pymysql
 import csv
@@ -32,6 +32,7 @@ port = os.environ.get('MYSQL_DATABASE_PORT')
 
 # Connects to the database
 # If won't connect properly to MYSQL, change the port number to match yours
+# EXAMPLE: port=12345
 def connect_db():
     port = os.environ.get('MYSQL_DATABASE_PORT')
     # Remote mysql server
