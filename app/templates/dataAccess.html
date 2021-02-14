@@ -172,7 +172,7 @@
                             <!--Graph image-->
                             <td colspan="4">
                                 <div id="rowID{{ loop.index|string }}" class="collapse no-border">
-                                    <embed class="d-block" src="{{ url_for('static', filename= row['GRAPH_IMG']) }}#toolbar=0"
+                                    <embed class="d-block" src="{{ url_for('static', filename= row['GRAPH_IMG']) }}#toolbar=0&navpanes=0&scrollbar=0"
                                         style="overflow:hidden" scrolling="no" height="450" width="600">
                                 </div>
                             </td>
