@@ -119,9 +119,6 @@
                             <th scope="col">#</th>
                             <th scope="col">QSO</th>
                             <th scope="col">Plate-MJD-Fiber</th>
-                            <th scope="col">Plate</th>
-                            <th scope="col">MJD</th>
-                            <th scope="col">Fiber</th>
                             <th scope="col">z<sub>em</sub> (DR9Q)</th>
                             <th scope="col">z<sub>em</sub> (HW10)</th>
                             <th scope="col">BALQSO</th>
@@ -146,9 +143,6 @@
                             <!--data-->
                             <td>{{ row['QSO'] }}</td>
                             <td>{{ row['PLATE_MJD_FIBER'] }}</td>
-                            <td>{{ row['PLATE'] }}</td>
-                            <td>{{ row['MJD'] }}</td>
-                            <td>{{ row['FIBER'] }}</td>
                             <td>
                                 {{ row['ZEMDR9Q'] }}
                                 {% if row['ZEMDR9Q_PM'] is not none %}

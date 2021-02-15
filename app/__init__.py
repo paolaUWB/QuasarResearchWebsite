@@ -51,7 +51,7 @@ def connect_db():
 # Gets the database
 def get_db():
     if not hasattr(g, 'db'):
-        g.db = connecgitt_db()
+        g.db = connect_db()
     return g.db
 
 # Closes the database

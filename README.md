@@ -55,6 +55,7 @@
          1. `pip install flask-sqlalchemy`
          1. `pip install flask-migrate`
          1. `pip install flask-login`
+         1. `pip install email-validator`
          
  1. create a .env file to store secret information
      1. `cd ~/public_html/QuasarResearchWebsite`
