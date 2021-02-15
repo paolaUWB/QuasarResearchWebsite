@@ -8,21 +8,21 @@ DROP TABLE IF EXISTS QuasarInfo_table2;
 
 CREATE TABLE quasarinfo(
     QSO VARCHAR(255) PRIMARY KEY,
-    PLATE_MJD_FIBER VARCHAR(255) NOT NULL,
+    'PLATE_MJD_FIBER' VARCHAR(255) NOT NULL,
     ZEMDR9Q FLOAT NOT NULL,
-    ZEMDR9Q_PM FLOAT,
+    'ZEMDR9Q_PM' FLOAT,
     ZEMHW10 FLOAT,
-    ZEMHW10_PM FLOAT,
+    'ZEMHW10_PM' FLOAT,
     BALQSO VARCHAR(255) NOT NULL,
-    GRAPH_IMG VARCHAR(255)
+    'GRAPH_IMG' VARCHAR(255)
 );
 
 CREATE TABLE quasarinfo_table2(
     QSO VARCHAR(255),
-    PLATE_MJD_FIBER VARCHAR(255) NOT NULL,
-    BI_EHVO INT,
-    V_max INT,
-    V_min INT,
+    'PLATE_MJD_FIBER' VARCHAR(255) NOT NULL,
+    'BI_EHVO' INT,
+    'V_max' INT,
+    'V_min' INT,
     EW INT,
     Depth FLOAT
 );
@@ -46,14 +46,14 @@ FIELDS TERMINATED BY ','
 LINES TERMINATED BY '\n'
 IGNORE 1 ROWS;
 
-SELECT PLATE_MJD_FIBER,
+SELECT 'PLATE_MJD_FIBER',
   substr(PLATE_MJD_FIBER, 1, length(PLATE_MJD_FIBER) - length(substring_index(PLATE_MJD_FIBER, '-', -2))) PLATE,
   substring_index(substring_index(addr, '-', -2), '-', 1) MJD,
   substr(trim(substring_index(addr, '-', -1)),1,2) FIBER,
 FROM quasarinfo
 
-SELECT PLATE_MJD_FIBER,
-  substr(PLATE_MJD_FIBER, 1, length(PLATE_MJD_FIBER) - length(substring_index(PLATE_MJD_FIBER, '-', -2))) PLATE,
-  substring_index(substring_index(addr, '-', -2), '-', 1) MJD,
-  substr(trim(substring_index(addr, '-', -1)),1,2) FIBER,
+SELECT 'PLATE_MJD_FIBER',
+  substr('PLATE_MJD_FIBER', 1, length('PLATE_MJD_FIBER') - length(substring_index('PLATE_MJD_FIBER', '-', -2))) PLATE,
+  substring_index(substring_index('PLATE_MJD_FIBER', '-', -2), '-', 1) MJD,
+  substr(trim(substring_index('PLATE_MJD_FIBER', '-', -1)),1,2) FIBER,
 FROM quasarinfo2
