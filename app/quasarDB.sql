@@ -48,15 +48,3 @@ INTO TABLE quasarinfo_table2
 FIELDS TERMINATED BY ',' 
 LINES TERMINATED BY '\n'
 IGNORE 1 ROWS;
-
-SELECT PLATE_MJD_FIBER,
-  substr(PLATE_MJD_FIBER, 1, length(PLATE_MJD_FIBER) - length(substring_index(PLATE_MJD_FIBER, '-', -2))) PLATE,
-  substring_index(substring_index(addr, '-', -2), '-', 1) MJD,
-  substr(trim(substring_index(addr, '-', -1)),1,2) FIBER,
-FROM quasarinfo
-
-SELECT PLATE_MJD_FIBER,
-  substr(PLATE_MJD_FIBER, 1, length(PLATE_MJD_FIBER) - length(substring_index(PLATE_MJD_FIBER, '-', -2))) PLATE,
-  substring_index(substring_index(addr, '-', -2), '-', 1) MJD,
-  substr(trim(substring_index(addr, '-', -1)),1,2) FIBER,
-FROM quasarinfo2
