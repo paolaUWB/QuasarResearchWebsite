@@ -12,6 +12,9 @@ class DataAccessForm(Form):
     #table 1
     QSO = StringField('QSO')
     Plate_MJD_fiber = StringField('Plate-MJD-fiber')
+    Plate = StringField('Plate')
+    MJD = StringField('MJD')
+    fiber = StringField('fiber')
     ZEMDR9Q = FloatField('zₑₘ (DR9Q)')
     ZEMDR9Q_Min = FloatField('ZEMDR9Q_Min')
     ZEMDR9Q_Max = FloatField('ZEMDR9Q_Max')
