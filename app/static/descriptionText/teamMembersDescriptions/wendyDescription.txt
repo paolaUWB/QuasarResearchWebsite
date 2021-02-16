@@ -1,1 +1,1 @@
-Some text that describes me lorem ipsum ipsum lorem.
+Wendy F. Garcia Naranjo is currently a junior majoring in physics. Her favorite subjects are applied physics, astrophysics, and astronautics. Wendy is working to improve the algorithm for our research and find a happy medium of code that is easily understandable to physicists but has the proficiency and conciseness of a computer scientist.
