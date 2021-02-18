@@ -15,7 +15,10 @@ CREATE TABLE quasarinfo(
     ZEMHW10 FLOAT,
     ZEMHW10_PM FLOAT,
     BALQSO VARCHAR(255) NOT NULL,
-    GRAPH_IMG VARCHAR(255)
+    GRAPH_IMG VARCHAR(255),
+    PLATE VARCHAR(255),
+    MJD VARCHAR(255),
+    FIBER VARCHAR(255)
 );
 
 CREATE TABLE quasarinfo_table2(
@@ -26,6 +29,9 @@ CREATE TABLE quasarinfo_table2(
     V_min INT,
     EW INT,
     Depth FLOAT
+    PLATE VARCHAR(255),
+    MJD VARCHAR(255),
+    FIBER VARCHAR(255)
 );
 
 SET GLOBAL local_infile = true;
