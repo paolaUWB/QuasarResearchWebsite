@@ -164,6 +164,9 @@ def data_access():
 
             QSO = form.QSO.data
             MDJ_FIBER = form.Plate_MJD_fiber.data
+            PLATE = form.Plate.data
+            MJD = form.MJD.data
+            FIBER = form.Fiber.data
             ZEMDR9Q_Min = form.ZEMDR9Q_Min.data
             ZEMDR9Q_Max = form.ZEMDR9Q_Max.data
             ZEMHW10_Min = form.ZEMHW10_Min.data
@@ -193,6 +196,30 @@ def data_access():
                 else:
                     sql = 'SELECT * FROM quasarinfo t1 inner join quasarinfo_table2 t2 on t1.QSO = t2.QSO WHERE trim(t1.PLATE_MJD_FIBER) = %s'
                 vars.append(MDJ_FIBER)
+
+            # check Plate
+            if(PLATE):
+                if(sql):
+                    sql = sql + ' AND trim(PLATE) = %s'
+                else:
+                    sql = 'SELECT * FROM quasarinfo t1 inner join quasarinfo_table2 t2 on t1.QSO = t2.QSO WHERE trim(t1.PLATE) = %s'
+                vars.append(PLATE)
+
+            # check MJD
+            if(MJD):
+                if(sql):
+                    sql = sql + ' AND trim(MJD) = %s'
+                else:
+                    sql = 'SELECT * FROM quasarinfo t1 inner join quasarinfo_table2 t2 on t1.QSO = t2.QSO WHERE trim(t1.MJD) = %s'
+                vars.append(MJD)
+
+            # check FIBER
+            if(FIBER):
+                if(sql):
+                    sql = sql + ' AND trim(FIBER) = %s'
+                else:
+                    sql = 'SELECT * FROM quasarinfo t1 inner join quasarinfo_table2 t2 on t1.QSO = t2.QSO WHERE trim(t1.FIBER) = %s'
+                vars.append(FIBER)
 
             # Check ZEMDR9Q
             if(ZEMDR9Q_Min and ZEMDR9Q_Max):
