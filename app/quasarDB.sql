@@ -28,7 +28,7 @@ CREATE TABLE quasarinfo_table2(
     V_max INT,
     V_min INT,
     EW INT,
-    Depth FLOAT
+    Depth FLOAT,
     PLATE VARCHAR(255),
     MJD VARCHAR(255),
     FIBER VARCHAR(255)
