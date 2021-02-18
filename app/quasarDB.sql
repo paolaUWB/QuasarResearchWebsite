@@ -49,8 +49,8 @@ ZEMHW10_PM = NULLIF(@vZEMHW10_PM, '');
 
 INSERT INTO quasarinfo (PLATE, MJD, FIBER)
 VALUES (SUBSTRING_INDEX(PLATE_MJD_FIBER, "-", 1) FROM quasarinfo, 
-        SUBSTRING_INDEX(SUBSTRING_INDEX(PLATE_MJD_FIBER, "-", -2), "-", 1) FROM quasarinfo, 
-        SUBSTRING_INDEX(SUBSTRING_INDEX(PLATE_MJD_FIBER, "-", -1), "-", 2) FROM quasarinfo);
+        SUBSTRING_INDEX(SUBSTRING_INDEX(PLATE_MJD_FIBER, "-", -2) FROM quasarinfo, "-", 1) FROM quasarinfo, 
+        SUBSTRING_INDEX(SUBSTRING_INDEX(PLATE_MJD_FIBER, "-", -1) FROM quasarinfo, "-", 2) FROM quasarinfo);
 
 LOAD DATA LOCAL INFILE 'csv_tables/table2.csv' 
 INTO TABLE quasarinfo_table2
@@ -60,5 +60,5 @@ IGNORE 1 ROWS;
 
 INSERT INTO quasarinfo_table2 (PLATE, MJD, FIBER)
 VALUES (SUBSTRING_INDEX(PLATE_MJD_FIBER, "-", 1) FROM quasarinfo, 
-        SUBSTRING_INDEX(SUBSTRING_INDEX(PLATE_MJD_FIBER, "-", -2), "-", 1) FROM quasarinfo, 
-        SUBSTRING_INDEX(SUBSTRING_INDEX(PLATE_MJD_FIBER, "-", -1), "-", 2) FROM quasarinfo);
+        SUBSTRING_INDEX(SUBSTRING_INDEX(PLATE_MJD_FIBER, "-", -2) FROM quasarinfo, "-", 1) FROM quasarinfo, 
+        SUBSTRING_INDEX(SUBSTRING_INDEX(PLATE_MJD_FIBER, "-", -1) FROM quasarinfo, "-", 2) FROM quasarinfo);
