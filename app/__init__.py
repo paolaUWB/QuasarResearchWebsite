@@ -72,5 +72,5 @@ def make_shell_context():
 
 # Runs the app
 if __name__ == '__main__':
-    #app.debug = True #Enables debug mode when uncommented
+    app.debug = True #Enables debug mode when uncommented
     app.run()
