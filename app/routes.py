@@ -4,11 +4,6 @@
 
 from app import app
 from app import login
-  
-import os
-import pymysql
-import csv
-import sys
 
 from . import connect_db, get_db, close_db, db
 from flask import render_template, url_for, g, request, send_file, flash, redirect
@@ -17,6 +12,7 @@ from werkzeug.urls import url_parse
 
 from app.forms import LoginForm, DataAccessForm, RegistrationForm
 from app.models import User
+from app.config import APP_TMP
 
 # WEBSITE PAGE ROUTES
 
