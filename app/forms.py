@@ -11,7 +11,6 @@ from app.models import User
 class DataAccessForm(Form):
     #table 1
     QSO = StringField('QSO')
-    Plate_MJD_fiber = StringField('Plate-MJD-fiber')
     Plate = StringField('Plate')
     MJD = StringField('MJD')
     Fiber = StringField('Fiber')

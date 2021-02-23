@@ -1,1 +1,1 @@
-Some text that describes me lorem ipsum ipsum lorem.
+Daria graduated UW CSSE in December 2020. She was born in Russia, but is based in Washington. Daria loves solving engineering, data, and design problems. In this project she worked mostly on the refactoring and optimization of the normalization code, and provided git support for her teammates.
