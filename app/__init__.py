@@ -14,7 +14,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_login import LoginManager, login_required
 
-from app.config import Config
+from app.config import APP_TMP, Config
 
 load_dotenv()
 

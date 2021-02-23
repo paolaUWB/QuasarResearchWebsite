@@ -12,7 +12,7 @@ from werkzeug.urls import url_parse
 
 from app.forms import LoginForm, DataAccessForm, RegistrationForm
 from app.models import User
-from app.config import APP_TMP
+from app.config import APP_TMP, Config
 
 # WEBSITE PAGE ROUTES
 
