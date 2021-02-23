@@ -36,14 +36,14 @@ def connect_db():
     port = os.environ.get('MYSQL_DATABASE_PORT')
     # Remote mysql server
     if(port):
-        print("world")
+        # print("world")
         return pymysql.connect(
             host='vergil.u.washington.edu', user='root', password=os.environ.get('MYSQL_DATABASE_PASSWORD'),
             database='quasarWebsite_db', autocommit=True, charset='utf8mb4', port=32445,
             cursorclass=pymysql.cursors.DictCursor)
     # local mysql server
     else:
-        print("hello")
+        # print("hello")
         return pymysql.connect(
             host='localhost', user='root', password=os.environ.get('MYSQL_DATABASE_PASSWORD'),
             database='test', autocommit=True, charset='utf8mb4', cursorclass=pymysql.cursors.DictCursor)
@@ -72,5 +72,5 @@ def make_shell_context():
 
 # Runs the app
 if __name__ == '__main__':
-    app.debug = True
+    #app.debug = True #Enables debug mode when uncommented
     app.run()
