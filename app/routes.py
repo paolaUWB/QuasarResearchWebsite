@@ -163,7 +163,6 @@ def data_access():
             cursor = get_db().cursor()
 
             QSO = form.QSO.data
-            MDJ_FIBER = form.Plate_MJD_fiber.data
             PLATE = form.Plate.data
             MJD = form.MJD.data
             FIBER = form.Fiber.data
@@ -188,14 +187,6 @@ def data_access():
             if(len(QSO) > 0):
                 sql = "SELECT * FROM quasarinfo t1 inner join quasarinfo_table2 t2 on t1.QSO = t2.QSO WHERE trim(t1.QSO) = %s"
                 vars.append(QSO)
-
-            # check MJD_Fiber
-            if(MDJ_FIBER):
-                if(sql):
-                    sql = sql + ' AND trim(PLATE_MJD_FIBER) = %s'
-                else:
-                    sql = 'SELECT * FROM quasarinfo t1 inner join quasarinfo_table2 t2 on t1.QSO = t2.QSO WHERE trim(t1.PLATE_MJD_FIBER) = %s'
-                vars.append(MDJ_FIBER)
 
             # check Plate
             if(PLATE):
