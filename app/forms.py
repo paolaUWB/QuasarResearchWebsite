@@ -2,13 +2,13 @@
 # CONTRIBUTORS: Kathleen Guinee, Audrey Nguyen
 # DESCRIPTION: Contains the forms for the website
 
-from flask_wtf import Form, FlaskForm
+from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, IntegerField, FloatField, SubmitField, FieldList, BooleanField
 from wtforms.validators import DataRequired, ValidationError, Email, EqualTo
 from app.models import User
 
 # Search form for the data access page
-class DataAccessForm(Form):
+class DataAccessForm(FlaskForm):
     #table 1
     QSO = StringField('QSO')
     Plate = StringField('Plate')
