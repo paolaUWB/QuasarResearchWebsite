@@ -2,6 +2,9 @@
 # CONTRIBUTORS: Kathleen Guinee, Audrey Nguyen
 # DESCRIPTION: Contains the website routes
 
+import pymysql
+import os
+
 from app import app
 from app import login
 
