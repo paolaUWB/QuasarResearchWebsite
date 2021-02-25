@@ -3,7 +3,6 @@ app/.vscode/
 .env.py
 .env
 quasars.csv
-app/tmp/
 test.txt
 flaskEnv/
 app/.env
