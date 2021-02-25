@@ -1,5 +1,6 @@
 app/__pycache__/
 app/.vscode/
+app/tmp/
 .env.py
 .env
 quasars.csv
