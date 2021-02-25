@@ -1,9 +1,9 @@
 app/__pycache__/
 app/.vscode/
+app/tmp/
 .env.py
 .env
 quasars.csv
-app/tmp/
 test.txt
 flaskEnv/
 app/.env
