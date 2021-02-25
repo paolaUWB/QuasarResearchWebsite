@@ -73,12 +73,18 @@
          y
          enter
          ```
-         
+ 1. Add the path for downloads
+    1. `cd ~/public_html/QuasarResearchWebsite/app`
+    1. `mkdir tmp`
+    1. `cd ~/public_html/QuasarResearchWebsite/app/tmp`
+    1. `touch quasars.csv`
+ 
  1. Setup DB
      1. `cd ~/public_html/QuasarResearchWebsite/app`
      1. Create and update the database with the following command (it will run the commands in the .sql file) `~/mysql/bin/mysql < quasarDB.sql -u root -p --verbose`  
      1. Update DB with graph images
          1. `cd ~/public_html/QuasarResearchWebsite/app`
+         1. Make sure your flask enviroment is activated
          1. `python updateDatabase.py`
      
  1. Edit htaccess and cgi files
@@ -169,7 +175,8 @@
      1. `pip install flask-sqlalchemy`
      1. `pip install flask-migrate`
      1. `pip install flask-login`
-         
+     1. `pip install email-validator`
+              
      1. For more instructions on using python environments in visual studio, see https://code.visualstudio.com/docs/python/environments
      
 1. Add the secret environment variables:
@@ -179,6 +186,10 @@
     SECRET_KEY=<WHATEVER YOU WANT>
     MYSQL_DATABASE_PASSWORD=<YOUR MYSQL DB/ROOT PASSWORD>
     ```
+    
+1. Add the path for downloads
+    1. Create a new directory in QuasarResearchWebsite/app/  and name it tmp
+    1. Create a new file in QuasarResearchWebsite/app/tmp  and name it quasars.csv
     
 1. Setup the MySQL database:
     1. In the VSCode command line, start mysql with `& cmd.exe /c "mysql -u root -p --verbose --local-infile=1 < app/quasarDB_win.sql"`, and enter your password for root user
