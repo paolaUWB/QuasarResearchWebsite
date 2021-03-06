@@ -169,8 +169,14 @@ def data_access():
 
             QSO = form.QSO.data
             PLATE = form.Plate.data
+            PLATE_Min = form.Plate_Min.data
+            PLATE_Max = form.Plate_Max.data
             MJD = form.MJD.data
+            MJD_Min = form.MJD_Min.data
+            MJD_Max = form.MJD_Max.data
             FIBER = form.Fiber.data
+            FIBER_Min = form.Fiber_Min.data
+            FIBER_Max = form.Fiber_Max.data
             ZEMDR9Q_Min = form.ZEMDR9Q_Min.data
             ZEMDR9Q_Max = form.ZEMDR9Q_Max.data
             ZEMHW10_Min = form.ZEMHW10_Min.data
@@ -193,29 +199,74 @@ def data_access():
                 sql = "SELECT * FROM quasarinfo t1 inner join quasarinfo_table2 t2 on t1.QSO = t2.QSO WHERE trim(t1.QSO) = %s"
                 vars.append(QSO)
 
-            # check Plate
-            if(PLATE):
+            # Check Plate
+            if(PLATE_Min and PLATE_Max):
                 if(sql):
-                    sql = sql + ' AND trim(PLATE) = %s'
+                    sql = sql + ' AND trim(PLATE) BETWEEN %s AND %s'
                 else:
-                    sql = 'SELECT * FROM quasarinfo t1 inner join quasarinfo_table2 t2 on t1.QSO = t2.QSO WHERE trim(t1.PLATE) = %s'
-                vars.append(PLATE)
+                    sql = 'SELECT * FROM quasarinfo t1 inner join quasarinfo_table2 t2 on t1.QSO = t2.QSO WHERE t1.PLATE BETWEEN %s AND %s'
+                vars.append(PLATE_Min)
+                vars.append(PLATE_Max)
 
-            # check MJD
-            if(MJD):
+            elif (PLATE_Min):
                 if(sql):
-                    sql = sql + ' AND trim(MJD) = %s'
+                    sql = sql + ' AND trim(PLATE) >= %s'
                 else:
-                    sql = 'SELECT * FROM quasarinfo t1 inner join quasarinfo_table2 t2 on t1.QSO = t2.QSO WHERE trim(t1.MJD) = %s'
-                vars.append(MJD)
+                    sql = 'SELECT * FROM quasarinfo t1 inner join quasarinfo_table2 t2 on t1.QSO = t2.QSO WHERE t1.PLATE >= %s'
+                vars.append(PLATE_Min)
 
-            # check FIBER
-            if(FIBER):
+            elif (PLATE_Max):
                 if(sql):
-                    sql = sql + ' AND trim(FIBER) = %s'
+                    sql = sql + ' AND trim(PLATE) <= %s'
                 else:
-                    sql = 'SELECT * FROM quasarinfo t1 inner join quasarinfo_table2 t2 on t1.QSO = t2.QSO WHERE trim(t1.FIBER) = %s'
-                vars.append(FIBER)
+                    sql = 'SELECT * FROM quasarinfo t1 inner join quasarinfo_table2 t2 on t1.QSO = t2.QSO WHERE t1.PLATE <= %s '
+                vars.append(PLATE_Max)
+
+            # Check MJD
+            if(MJD_Min and MJD_Max):
+                if(sql):
+                    sql = sql + ' AND trim(MJD) BETWEEN %s AND %s'
+                else:
+                    sql = 'SELECT * FROM quasarinfo t1 inner join quasarinfo_table2 t2 on t1.QSO = t2.QSO WHERE t1.MJD BETWEEN %s AND %s'
+                vars.append(MJD_Min)
+                vars.append(MJD_Max)
+
+            elif (MJD_Min):
+                if(sql):
+                    sql = sql + ' AND trim(MJD) >= %s'
+                else:
+                    sql = 'SELECT * FROM quasarinfo t1 inner join quasarinfo_table2 t2 on t1.QSO = t2.QSO WHERE t1.MJD >= %s'
+                vars.append(MJD_Min)
+
+            elif (MJD_Max):
+                if(sql):
+                    sql = sql + ' AND trim(MJD) <= %s'
+                else:
+                    sql = 'SELECT * FROM quasarinfo t1 inner join quasarinfo_table2 t2 on t1.QSO = t2.QSO WHERE t1.MJD <= %s '
+                vars.append(MJD_Max)
+
+            # Check FIBER
+            if(FIBER_Min and FIBER_Max):
+                if(sql):
+                    sql = sql + ' AND trim(FIBER) BETWEEN %s AND %s'
+                else:
+                    sql = 'SELECT * FROM quasarinfo t1 inner join quasarinfo_table2 t2 on t1.QSO = t2.QSO WHERE t1.FIBER BETWEEN %s AND %s'
+                vars.append(FIBER_Min)
+                vars.append(FIBER_Max)
+
+            elif (FIBER_Min):
+                if(sql):
+                    sql = sql + ' AND trim(FIBER) >= %s'
+                else:
+                    sql = 'SELECT * FROM quasarinfo t1 inner join quasarinfo_table2 t2 on t1.QSO = t2.QSO WHERE t1.FIBER >= %s'
+                vars.append(FIBER_Min)
+
+            elif (FIBER_Max):
+                if(sql):
+                    sql = sql + ' AND trim(FIBER) <= %s'
+                else:
+                    sql = 'SELECT * FROM quasarinfo t1 inner join quasarinfo_table2 t2 on t1.QSO = t2.QSO WHERE t1.FIBER <= %s '
+                vars.append(Fiber_Max)
 
             # Check ZEMDR9Q
             if(ZEMDR9Q_Min and ZEMDR9Q_Max):
