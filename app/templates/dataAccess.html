@@ -28,20 +28,38 @@
                     <div class="row mt-2">
                         <b>{{form.Plate.label }}:</b>
                     </div>
-                    <div class="row">
-                        {{ form.Plate }}
+                    <div class="row mt-1">
+                        {{ form.Plate(placeholder = "Specific value") }}
+                    </div>
+                    <div class="row mt-1">
+                        {{ form.Plate_Min(placeholder = "Range min") }}
+                    </div>
+                    <div class="row mt-1">
+                        {{ form.Plate_Max(placeholder = "Range max") }}
                     </div>
                     <div class="row mt-2">
                         <b>{{form.MJD.label }}:</b>
                     </div>
-                    <div class="row">
-                        {{ form.MJD }}
+                    <div class="row  mt-1">
+                        {{ form.MJD(placeholder = "Specific value") }}
+                    </div>
+                    <div class="row  mt-1">
+                        {{ form.MJD_Min(placeholder = "Range min") }}
+                    </div>
+                    <div class="row mt-1">
+                        {{ form.MJD_Max(placeholder = "Range max") }}
                     </div>
                     <div class="row mt-2">
                         <b>{{form.Fiber.label }}:</b>
                     </div>
-                    <div class="row">
-                        {{ form.Fiber }}
+                    <div class="row mt-1">
+                        {{ form.Fiber(placeholder = "Specific value") }}
+                    </div>
+                    <div class="row mt-1">
+                        {{ form.Fiber_Min(placeholder = "Range min") }}
+                    </div>
+                    <div class="row mt-1">
+                        {{ form.Fiber_Max(placeholder = "Range max") }}
                     </div>
                     <div class="row mt-2">
                         <b>z<sub>em</sub> (DR9Q)</b>
