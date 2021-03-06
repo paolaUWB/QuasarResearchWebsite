@@ -200,7 +200,14 @@ def data_access():
                 vars.append(QSO)
 
             # Check Plate
-            if(PLATE_Min and PLATE_Max):
+            if(PLATE):
+                if(sql):
+                    sql = sql + ' AND trim(PLATE) = %s'
+                else:
+                    sql = 'SELECT * FROM quasarinfo t1 inner join quasarinfo_table2 t2 on t1.QSO = t2.QSO WHERE trim(t1.PLATE) = %s'
+                vars.append(PLATE)
+
+            elif(PLATE_Min and PLATE_Max):
                 if(sql):
                     sql = sql + ' AND trim(PLATE) BETWEEN %s AND %s'
                 else:
@@ -223,7 +230,14 @@ def data_access():
                 vars.append(PLATE_Max)
 
             # Check MJD
-            if(MJD_Min and MJD_Max):
+            if(MJD):
+                if(sql):
+                    sql = sql + ' AND trim(MJD) = %s'
+                else:
+                    sql = 'SELECT * FROM quasarinfo t1 inner join quasarinfo_table2 t2 on t1.QSO = t2.QSO WHERE trim(t1.MJD) = %s'
+                vars.append(MJD)
+
+            elif(MJD_Min and MJD_Max):
                 if(sql):
                     sql = sql + ' AND trim(MJD) BETWEEN %s AND %s'
                 else:
@@ -246,7 +260,14 @@ def data_access():
                 vars.append(MJD_Max)
 
             # Check FIBER
-            if(FIBER_Min and FIBER_Max):
+            if(FIBER):
+                if(sql):
+                    sql = sql + ' AND trim(FIBER) = %s'
+                else:
+                    sql = 'SELECT * FROM quasarinfo t1 inner join quasarinfo_table2 t2 on t1.QSO = t2.QSO WHERE trim(t1.FIBER) = %s'
+                vars.append(FIBER)
+
+            elif(FIBER_Min and FIBER_Max):
                 if(sql):
                     sql = sql + ' AND trim(FIBER) BETWEEN %s AND %s'
                 else:
