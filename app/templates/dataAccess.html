@@ -16,76 +16,77 @@
 {% block content %}
 <form action="" method="POST">
     <div class="row">
-        <div class="col-2">
+        <!-- Form -->
+        <div class="col-2" style="width:20%;">
             <div class="sidenav">
                 <div class="container">
                     <div class="row">
                         <b>{{ form.QSO.label }}:</b>
                     </div>
                     <div class="row">
-                        {{ form.QSO }}
+                        {{ form.QSO(size=15) }}
                     </div>
                     <div class="row mt-2">
                         <b>{{form.Plate.label }}:</b>
                     </div>
                     <div class="row mt-1">
-                        {{ form.Plate(placeholder = "Specific value") }}
+                        {{ form.Plate(placeholder = "Specific value", size=15) }}
                     </div>
                     <div class="row mt-1">
-                        {{ form.Plate_Min(placeholder = "Range min") }}
+                        {{ form.Plate_Min(placeholder = "Range min", size=15) }}
                     </div>
                     <div class="row mt-1">
-                        {{ form.Plate_Max(placeholder = "Range max") }}
+                        {{ form.Plate_Max(placeholder = "Range max", size=15) }}
                     </div>
                     <div class="row mt-2">
                         <b>{{form.MJD.label }}:</b>
                     </div>
                     <div class="row  mt-1">
-                        {{ form.MJD(placeholder = "Specific value") }}
+                        {{ form.MJD(placeholder = "Specific value", size=15) }}
                     </div>
                     <div class="row  mt-1">
-                        {{ form.MJD_Min(placeholder = "Range min") }}
+                        {{ form.MJD_Min(placeholder = "Range min", size=15) }}
                     </div>
                     <div class="row mt-1">
-                        {{ form.MJD_Max(placeholder = "Range max") }}
+                        {{ form.MJD_Max(placeholder = "Range max", size=15) }}
                     </div>
                     <div class="row mt-2">
                         <b>{{form.Fiber.label }}:</b>
                     </div>
                     <div class="row mt-1">
-                        {{ form.Fiber(placeholder = "Specific value") }}
+                        {{ form.Fiber(placeholder = "Specific value", size=15) }}
                     </div>
                     <div class="row mt-1">
-                        {{ form.Fiber_Min(placeholder = "Range min") }}
+                        {{ form.Fiber_Min(placeholder = "Range min", size=15) }}
                     </div>
                     <div class="row mt-1">
-                        {{ form.Fiber_Max(placeholder = "Range max") }}
+                        {{ form.Fiber_Max(placeholder = "Range max", size=15) }}
                     </div>
                     <div class="row mt-2">
                         <b>z<sub>em</sub> (DR9Q)</b>
                         <!--<b>{{ form.ZEMDR9Q.label  }}: </b>-->
                     </div>
                     <div class="row">
-                        {{ form.ZEMDR9Q_Min(placeholder = "Range min") }}
+                        {{ form.ZEMDR9Q_Min(placeholder = "Range min", size=15) }}
                     </div>
                     <div class="row mt-1">
-                        {{ form.ZEMDR9Q_Max(placeholder = "Range max") }}
+                        {{ form.ZEMDR9Q_Max(placeholder = "Range max", size=15) }}
                     </div>
                     <div class="row mt-2">
                         <b>z<sub>em</sub> (HW10)</b>
                         <!--<b> {{ form.ZEMHW10.label  }}:</b>-->
                     </div>
                     <div class="row">
-                        {{ form.ZEMHW10_Min(placeholder = "Range min") }}
+                        {{ form.ZEMHW10_Min(placeholder = "Range min", size=15) }}
                     </div>
                     <div class="row mt-1">
-                        {{ form.ZEMHW10_Max(placeholder = "Range max") }}
+                        {{ form.ZEMHW10_Max(placeholder = "Range max", size=15) }}
                     </div>
                     <div class="row mt-2">
                         <br> <b>{{ form.BALQSO.label }}:</b>
                     </div>
                     <div class="row">
-                        {{ form.BALQSO }}
+                        {{ form.BALQSO(size=15) }}
                     </div>
 
                     <div class="row mt-2">
@@ -94,30 +95,30 @@
                         <!--<b> {{ form.BI_EHVO.label  }}:</b>-->
                     </div>
                     <div class="row">
-                        {{ form.BI_EHVO_min(placeholder = "Range min") }}
+                        {{ form.BI_EHVO_min(placeholder = "Range min", size=15) }}
                     </div>
                     <div class="row mt-1">
-                        {{ form.BI_EHVO_max(placeholder = "Range max") }}
+                        {{ form.BI_EHVO_max(placeholder = "Range max", size=15) }}
                     </div>
 
                     <div class="row mt-2">
                         <br> <b>{{ form.V.label }}:</b>
                     </div>
                     <div class="row">
-                        {{ form.V_min(placeholder = "Range min") }}
+                        {{ form.V_min(placeholder = "Range min", size=15) }}
                     </div>
                     <div class="row mt-1">
-                        {{ form.V_max(placeholder = "Range max") }}
+                        {{ form.V_max(placeholder = "Range max", size=15) }}
                     </div>
 
                     <div class="row mt-2">
                         <br> <b>{{ form.EW.label }}:</b>
                     </div>
                     <div class="row">
-                        {{ form.EW_min(placeholder = "Range min") }}
+                        {{ form.EW_min(placeholder = "Range min", size=15) }}
                     </div>
                     <div class="row mt-1">
-                        {{ form.EW_max(placeholder = "Range max") }}
+                        {{ form.EW_max(placeholder = "Range max", size=15) }}
                     </div>
 
                     <div class="row mt-3">
@@ -130,9 +131,12 @@
             </div>
         </div>
         
-        <div class="custom-container container">
+
+        <!-- Data Table -->
+        <div class="custom-container container" style="width:70%;">
             <div class="col-12">
                 <div class="about-section">
+                    <!-- Title -->
                     <h1>Data</h1>
                     <p>Information about the data here</p>
                 </div>
