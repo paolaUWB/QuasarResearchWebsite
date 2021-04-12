@@ -24,8 +24,10 @@ from app.config import APP_TMP, Config
 @app.route('/')
 def runit():
     with app.open_resource('static/descriptionText/HomeResearchDescription.txt') as f:
-        content = f.read().decode('utf-8')
-    return render_template('home.html', description=content)
+        homecontent = f.read().decode('utf-8')
+    with app.open_resource('static/descriptionText/ResearchAbout.txt') as f:
+        researchcontent = f.read().decode('utf-8')
+    return render_template('home.html', homedescription=homecontent,  researchdescription=researchcontent)
 
 # Login Page route
 @app.route('/login/', methods=['GET', 'POST'])
