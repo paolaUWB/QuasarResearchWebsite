@@ -5,6 +5,9 @@
   TO DO/GOALS: Edit the page to have better scaling. Right now the page looks strange when the browser window is small.
 -->
 
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='/styles/dataaccess.css')}}">
+</head>
 {% extends 'base.html' %}
 
 {% block content %}
@@ -13,113 +16,115 @@
         <!-- Form -->
         <div class="col-2">
             <div class="sidenav">
-                <div class="container">
-                    <div class="row">
-                        <b>{{ form.QSO.label }}:</b>
-                    </div>
-                    <div class="row">
-                        {{ form.QSO(size=15) }}
-                    </div>
-                    <div class="row mt-2">
-                        <b>{{form.Plate.label }}:</b>
-                    </div>
-                    <div class="row mt-1">
-                        {{ form.Plate(placeholder = "Specific value", size=15) }}
-                    </div>
-                    <div class="row mt-1">
-                        {{ form.Plate_Min(placeholder = "Range min", size=15) }}
-                    </div>
-                    <div class="row mt-1">
-                        {{ form.Plate_Max(placeholder = "Range max", size=15) }}
-                    </div>
-                    <div class="row mt-2">
-                        <b>{{form.MJD.label }}:</b>
-                    </div>
-                    <div class="row  mt-1">
-                        {{ form.MJD(placeholder = "Specific value", size=15) }}
-                    </div>
-                    <div class="row  mt-1">
-                        {{ form.MJD_Min(placeholder = "Range min", size=15) }}
-                    </div>
-                    <div class="row mt-1">
-                        {{ form.MJD_Max(placeholder = "Range max", size=15) }}
-                    </div>
-                    <div class="row mt-2">
-                        <b>{{form.Fiber.label }}:</b>
-                    </div>
-                    <div class="row mt-1">
-                        {{ form.Fiber(placeholder = "Specific value", size=15) }}
-                    </div>
-                    <div class="row mt-1">
-                        {{ form.Fiber_Min(placeholder = "Range min", size=15) }}
-                    </div>
-                    <div class="row mt-1">
-                        {{ form.Fiber_Max(placeholder = "Range max", size=15) }}
-                    </div>
-                    <div class="row mt-2">
-                        <b>z<sub>em</sub> (DR9Q)</b>
-                        <!--<b>{{ form.ZEMDR9Q.label  }}: </b>-->
-                    </div>
-                    <div class="row">
-                        {{ form.ZEMDR9Q_Min(placeholder = "Range min", size=15) }}
-                    </div>
-                    <div class="row mt-1">
-                        {{ form.ZEMDR9Q_Max(placeholder = "Range max", size=15) }}
-                    </div>
-                    <div class="row mt-2">
-                        <b>z<sub>em</sub> (HW10)</b>
-                        <!--<b> {{ form.ZEMHW10.label  }}:</b>-->
-                    </div>
-                    <div class="row">
-                        {{ form.ZEMHW10_Min(placeholder = "Range min", size=15) }}
-                    </div>
-                    <div class="row mt-1">
-                        {{ form.ZEMHW10_Max(placeholder = "Range max", size=15) }}
-                    </div>
-                    <div class="row mt-2">
-                        <br> <b>{{ form.BALQSO.label }}:</b>
-                    </div>
-                    <div class="row">
-                        {{ form.BALQSO(size=15) }}
-                    </div>
+                <div class="scroll">
+                    <div class="container">
+                        <div class="row">
+                            <b>{{ form.QSO.label }}:</b>
+                        </div>
+                        <div class="row">
+                            {{ form.QSO(size=15) }}
+                        </div>
+                        <div class="row mt-2">
+                            <b>{{form.Plate.label }}:</b>
+                        </div>
+                        <div class="row mt-1">
+                            {{ form.Plate(placeholder = "Specific value", size=15) }}
+                        </div>
+                        <div class="row mt-1">
+                            {{ form.Plate_Min(placeholder = "Range min", size=15) }}
+                        </div>
+                        <div class="row mt-1">
+                            {{ form.Plate_Max(placeholder = "Range max", size=15) }}
+                        </div>
+                        <div class="row mt-2">
+                            <b>{{form.MJD.label }}:</b>
+                        </div>
+                        <div class="row  mt-1">
+                            {{ form.MJD(placeholder = "Specific value", size=15) }}
+                        </div>
+                        <div class="row  mt-1">
+                            {{ form.MJD_Min(placeholder = "Range min", size=15) }}
+                        </div>
+                        <div class="row mt-1">
+                            {{ form.MJD_Max(placeholder = "Range max", size=15) }}
+                        </div>
+                        <div class="row mt-2">
+                            <b>{{form.Fiber.label }}:</b>
+                        </div>
+                        <div class="row mt-1">
+                            {{ form.Fiber(placeholder = "Specific value", size=15) }}
+                        </div>
+                        <div class="row mt-1">
+                            {{ form.Fiber_Min(placeholder = "Range min", size=15) }}
+                        </div>
+                        <div class="row mt-1">
+                            {{ form.Fiber_Max(placeholder = "Range max", size=15) }}
+                        </div>
+                        <div class="row mt-2">
+                            <b>z<sub>em</sub> (DR9Q)</b>
+                            <!--<b>{{ form.ZEMDR9Q.label  }}: </b>-->
+                        </div>
+                        <div class="row">
+                            {{ form.ZEMDR9Q_Min(placeholder = "Range min", size=15) }}
+                        </div>
+                        <div class="row mt-1">
+                            {{ form.ZEMDR9Q_Max(placeholder = "Range max", size=15) }}
+                        </div>
+                        <div class="row mt-2">
+                            <b>z<sub>em</sub> (HW10)</b>
+                            <!--<b> {{ form.ZEMHW10.label  }}:</b>-->
+                        </div>
+                        <div class="row">
+                            {{ form.ZEMHW10_Min(placeholder = "Range min", size=15) }}
+                        </div>
+                        <div class="row mt-1">
+                            {{ form.ZEMHW10_Max(placeholder = "Range max", size=15) }}
+                        </div>
+                        <div class="row mt-2">
+                            <br> <b>{{ form.BALQSO.label }}:</b>
+                        </div>
+                        <div class="row">
+                            {{ form.BALQSO(size=15) }}
+                        </div>
 
-                    <div class="row mt-2">
-                        <br>
-                        <b>BI<sub>ehvo</sub></b>
-                        <!--<b> {{ form.BI_EHVO.label  }}:</b>-->
-                    </div>
-                    <div class="row">
-                        {{ form.BI_EHVO_min(placeholder = "Range min", size=15) }}
-                    </div>
-                    <div class="row mt-1">
-                        {{ form.BI_EHVO_max(placeholder = "Range max", size=15) }}
-                    </div>
+                        <div class="row mt-2">
+                            <br>
+                            <b>BI<sub>ehvo</sub></b>
+                            <!--<b> {{ form.BI_EHVO.label  }}:</b>-->
+                        </div>
+                        <div class="row">
+                            {{ form.BI_EHVO_min(placeholder = "Range min", size=15) }}
+                        </div>
+                        <div class="row mt-1">
+                            {{ form.BI_EHVO_max(placeholder = "Range max", size=15) }}
+                        </div>
 
-                    <div class="row mt-2">
-                        <br> <b>{{ form.V.label }}:</b>
-                    </div>
-                    <div class="row">
-                        {{ form.V_min(placeholder = "Range min", size=15) }}
-                    </div>
-                    <div class="row mt-1">
-                        {{ form.V_max(placeholder = "Range max", size=15) }}
-                    </div>
+                        <div class="row mt-2">
+                            <br> <b>{{ form.V.label }}:</b>
+                        </div>
+                        <div class="row">
+                            {{ form.V_min(placeholder = "Range min", size=15) }}
+                        </div>
+                        <div class="row mt-1">
+                            {{ form.V_max(placeholder = "Range max", size=15) }}
+                        </div>
 
-                    <div class="row mt-2">
-                        <br> <b>{{ form.EW.label }}:</b>
-                    </div>
-                    <div class="row">
-                        {{ form.EW_min(placeholder = "Range min", size=15) }}
-                    </div>
-                    <div class="row mt-1">
-                        {{ form.EW_max(placeholder = "Range max", size=15) }}
-                    </div>
+                        <div class="row mt-2">
+                            <br> <b>{{ form.EW.label }}:</b>
+                        </div>
+                        <div class="row">
+                            {{ form.EW_min(placeholder = "Range min", size=15) }}
+                        </div>
+                        <div class="row mt-1">
+                            {{ form.EW_max(placeholder = "Range max", size=15) }}
+                        </div>
 
-                    <div class="row mt-3">
-                        {{ form.Submit }}
-                    </div>
-                    <div class="row mt-1">
-                        {{ form.Download }}
+                        <div class="row mt-3">
+                            {{ form.Submit }}
+                        </div>
+                        <div class="row mt-1">
+                            {{ form.Download }}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -129,107 +134,110 @@
         <!-- Data Table -->
         <div class="custom-container container" style="width:70%;">
             <div class="col-12">
-                <div class="about-section">
-                    <!-- Title -->
-                    <h1>Data</h1>
-                    <p>Information about the data here</p>
+                <div class="scroll">
+                    <div class="about-section">
+                        <!-- Title -->
+                        <h1>Data</h1>
+                        <p>Information about the data here</p>
+                    </div>
+                    <br>
+                    <br>
+                    <table class="table table-hover table-bordered table-sm table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">
+                                    <a>
+                                        <input type="checkbox" name="checkAll" id="checkAll">
+                                    </a>
+                                </th>
+                                <th scope="col">#</th>
+                                <th scope="col">QSO</th>
+                                <th scope="col">Plate</th>
+                                <th scope="col">MJD</th>
+                                <th scope="col">Fiber</th>
+                                <th scope="col">z<sub>em</sub> (DR9Q)</th>
+                                <th scope="col">z<sub>em</sub> (HW10)</th>
+                                <th scope="col">BALQSO</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% if data %}
+
+                            {% for row in data %}
+                            <tr data-toggle="collapse" data-target="#rowID{{ loop.index|string }}" class="clickable">
+                                <!--check box-->
+                                <td>
+                                    <a>
+                                        <input type="checkbox" name="downloadItem" id="{{ row['QSO'] }}"
+                                            value="{{ row['QSO'] }}">
+                                    </a>
+                                </td>
+
+                                <!--row number-->
+                                <th scope="row">{{ loop.index }}</th>
+
+                                <!--data-->
+                                <td>{{ row['QSO'] }}</td>
+                                <td>{{ row['PLATE'] }}</td>
+                                <td>{{ row['MJD'] }}</td>
+                                <td>{{ row['FIBER'] }}</td>
+                                <td>
+                                    {{ row['ZEMDR9Q'] }}
+                                    {% if row['ZEMDR9Q_PM'] is not none %}
+                                    ± {{ row['ZEMDR9Q_PM'] }}
+                                    {% endif %}
+                                </td>
+
+                                <td>
+
+                                    {% if row['ZEMHW10'] is not none %}
+                                    {{ row['ZEMHW10'] }}
+
+                                    {% if row['ZEMHW10_PM'] is not none %}
+                                    ± {{ row['ZEMHW10_PM'] }}
+                                    {% endif %}
+                                    {% else %}
+                                    -
+                                    {% endif %}
+                                </td>
+                                <td>{{ row['BALQSO'] }}</td>
+                            </tr>
+
+                            <!--Collapsed portion-->
+                            <tr id="rowID{{ loop.index|string }}" class="no-border collapse no-hover">
+                                <td colspan="1"></td>
+
+                                <!--Graph image-->
+                                <td colspan="4">
+                                    <div id="rowID{{ loop.index|string }}" class="collapse no-border">
+                                        <embed class="d-block"
+                                            src="{{ url_for('static', filename= row['GRAPH_IMG']) }}#toolbar=0&navpanes=0&scrollbar=0"
+                                            style="overflow:hidden" scrolling="no" height="450" width="600">
+                                    </div>
+                                </td>
+
+                                <!--Table 2 information-->
+                                <td colspan="4">
+                                    <div id="rowID{{ loop.index|string }}" class="collapse no-border">
+                                        <br>
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item">BI<sub>ehvo</sub>: {{ row['BI_EHVO'] }} km/s
+                                            </li>
+                                            <li class="list-group-item">v<sub>max</sub>: {{ row['V_max'] }} km/s</li>
+                                            <li class="list-group-item">v<sub>min</sub>: {{ row['V_min'] }} km/s</li>
+                                            <li class="list-group-item">EW: {{ row['EW'] }} km/s</li>
+                                            <li class="list-group-item">Depth: {{ row['Depth'] }}</li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            {% endfor %}
+                            {% endif %}
+
+                        </tbody>
+                    </table>
                 </div>
-                <br>
-                <br>
-                <table class="table table-hover table-bordered table-sm table-striped">
-                    <thead>
-                        <tr>
-                            <th scope="col">
-                                <a>
-                                    <input type="checkbox" name="checkAll" id="checkAll">
-                                </a>
-                            </th>
-                            <th scope="col">#</th>
-                            <th scope="col">QSO</th>
-                            <th scope="col">Plate</th>
-                            <th scope="col">MJD</th>
-                            <th scope="col">Fiber</th>
-                            <th scope="col">z<sub>em</sub> (DR9Q)</th>
-                            <th scope="col">z<sub>em</sub> (HW10)</th>
-                            <th scope="col">BALQSO</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% if data %}
-
-                        {% for row in data %}
-                        <tr data-toggle="collapse" data-target="#rowID{{ loop.index|string }}" class="clickable">
-                            <!--check box-->
-                            <td>
-                                <a>
-                                    <input type="checkbox" name="downloadItem" id="{{ row['QSO'] }}"
-                                        value="{{ row['QSO'] }}">
-                                </a>
-                            </td>
-
-                            <!--row number-->
-                            <th scope="row">{{ loop.index }}</th>
-
-                            <!--data-->
-                            <td>{{ row['QSO'] }}</td>
-                            <td>{{ row['PLATE'] }}</td>
-                            <td>{{ row['MJD'] }}</td>
-                            <td>{{ row['FIBER'] }}</td>
-                            <td>
-                                {{ row['ZEMDR9Q'] }}
-                                {% if row['ZEMDR9Q_PM'] is not none %}
-                                ± {{ row['ZEMDR9Q_PM'] }}
-                                {% endif %}
-                            </td>
-
-                            <td>
-
-                                {% if row['ZEMHW10'] is not none %}
-                                {{ row['ZEMHW10'] }}
-
-                                {% if row['ZEMHW10_PM'] is not none %}
-                                ± {{ row['ZEMHW10_PM'] }}
-                                {% endif %}
-                                {% else %}
-                                -
-                                {% endif %}
-                            </td>
-                            <td>{{ row['BALQSO'] }}</td>
-                        </tr>
-
-                        <!--Collapsed portion-->
-                        <tr id="rowID{{ loop.index|string }}" class="no-border collapse no-hover">
-                            <td colspan="1"></td>
-
-                            <!--Graph image-->
-                            <td colspan="4">
-                                <div id="rowID{{ loop.index|string }}" class="collapse no-border">
-                                    <embed class="d-block"
-                                        src="{{ url_for('static', filename= row['GRAPH_IMG']) }}#toolbar=0&navpanes=0&scrollbar=0"
-                                        style="overflow:hidden" scrolling="no" height="450" width="600">
-                                </div>
-                            </td>
-
-                            <!--Table 2 information-->
-                            <td colspan="4">
-                                <div id="rowID{{ loop.index|string }}" class="collapse no-border">
-                                    <br>
-                                    <ul class="list-group list-group-flush">
-                                        <li class="list-group-item">BI<sub>ehvo</sub>: {{ row['BI_EHVO'] }} km/s</li>
-                                        <li class="list-group-item">v<sub>max</sub>: {{ row['V_max'] }} km/s</li>
-                                        <li class="list-group-item">v<sub>min</sub>: {{ row['V_min'] }} km/s</li>
-                                        <li class="list-group-item">EW: {{ row['EW'] }} km/s</li>
-                                        <li class="list-group-item">Depth: {{ row['Depth'] }}</li>
-                                    </ul>
-                                </div>
-                            </td>
-                        </tr>
-
-                        {% endfor %}
-                        {% endif %}
-
-                    </tbody>
-                </table>
             </div>
         </div>
     </div>
