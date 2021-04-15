@@ -3,3 +3,17 @@ div.scroll {
   overflow-y: hidden;
   white-space: nowrap;
 }
+
+.wrapper > div {
+  border: 1px solid white;
+  margin: 0.2em;
+  padding: 0.2em;
+}
+.wrapper {
+ border: 1px solid white;
+ max-width: 1200px;
+ margin: 0 auto;
+ display: grid;
+ grid-gap: 0.25rem; 
+ grid-template-columns: 1fr 3fr; );
+}
