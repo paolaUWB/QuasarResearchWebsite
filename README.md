@@ -138,7 +138,7 @@
               
      1. Check to see if it worked by going to your UW url. It will be https://students.washington.edu/<YOUR_UW_NETID>/
     
-## Instructions for local setup (Windows):
+## Instructions for local setup (Mac and Windows):
     
 1. Install MySQL https://dev.mysql.com/downloads/installer/ (install the second option useing all default options)
     
@@ -162,7 +162,13 @@
 1. Set up flask environment:
      1. Open a new terminal in visual studio
      1. In the terminal `python3 -m venv flaskEnv` (this will take a couple of seconds to run)
-     1. `flaskEnv/Scripts/activate` You should now see something like: `(flaskEnv) PS C:\Users\guine\Desktop\test\QuasarResearchWebsite> `
+     1. WINDOWS ONLY: `flaskEnv/Scripts/activate` You should now see something like: `(flaskEnv) PS C:\Users\guine\Desktop\test\QuasarResearchWebsite> `
+         1. You may recieve an error message stating "running scripts is disabled on this system"
+         1. To fix this open Windows PowerShell with administration privileges
+             1. To open, search "PowerShell" in the Windows Start menu and select "Run as administrator" from the context menu
+         1. Enter 'set-executionpolicy remotesigned' to PowerShell
+         1. When asked "Do you want to change the execution policy?", respond with 'Y' for yes
+     1. MAC ONLY: `source venv/bin/activate` You should now see something like: `(flaskEnv) PS C:\Users\guine\Desktop\test\QuasarResearchWebsite> `
          1. You may recieve an error message stating "running scripts is disabled on this system"
          1. To fix this open Windows PowerShell with administration privileges
              1. To open, search "PowerShell" in the Windows Start menu and select "Run as administrator" from the context menu
