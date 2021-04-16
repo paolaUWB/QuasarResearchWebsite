@@ -36,7 +36,7 @@
  1. Add files to the web server
      1. In the terminal clone files from github with the following commands:
          1. `cd ~/public_html`
-         1. `git clone https://<YOUR_GITHUB_USERNAME>@github.com/Kathleen-G/QuasarResearchWebsite.git`
+         1. `git clone https://<YOUR_GITHUB_USERNAME>@github.com/paolaUWB/QuasarResearchWebsite.git`
          1. Enter your github password when prompted
          
      1. Check to see if all of the files were cloned
@@ -149,7 +149,7 @@
 1. Clone this repository 
      1. Open the command prompt
      1. cd to whatever folder you want to have the project in 
-     1. `git clone https://<YOUR_GITHUB_USERNAME>@github.com/Kathleen-G/QuasarResearchWebsite.git`
+     1. `git clone https://<YOUR_GITHUB_USERNAME>@github.com/paolaUWB/QuasarResearchWebsite.git`
          
 1. Check to see if all of the files were cloned
      1. `dir`
