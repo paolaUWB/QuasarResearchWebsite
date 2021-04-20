@@ -31,7 +31,7 @@ port = os.environ.get('MYSQL_DATABASE_PORT')
 # DATABASE METHODS
 
 # Connects to the database
-# If won't connect properly to MYSQL, change the port number (port=12345) to match yours
+# If won't connect properly to MYSQL, change the port number (e.g. port=12345) to match yours
 def connect_db():
     port = os.environ.get('MYSQL_DATABASE_PORT')
     #Remote mysql server
