@@ -169,11 +169,6 @@
          1. Enter 'set-executionpolicy remotesigned' to PowerShell
          1. When asked "Do you want to change the execution policy?", respond with 'Y' for yes
      1. MAC ONLY: `source venv/bin/activate` You should now see something like: `(flaskEnv) PS C:\Users\guine\Desktop\test\QuasarResearchWebsite> `
-         1. You may recieve an error message stating "running scripts is disabled on this system"
-         1. To fix this open Windows PowerShell with administration privileges
-             1. To open, search "PowerShell" in the Windows Start menu and select "Run as administrator" from the context menu
-         1. Enter 'set-executionpolicy remotesigned' to PowerShell
-         1. When asked "Do you want to change the execution policy?", respond with 'Y' for yes
      1. `pip install flask`
      1. `pip install PyMySQL`
      1. `pip install Flask-WTF`
