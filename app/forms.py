@@ -26,7 +26,7 @@ class DataAccessForm(FlaskForm):
     ZEMHW10 = FloatField('zₑₘ (HW10)')
     ZEMHW10_Min = FloatField('ZEMHW10_Min')
     ZEMHW10_Max = FloatField('ZEMHW10_Max')
-    BALQSO = StringField('BALQSO')
+    BALQSO = BooleanField('BALQSO')
 
     #table 2
     BI_EHVO = IntegerField('BIₑₕᵥₒ')
