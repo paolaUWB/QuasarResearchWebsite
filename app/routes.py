@@ -338,8 +338,13 @@ def data_access():
                     sql = 'SELECT * FROM quasarinfo t1 inner join quasarinfo_table2 t2 on t1.QSO = t2.QSO WHERE t1.ZEMDR9Q <= %s '
                 vars.append(ZEMHW10_Max)
 
+            # Check BALQSO
+            if (BALQSO_YES & BALQSO_NO):
+                vars.append(BALQSO_YES)
+                vars.append(BALQSO_NO)
+
             # Check BALQSO yes checkbox
-            if (BALQSO_YES):
+            elif (BALQSO_YES):
                 if(sql):
                     sql = sql + " AND BALQSO_BOOL = %s"
                 else:
@@ -347,7 +352,7 @@ def data_access():
                 vars.append(BALQSO_YES)
 
             # Check BALQSO no checkbox
-            if (BALQSO_NO):
+            elif (BALQSO_NO):
                 if(sql):
                     sql = sql + " AND BALQSO_BOOL != %s"
                 else:
