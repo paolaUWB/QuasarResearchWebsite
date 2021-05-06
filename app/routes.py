@@ -347,7 +347,7 @@ def data_access():
                 vars.append(BALQSO_YES)
 
             # Check BALQSO no checkbox
-            elif (BALQSO_NO):
+            if (BALQSO_NO):
                 if(sql):
                     sql = sql + " AND BALQSO_BOOL != %s"
                 else:
