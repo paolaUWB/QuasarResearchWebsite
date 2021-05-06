@@ -183,7 +183,8 @@ def data_access():
             ZEMDR9Q_Max = form.ZEMDR9Q_Max.data
             ZEMHW10_Min = form.ZEMHW10_Min.data
             ZEMHW10_Max = form.ZEMHW10_Max.data
-            BALQSO = form.BALQSO.data
+            BALQSO_YES = form.BALQSO_YES.data
+            BALQSO_NO = form.BALQSO_NO.data
 
             BI_EHVO_min = form.BI_EHVO_min.data
             BI_EHVO_max = form.BI_EHVO_max.data
@@ -337,13 +338,21 @@ def data_access():
                     sql = 'SELECT * FROM quasarinfo t1 inner join quasarinfo_table2 t2 on t1.QSO = t2.QSO WHERE t1.ZEMDR9Q <= %s '
                 vars.append(ZEMHW10_Max)
 
-            # Check BALQSO
-            if (BALQSO):
+            # Check BALQSO yes checkbox
+            if (BALQSO_YES):
                 if(sql):
-                    sql = sql + " AND trim(BALQSO) = %s"
+                    sql = sql + " AND BALQSO_BOOL = %s"
                 else:
-                    sql = "SELECT * FROM quasarinfo t1 inner join quasarinfo_table2 t2 on t1.QSO = t2.QSO WHERE trim(t1.BALQSO) = %s"
-                vars.append(BALQSO)
+                    sql = "SELECT * FROM quasarinfo t1 inner join quasarinfo_table2 t2 on t1.QSO = t2.QSO WHERE t1.BALQSO_BOOL = %s "
+                vars.append(BALQSO_YES)
+
+            # Check BALQSO no checkbox
+            elif (BALQSO_NO):
+                if(sql):
+                    sql = sql + " AND BALQSO_BOOL != %s"
+                else:
+                    sql = "SELECT * FROM quasarinfo t1 inner join quasarinfo_table2 t2 on t1.QSO = t2.QSO WHERE t1.BALQSO_BOOL != %s"
+                vars.append(BALQSO_NO)
 
             # Check BI_EHVO
             if(BI_EHVO_min and BI_EHVO_max):
