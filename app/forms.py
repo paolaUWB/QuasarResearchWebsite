@@ -11,26 +11,23 @@ from app.models import User
 class DataAccessForm(FlaskForm):
     #table 1
     QSO = StringField('QSO')
-    Plate = IntegerField('Plate')
     Plate_Min = IntegerField('Plate_Min')
     Plate_Max = IntegerField('Plate_Max')
-    MJD = IntegerField('MJD')
     MJD_Min = IntegerField('MJD_Min')
     MJD_Max = IntegerField('MJD_Max')
-    Fiber = IntegerField('Fiber')
     Fiber_Min = IntegerField('Fiber_Min')
     Fiber_Max = IntegerField('Fiber_Max')
-    ZEMDR9Q = FloatField('zₑₘ (DR9Q)')
+    ZEMDR9Q = FloatField('ZEMDR9Q')
     ZEMDR9Q_Min = FloatField('ZEMDR9Q_Min')
     ZEMDR9Q_Max = FloatField('ZEMDR9Q_Max')
-    ZEMHW10 = FloatField('zₑₘ (HW10)')
+    ZEMHW10 = FloatField('ZEMHW10')
     ZEMHW10_Min = FloatField('ZEMHW10_Min')
     ZEMHW10_Max = FloatField('ZEMHW10_Max')
     BALQSO_YES = BooleanField('Yes')
     BALQSO_NO = BooleanField('No')
 
     #table 2
-    BI_EHVO = IntegerField('BIₑₕᵥₒ')
+    BI_EHVO = IntegerField('BI_EHVO')
     BI_EHVO_min = IntegerField('BI_EHVO_min')
     BI_EHVO_max = IntegerField('BI_EHVO_max')
 
