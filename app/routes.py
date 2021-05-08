@@ -170,13 +170,10 @@ def data_access():
             cursor = get_db().cursor()
 
             QSO = form.QSO.data
-            PLATE = form.Plate.data
             PLATE_Min = form.Plate_Min.data
             PLATE_Max = form.Plate_Max.data
-            MJD = form.MJD.data
             MJD_Min = form.MJD_Min.data
             MJD_Max = form.MJD_Max.data
-            FIBER = form.Fiber.data
             FIBER_Min = form.Fiber_Min.data
             FIBER_Max = form.Fiber_Max.data
             ZEMDR9Q_Min = form.ZEMDR9Q_Min.data
@@ -203,14 +200,7 @@ def data_access():
                 vars.append(QSO)
 
             # Check Plate
-            if(PLATE):
-                if(sql):
-                    sql = sql + ' AND trim(PLATE) = %s'
-                else:
-                    sql = 'SELECT * FROM quasarinfo t1 inner join quasarinfo_table2 t2 on t1.QSO = t2.QSO WHERE trim(t1.PLATE) = %s'
-                vars.append(PLATE)
-
-            elif(PLATE_Min and PLATE_Max):
+            if((PLATE_Min is not None) and (PLATE_Max is not None)):
                 if(sql):
                     sql = sql + ' AND trim(PLATE) BETWEEN %s AND %s'
                 else:
@@ -218,14 +208,14 @@ def data_access():
                 vars.append(PLATE_Min)
                 vars.append(PLATE_Max)
 
-            elif (PLATE_Min):
+            elif (PLATE_Min is not None):
                 if(sql):
                     sql = sql + ' AND trim(PLATE) >= %s'
                 else:
                     sql = 'SELECT * FROM quasarinfo t1 inner join quasarinfo_table2 t2 on t1.QSO = t2.QSO WHERE t1.PLATE >= %s'
                 vars.append(PLATE_Min)
 
-            elif (PLATE_Max):
+            elif (PLATE_Max is not None):
                 if(sql):
                     sql = sql + ' AND trim(PLATE) <= %s'
                 else:
@@ -233,14 +223,7 @@ def data_access():
                 vars.append(PLATE_Max)
 
             # Check MJD
-            if(MJD):
-                if(sql):
-                    sql = sql + ' AND trim(MJD) = %s'
-                else:
-                    sql = 'SELECT * FROM quasarinfo t1 inner join quasarinfo_table2 t2 on t1.QSO = t2.QSO WHERE trim(t1.MJD) = %s'
-                vars.append(MJD)
-
-            elif(MJD_Min and MJD_Max):
+            if((MJD_Min is not None) and (MJD_Max is not None)):
                 if(sql):
                     sql = sql + ' AND trim(MJD) BETWEEN %s AND %s'
                 else:
@@ -248,14 +231,14 @@ def data_access():
                 vars.append(MJD_Min)
                 vars.append(MJD_Max)
 
-            elif (MJD_Min):
+            elif (MJD_Min is not None):
                 if(sql):
                     sql = sql + ' AND trim(MJD) >= %s'
                 else:
                     sql = 'SELECT * FROM quasarinfo t1 inner join quasarinfo_table2 t2 on t1.QSO = t2.QSO WHERE t1.MJD >= %s'
                 vars.append(MJD_Min)
 
-            elif (MJD_Max):
+            elif (MJD_Max is not None):
                 if(sql):
                     sql = sql + ' AND trim(MJD) <= %s'
                 else:
@@ -263,14 +246,7 @@ def data_access():
                 vars.append(MJD_Max)
 
             # Check FIBER
-            if(FIBER):
-                if(sql):
-                    sql = sql + ' AND trim(FIBER) = %s'
-                else:
-                    sql = 'SELECT * FROM quasarinfo t1 inner join quasarinfo_table2 t2 on t1.QSO = t2.QSO WHERE trim(t1.FIBER) = %s'
-                vars.append(FIBER)
-
-            elif(FIBER_Min and FIBER_Max):
+            if((FIBER_Min is not None) and (FIBER_Max is not None)):
                 if(sql):
                     sql = sql + ' AND trim(FIBER) BETWEEN %s AND %s'
                 else:
@@ -278,14 +254,14 @@ def data_access():
                 vars.append(FIBER_Min)
                 vars.append(FIBER_Max)
 
-            elif (FIBER_Min):
+            elif (FIBER_Min is not None):
                 if(sql):
                     sql = sql + ' AND trim(FIBER) >= %s'
                 else:
                     sql = 'SELECT * FROM quasarinfo t1 inner join quasarinfo_table2 t2 on t1.QSO = t2.QSO WHERE t1.FIBER >= %s'
                 vars.append(FIBER_Min)
 
-            elif (FIBER_Max):
+            elif (FIBER_Max is not None):
                 if(sql):
                     sql = sql + ' AND trim(FIBER) <= %s'
                 else:
@@ -293,7 +269,7 @@ def data_access():
                 vars.append(Fiber_Max)
 
             # Check ZEMDR9Q
-            if(ZEMDR9Q_Min and ZEMDR9Q_Max):
+            if((ZEMDR9Q_Min is not None) and (ZEMDR9Q_Max is not None)):
                 if(sql):
                     sql = sql + ' AND ZEMDR9Q BETWEEN %s AND %s'
                 else:
@@ -301,22 +277,22 @@ def data_access():
                 vars.append(ZEMDR9Q_Min)
                 vars.append(ZEMDR9Q_Max)
 
-            elif (ZEMDR9Q_Min):
+            elif (ZEMDR9Q_Min is not None):
                 if(sql):
                     sql = sql + ' AND ZEMDR9Q >= %s'
                 else:
                     sql = 'SELECT * FROM quasarinfo t1 inner join quasarinfo_table2 t2 on t1.QSO = t2.QSO WHERE t1.ZEMDR9Q >= %s'
                 vars.append(ZEMDR9Q_Min)
 
-            elif (ZEMDR9Q_Max):
+            elif (ZEMDR9Q_Max is not None):
                 if(sql):
                     sql = sql + ' AND ZEMDR9Q <= %s'
                 else:
                     sql = 'SELECT * FROM quasarinfo t1 inner join quasarinfo_table2 t2 on t1.QSO = t2.QSO WHERE t1.ZEMDR9Q <= %s '
                 vars.append(ZEMDR9Q_Max)
 
-            # Check ZEMHW10
-            if(ZEMHW10_Min and ZEMHW10_Max):
+            # Check ZEMHW10 
+            if((ZEMHW10_Min is not None) and (ZEMHW10_Max is not None)):
                 if(sql):
                     sql = sql + ' AND ZEMHW10 BETWEEN %s AND %s'
                 else:
@@ -324,22 +300,27 @@ def data_access():
                 vars.append(ZEMHW10_Min)
                 vars.append(ZEMHW10_Max)
 
-            elif (ZEMHW10_Min):
+            elif (ZEMHW10_Min is not None):
                 if(sql):
-                    sql = sql + ' AND ZEMDR9Q >= %s'
+                    sql = sql + ' AND ZEMHW10 >= %s'
                 else:
-                    sql = 'SELECT * FROM quasarinfo t1 inner join quasarinfo_table2 t2 on t1.QSO = t2.QSO WHERE t1.ZEMDR9Q >= %s'
+                    sql = 'SELECT * FROM quasarinfo t1 inner join quasarinfo_table2 t2 on t1.QSO = t2.QSO WHERE t1.ZEMHW10 >= %s'
                 vars.append(ZEMHW10_Min)
 
-            elif (ZEMHW10_Max):
+            elif (ZEMHW10_Max is not None):
                 if(sql):
-                    sql = sql + ' AND ZEMDR9Q <= %s'
+                    sql = sql + ' AND ZEMHW10 <= %s'
                 else:
-                    sql = 'SELECT * FROM quasarinfo t1 inner join quasarinfo_table2 t2 on t1.QSO = t2.QSO WHERE t1.ZEMDR9Q <= %s '
+                    sql = 'SELECT * FROM quasarinfo t1 inner join quasarinfo_table2 t2 on t1.QSO = t2.QSO WHERE t1.ZEMHW10 <= %s '
                 vars.append(ZEMHW10_Max)
 
+            # Check BALQSO
+            if (BALQSO_YES and BALQSO_NO):
+                vars.append(BALQSO_YES)
+                vars.append(BALQSO_NO)
+
             # Check BALQSO yes checkbox
-            if (BALQSO_YES):
+            elif (BALQSO_YES):
                 if(sql):
                     sql = sql + " AND BALQSO_BOOL = %s"
                 else:
@@ -347,7 +328,7 @@ def data_access():
                 vars.append(BALQSO_YES)
 
             # Check BALQSO no checkbox
-            if (BALQSO_NO):
+            elif (BALQSO_NO):
                 if(sql):
                     sql = sql + " AND BALQSO_BOOL != %s"
                 else:
@@ -355,22 +336,22 @@ def data_access():
                 vars.append(BALQSO_NO)
 
             # Check BI_EHVO
-            if(BI_EHVO_min and BI_EHVO_max):
+            if((BI_EHVO_min is not None) and (BI_EHVO_max is not None)):
                 if(sql):
-                    sql = sql + ' AND ZEMDR9Q BETWEEN %s AND %s'
+                    sql = sql + ' AND BI_EHVO BETWEEN %s AND %s'
                 else:
                     sql = 'SELECT * FROM quasarinfo t1 inner join quasarinfo_table2 t2 on t1.QSO = t2.QSO WHERE t2.BI_EHVO BETWEEN %s AND %s'
                 vars.append(BI_EHVO_min)
                 vars.append(BI_EHVO_max)
 
-            elif (BI_EHVO_min):
+            elif (BI_EHVO_min is not None):
                 if(sql):
                     sql = sql + ' AND BI_EHVO >= %s'
                 else:
                     sql = 'SELECT * FROM quasarinfo t1 inner join quasarinfo_table2 t2 on t1.QSO = t2.QSO WHERE t2.BI_EHVO >= %s'
                 vars.append(BI_EHVO_min)
 
-            elif (BI_EHVO_max):
+            elif (BI_EHVO_max is not None):
                 if(sql):
                     sql = sql + ' AND BI_EHVO <= %s'
                 else:
@@ -378,7 +359,7 @@ def data_access():
                 vars.append(BI_EHVO_max)
 
             # Check V_Max
-            if(V_MAX):
+            if(V_MAX is not None):
                 if(sql):
                     sql = sql + " AND trim(t2.V_MAX) >= %s"
                 else:
@@ -386,7 +367,7 @@ def data_access():
                 vars.append(V_MAX)
 
             # Check V_min
-            if(V_MIN):
+            if(V_MIN is not None):
                 if(sql):
                     sql = sql + " AND trim(t2.V_MIN) <= %s"
                 else:
@@ -394,22 +375,22 @@ def data_access():
                 vars.append(V_MIN)
 
             # Check EW
-            if(EW_min and EW_max):
+            if((EW_min is not None) and (EW_max is not None)):
                 if(sql):
-                    sql = sql + ' AND ZEMDR9Q BETWEEN %s AND %s'
+                    sql = sql + ' AND EW BETWEEN %s AND %s'
                 else:
                     sql = 'SELECT * FROM quasarinfo t1 inner join quasarinfo_table2 t2 on t1.QSO = t2.QSO WHERE t2.EW BETWEEN %s AND %s'
                 vars.append(EW_min)
                 vars.append(EW_max)
 
-            elif (EW_min):
+            elif (EW_min is not None):
                 if(sql):
                     sql = sql + ' AND EW >= %s'
                 else:
                     sql = 'SELECT * FROM quasarinfo t1 inner join quasarinfo_table2 t2 on t1.QSO = t2.QSO WHERE t2.EW >= %s'
                 vars.append(EW_min)
 
-            elif (EW_max):
+            elif (EW_max is not None):
                 if(sql):
                     sql = sql + ' AND EW <= %s'
                 else:
