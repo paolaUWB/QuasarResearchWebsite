@@ -10,7 +10,9 @@ Welcome to Quasar Research Project's documentation!
    :maxdepth: 2
    :caption: Contents:
 
-
+   Setup
+   Troubleshooting
+   User_Management
 
 Indices and tables
 ==================
