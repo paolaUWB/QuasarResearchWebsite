@@ -12,7 +12,9 @@ Welcome to Quasar Research Project's documentation!
 
    Setup
    Troubleshooting
+   Editing
    User_Management
+   Sphinx
 
 Indices and tables
 ==================
