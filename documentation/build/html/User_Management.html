@@ -1,0 +1,183 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Management &#8212; Quasar Research Project 0.0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Troubleshooting" href="Troubleshooting.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="user-management">
+<h1>User Management<a class="headerlink" href="#user-management" title="Permalink to this headline">¶</a></h1>
+<p>1. The user database and login system follows these
+two tutorials</p>
+<blockquote>
+<div><p>1. <a class="reference external" href="https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-iv-database">https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-iv-database</a>
+1. <a class="reference external" href="https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-v-user-logins">https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-v-user-logins</a></p>
+</div></blockquote>
+<ol class="arabic">
+<li><p>To view all users 1. <code class="docutils literal notranslate"><span class="pre">flask</span> <span class="pre">shell</span></code>
+1. See list of all usernames</p>
+<blockquote>
+<div><p>1. <cite>users = User.query.all()</cite>
+1. <cite>users</cite></p>
+</div></blockquote>
+<ol class="arabic">
+<li><dl>
+<dt>See list of ids of users</dt><dd><p>1. <cite>users = User.query.all()</cite>
+1.</p>
+<blockquote>
+<div><dl class="simple">
+<dt>::</dt><dd><dl class="simple">
+<dt>for u in users:</dt><dd><p>…     print(u.id, u.username)
+…</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</div></blockquote>
+</dd>
+</dl>
+</li>
+</ol>
+</li>
+<li><dl class="simple">
+<dt>To add a user</dt><dd><p>1. <cite>flask shell</cite>
+1. <cite>u = User(username=’INSERT USERNAME HERE’, email=’INSERT EMAIL HERE’)</cite>
+1. <cite>u.set_password(‘INSERT PASSWORD HERE’)</cite>
+1. <cite>db.session.add(u)</cite>
+1. <cite>db.session.commit()</cite></p>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>To delete all users</dt><dd><ol class="arabic simple">
+<li><p><cite>flask shell</cite></p></li>
+</ol>
+<ol class="arabic simple">
+<li><p><cite>users = User.query.all()</cite></p></li>
+</ol>
+<ol class="arabic simple">
+<li><dl class="simple">
+<dt>::</dt><dd><p>for u in users:
+…     db.session.delete(u)
+…</p>
+</dd>
+</dl>
+</li>
+</ol>
+<ol class="arabic simple">
+<li><p><cite>db.session.commit()</cite></p></li>
+</ol>
+</dd>
+</dl>
+<ol class="arabic simple">
+<li><p>To delete a specific user</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">flask</span> <span class="pre">shell</span></code></p></li>
+<li><p>Find the id of the user you want to delete.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">u</span> <span class="pre">=</span> <span class="pre">User.query.get(INSERT</span> <span class="pre">ID</span> <span class="pre">HERE)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">db.session.delete(u)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">db.session.commit()</span></code></p></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Quasar Research Project</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Troubleshooting.html">Troubleshooting</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">User Management</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="Troubleshooting.html" title="previous chapter">Troubleshooting</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Kathleen Guinee, Audrey Nguyen.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.0.0b1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/User_Management.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
