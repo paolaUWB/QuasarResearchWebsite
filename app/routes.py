@@ -1,6 +1,7 @@
 # TITLE: Routes
 # CONTRIBUTORS: Kathleen Guinee, Audrey Nguyen
 # DESCRIPTION: Contains the website routes
+# IF YOU WANT TO LOCK A PAGE TO LOGGED IN USERS ONLY, USE @login_required UNDER ROUTE DECLARATION AND ABOVE ROUTE DEFINITION
 
 import pymysql
 import os
