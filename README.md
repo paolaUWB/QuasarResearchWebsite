@@ -32,7 +32,7 @@ ___
      1. Open a new terminal in Visual Studio Code
      1. For Mac: In the terminal `python3 -m venv flaskEnv` (this will take a couple of seconds to run)
      1. For Windows: In the terminal run `py -3 -m venv venv`
-     1. Run the following command: `source venv/bin/activate`. You should now see something like: (flaskEnv) PS C:\Users\guine\Desktop\test\QuasarResearchWebsite> `
+     1. Run the following command: `source venv/bin/activate` in the QuasarResarchWebsite folder. 
      1. `pip install flask`
      1. `pip install PyMySQL`
      1. `pip install Flask-WTF`
@@ -41,6 +41,7 @@ ___
      1. `pip install flask-migrate`
      1. `pip install flask-login`
      1. `pip install email-validator`
+     
      * On Windows you may recieve an error message stating "running scripts is disabled on this system"
          1. To fix this open Windows PowerShell with administration privileges
              * To open, search "PowerShell" in the Windows Start menu and select "Run as administrator" from the context menu
