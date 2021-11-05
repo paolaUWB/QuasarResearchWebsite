@@ -1,17 +1,157 @@
 
-## Hosting on UW Shared Host Servers
-- - - -
+## Hosting on Your Machine Locally
+___
+### Instructions for local setup (Mac and Windows):
+    
+1. Download and install MySQL using this [page](https://dev.mysql.com/downloads/workbench/)
+    
+2. Install Visual Studio Code using this [page](https://code.visualstudio.com/) (or whatever your preferred IDE is)
+    
+3. Install Python using this [page](https://www.python.org/downloads/) FIX THIS?
 
+4. Install Git using this [page](https://git-scm.com/downloads)
+         
+5. Clone this repository 
+     1. Open the command prompt (Windows) or Terminal (macOS)
+     2. `cd` to whatever folder you want to have the project in 
+        * The `cd <folder name>` command allows you to access folders within your computer. Following the cd command should be the name of the folder you wish to enter. You must move through the folders as if you were opening them through Finder or your File Explorer. 
+        * `cd ..` allows you to move back the folder you were just previously in
+        * If you would like to see a list of the folders you can enter, use `ls`. The `ls` command lists all the available folders in your current directory. 
+
+     3. Use this command to clone the repository to your computer `git clone https://<YOUR_GITHUB_USERNAME>@github.com/paolaUWB/QuasarResearchWebsite.git`
+         
+6. Check to see if all of the files were cloned
+     1. `dir`
+     2. You should see a new "QuasarResearchWebsite" directory
+         
+7. Open project in Visual Studio Code
+     1. Open Visual Studio Code
+     2. File -> Open folder and then navigate to the QuasarResearchWebsite folder that you just cloned
+         
+8. Set up flask environment:
+     1. Open a new terminal in Visual Studio Code
+     1. For Mac: In the terminal `python3 -m venv flaskEnv` (this will take a couple of seconds to run)
+     1. For Windows: In the terminal run `py -3 -m venv venv`
+     1. Run the following command: `source venv/bin/activate`. You should now see something like: (flaskEnv) PS C:\Users\guine\Desktop\test\QuasarResearchWebsite> `
+     1. `pip install flask`
+     1. `pip install PyMySQL`
+     1. `pip install Flask-WTF`
+     1. `pip install python-dotenv`
+     1. `pip install flask-sqlalchemy`
+     1. `pip install flask-migrate`
+     1. `pip install flask-login`
+     1. `pip install email-validator`
+     * On Windows you may recieve an error message stating "running scripts is disabled on this system"
+         1. To fix this open Windows PowerShell with administration privileges
+             * To open, search "PowerShell" in the Windows Start menu and select "Run as administrator" from the context menu
+         1. Enter 'set-executionpolicy remotesigned' to PowerShell
+         1. When asked "Do you want to change the execution policy?", respond with 'Y' for yes
+              
+     * For more instructions on using python environments in Visual Studio Code, see https://code.visualstudio.com/docs/python/environments
+     
+1. Add the secret environment variables:
+    1. Create a new file in QuasarResearchWebsite/app/ and name it .env
+    1. Add your secrets to the file with the following: 
+    ```
+    SECRET_KEY=<WHATEVER YOU WANT>
+    MYSQL_DATABASE_PASSWORD=<YOUR MYSQL DB/ROOT PASSWORD>
+    ```
+    
+1. Add the path for downloads
+    1. Create a new directory in QuasarResearchWebsite/app/  and name it tmp
+    1. Create a new file in QuasarResearchWebsite/app/tmp  and name it quasars.csv
+    
+1. Setup the MySQL database:
+    1. In the VSCode command line, start mysql with `& cmd.exe /c "mysql -u root -p --verbose --local-infile=1 < app/quasarDB_win.sql"`, and enter your password for root user
+    1. `python app/updateDatabase_win.py` (this will update the paths to the images in the database)
+    
+1. Now check to see if things are working. In the Visual Studio terminal type `flask run` 
+    1. If everything is working you should see something like:
+        ```
+        (flaskEnv) PS C:\Users\guine\Desktop\test\QuasarResearchWebsite> flask run
+        * Environment: production
+        WARNING: This is a development server. Do not use it in a production deployment.
+        Use a production WSGI server instead.
+        * Debug mode: off
+        * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+        ```
+    1. Follow the link on the last line to see if it runs. Your default internet browser should open to the home page of the website. 
+    1. Check that the images are loading correctly by going to the "Data Access" page, clicking on a row and seeing if the image shows up.
+    1. Voila! Hopefully it is working :)
+   
+   ## User Management
+   1. The user database and login system follows these two tutorials
+   
+        1. https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-iv-database
+        
+        1. https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-v-user-logins
+        
+   
+   1. To view all users
+        1. `flask shell`
+        
+        1. See list of all usernames
+            1. `users = User.query.all()`
+            1. `users`
+            
+        1. See list of ids of users
+            1. `users = User.query.all()`
+            1. ```
+               for u in users:
+               ...     print(u.id, u.username)
+               ...
+               ```
+   
+   1. To add a user
+   
+        1. `flask shell`
+   
+        1. `u = User(username='INSERT USERNAME HERE', email='INSERT EMAIL HERE')`
+   
+        1. `u.set_password('INSERT PASSWORD HERE')`
+   
+        1. `db.session.add(u)`
+   
+        1. `db.session.commit()`
+        
+        
+   1. To delete all users
+    
+        1. `flask shell`
+        
+        1. `users = User.query.all()`
+   
+        1. ```
+           for u in users:
+           ...     db.session.delete(u)
+           ...
+           ```
+   
+        1. `db.session.commit()`
+        
+     1. To delete a specific user
+     
+        1. `flask shell`
+        
+        1. Find the id of the user you want to delete. 
+        
+        1. `u = User.query.get(INSERT ID HERE)`
+        
+        1. `db.session.delete(u)`
+        
+        1. `db.session.commit()`
+
+## Hosting on UW Shared Host Servers
+_ _ _ _
 ### Necessary software:
 * Github account with access to this github page
 * Putty (if on windows)
-* SSH (if on Mac or Linux)
+* Terminal (if on Mac or Linux)
 
 ### Instructions for school server setup:
 1. Activate your UW shared web hosting
     1. Follow instructions on this [page](https://itconnect.uw.edu/connect/web-publishing/shared-hosting/activating-shared-web-hosting/)
-        * If you are a student, your server is Vergil and activate the Web Publishing service
-        * If you are faculty, your server is Homer/Ovid and activate the Web Publishing service
+        * Ensure that you subscribe to and activate `Vergil Account`, `Homer/Ovid Account` and `Web Publishing`
         
 2. SSH into the school servers:
 
@@ -31,10 +171,10 @@
             * If you are new to SSH, know that you won't actually see your password get typed. It'll look invisible but it is still getting input into the system.
         8. Voila! You should be in now! Check that everything worked by typing `ls` into the command prompt. You should see one directory, "public_html"
     
-    ### If you are using MacOS:
-    1. If you are on MacOS, connect to the UW network and open Terminal
+    ### If you are using macOS:
+    1. If you are on macOS, connect to the UW network and open Terminal
         * If you are unsure how to connect to the UW network, it is reccomended to use Husky OnNet. More information and how to download and use the software can be found [here](https://www.lib.washington.edu/help/connect/husky-onnet)
-    2. Type and enter `ssh youruwnetid@vergil.u.washington.edu`
+    2. Type and enter `ssh <YOUR_UW_NETID>@vergil.u.washington.edu`
     3. When prompted for your password, use your UW password
         * If you are new to SSH, know that you won't actually see your password get typed. It'll look invisible but it is still getting input into the system.
     4. Voila! You should be in now! Check that everything worked by typing and entering `ls` into the command prompt. You should see one directory, "public_html"
@@ -44,12 +184,12 @@
 3. Setup MySQL on the school servers:
     ### If you are using Windows:
 
-    ### If you are using MacOS:
+    ### If you are using macOS:
     1. Set up Localhome
         1. Ensure you are still connected to UW's network and Vergil then type `localhome` in your Terminal
             * To recconnect to Vergil, follow the directions in the previous step again
         2. Exit from Vergil by typing and entering `exit` in your Terminal
-        3. SSH into `ovid` by typing and entering `youruwnetid@ovid.u.washington.edu` in your Terminal
+        3. SSH into `ovid` by typing and entering `<YOUR_UW_NETID>@ovid.u.washington.edu` in your Terminal
     2. Make sure to write down your root password and username
 
     ### If you need more inforamtion, see [this page](https://itconnect.uw.edu/connect/web-publishing/shared-hosting/using-mysql-on-shared-uw-hosting/install-mysql/)
@@ -158,141 +298,6 @@
               1. `chmod 755 __init__.py`
               
      5. Check to see if it worked by going to your UW url. It will be https://students.washington.edu/<YOUR_UW_NETID>/
-    
-## Instructions for local setup (Mac and Windows):
-    
-1. Install MySQL https://dev.mysql.com/downloads/installer/ (install the second option useing all default options)
-    
-1. Install visual studio code https://code.visualstudio.com/ (or whatever your preferred IDE is)
-    
-1. Install Git if you don't already have it: https://git-scm.com/download/win
-         
-1. Clone this repository 
-     1. Open the command prompt
-     1. cd to whatever folder you want to have the project in 
-     1. `git clone https://<YOUR_GITHUB_USERNAME>@github.com/paolaUWB/QuasarResearchWebsite.git`
-         
-1. Check to see if all of the files were cloned
-     1. `dir`
-     1. You should see a new "QuasarResearchWebsite" directory
-         
-1. Open project in visual studio code
-     1. Open visual studio code
-     1. File -> Open folder and then navigate to the QuasarResearchWebsite folder that you just cloned
-         
-1. Set up flask environment:
-     1. Open a new terminal in visual studio
-     1. In the terminal `python3 -m venv flaskEnv` (this will take a couple of seconds to run)
-     1. WINDOWS ONLY: `flaskEnv/Scripts/activate` You should now see something like: `(flaskEnv) PS C:\Users\guine\Desktop\test\QuasarResearchWebsite> `
-         1. You may recieve an error message stating "running scripts is disabled on this system"
-         1. To fix this open Windows PowerShell with administration privileges
-             1. To open, search "PowerShell" in the Windows Start menu and select "Run as administrator" from the context menu
-         1. Enter 'set-executionpolicy remotesigned' to PowerShell
-         1. When asked "Do you want to change the execution policy?", respond with 'Y' for yes
-     1. MAC ONLY: `source venv/bin/activate` You should now see something like: `(flaskEnv) PS C:\Users\guine\Desktop\test\QuasarResearchWebsite> `
-     1. `pip install flask`
-     1. `pip install PyMySQL`
-     1. `pip install Flask-WTF`
-     1. `pip install python-dotenv`
-     1. `pip install flask-sqlalchemy`
-     1. `pip install flask-migrate`
-     1. `pip install flask-login`
-     1. `pip install email-validator`
-              
-     1. For more instructions on using python environments in visual studio, see https://code.visualstudio.com/docs/python/environments
-     
-1. Add the secret environment variables:
-    1. Create a new file in QuasarResearchWebsite/app/  and name it .env
-    1. Add your secrets to the file with the following: 
-    ```
-    SECRET_KEY=<WHATEVER YOU WANT>
-    MYSQL_DATABASE_PASSWORD=<YOUR MYSQL DB/ROOT PASSWORD>
-    ```
-    
-1. Add the path for downloads
-    1. Create a new directory in QuasarResearchWebsite/app/  and name it tmp
-    1. Create a new file in QuasarResearchWebsite/app/tmp  and name it quasars.csv
-    
-1. Setup the MySQL database:
-    1. In the VSCode command line, start mysql with `& cmd.exe /c "mysql -u root -p --verbose --local-infile=1 < app/quasarDB_win.sql"`, and enter your password for root user
-    1. `python app/updateDatabase_win.py` (this will update the paths to the images in the database)
-    
-1. Now check to see if things are working. In the visual studio terminal type `flask run` 
-    1. If everything is working you should see something like:
-        ```
-        (flaskEnv) PS C:\Users\guine\Desktop\test\QuasarResearchWebsite> flask run
-        * Environment: production
-        WARNING: This is a development server. Do not use it in a production deployment.
-        Use a production WSGI server instead.
-        * Debug mode: off
-        * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
-        ```
-    1. Follow the link on the last line to see if it runs. Your default internet browser should open to the home page of the website. 
-    1. Check that the images are loading correctly by going to the "Data Access" page, clicking on a row and seeing if the image shows up.
-    1. Voila! Hopefully it is working :)
-   
-   ## User Management
-   1. The user database and login system follows these two tutorials
-   
-        1. https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-iv-database
-        
-        1. https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-v-user-logins
-        
-   
-   1. To view all users
-        1. `flask shell`
-        
-        1. See list of all usernames
-            1. `users = User.query.all()`
-            1. `users`
-            
-        1. See list of ids of users
-            1. `users = User.query.all()`
-            1. ```
-               for u in users:
-               ...     print(u.id, u.username)
-               ...
-               ```
-   
-   1. To add a user
-   
-        1. `flask shell`
-   
-        1. `u = User(username='INSERT USERNAME HERE', email='INSERT EMAIL HERE')`
-   
-        1. `u.set_password('INSERT PASSWORD HERE')`
-   
-        1. `db.session.add(u)`
-   
-        1. `db.session.commit()`
-        
-        
-   1. To delete all users
-    
-        1. `flask shell`
-        
-        1. `users = User.query.all()`
-   
-        1. ```
-           for u in users:
-           ...     db.session.delete(u)
-           ...
-           ```
-   
-        1. `db.session.commit()`
-        
-     1. To delete a specific user
-     
-        1. `flask shell`
-        
-        1. Find the id of the user you want to delete. 
-        
-        1. `u = User.query.get(INSERT ID HERE)`
-        
-        1. `db.session.delete(u)`
-        
-        1. `db.session.commit()`
-   
    
 ## Troubleshooting (School Server):
    1. Basic MySQL Administration: https://itconnect.uw.edu/connect/web-publishing/shared-hosting/using-mysql-on-shared-uw-hosting/basic-mysql-administration/
