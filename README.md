@@ -41,15 +41,15 @@
     
     ### If you need more information, see [this page](https://itconnect.uw.edu/connect/web-publishing/shared-hosting/ssh/)
  
-    3. Setup MySQL on the school servers:
-        ### If you are using Windows:
+3. Setup MySQL on the school servers:
+    ### If you are using Windows:
 
-        ### If you are using MacOS:
-        1. Set up Localhome
-            1. Ensure you are still connected to UW's network and Vergil then type `localhome` in your Terminal
-                * To recconnect to Vergil, follow the directions in the previous step again
-            2. Exit from Vergil by typing and entering `exit` in your Terminal
-            2. SSH into `ovid` by typing and entering `youruwnetid@ovid.u.washington.edu` in your Terminal
+    ### If you are using MacOS:
+    1. Set up Localhome
+        1. Ensure you are still connected to UW's network and Vergil then type `localhome` in your Terminal
+            * To recconnect to Vergil, follow the directions in the previous step again
+        2. Exit from Vergil by typing and entering `exit` in your Terminal
+        3. SSH into `ovid` by typing and entering `youruwnetid@ovid.u.washington.edu` in your Terminal
     2. Make sure to write down your root password and username
 
     ### If you need more inforamtion, see [this page](https://itconnect.uw.edu/connect/web-publishing/shared-hosting/using-mysql-on-shared-uw-hosting/install-mysql/)
