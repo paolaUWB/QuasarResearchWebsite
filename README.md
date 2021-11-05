@@ -10,24 +10,25 @@
 ### Instructions for school server setup:
 1. Activate your UW shared web hosting.
     1. Follow instructions at https://itconnect.uw.edu/connect/web-publishing/shared-hosting/activating-shared-web-hosting/
-        1. If you are a student, your server is Vergil
-        1. If you are faculty, your server is Homer/Ovid
+        * If you are a student, your server is Vergil
+        * If you are faculty, your server is Homer/Ovid
         
-
-1. SSH into the school servers:
-    1. If you are on Windows, open Putty
-    1. Under Host Name put "vergil.u.washington.edu"
+2. SSH into the school servers:
+    1. If you are on Windows, download and open PuTTY
+    2. Under Host Name put "vergil.u.washington.edu"
         1. Port 22
-        1. Connection type SSH
-        1. Under Saved Sessions type whatever name you want
-        1. click "Save" (this will make it so that you can just double click or load next time you want to access the server)
-        1. click Open
-        1. Login as: `Your UW ID`
-        1. Password: `Your UW password`
-            1. If you are new to SSH, know that you won't actually see your password get typed. It'll look invisible but it is still getting input into the system.
-        1. Voila! You should be in now! Check that everything worked by typing `ls` into the command prompt. You should see one directory, "public_html"
+        2. Connection type SSH
+        3. Under Saved Sessions type whatever name you want
+        4. click "Save" (this will make it so that you can just double click or load next time you want to access the server)
+        5. click Open
+        6. Login as: `Your UW ID`
+        7. Password: `Your UW password`
+            * If you are new to SSH, know that you won't actually see your password get typed. It'll look invisible but it is still getting input into the system.
+        8. Voila! You should be in now! Check that everything worked by typing `ls` into the command prompt. You should see one directory, "public_html"
         
-    1. If you need more information, see https://itconnect.uw.edu/connect/web-publishing/shared-hosting/ssh/
+    2. If you are on MacOS, open your Terminal
+        1. 
+    3. If you need more information, see https://itconnect.uw.edu/connect/web-publishing/shared-hosting/ssh/
  
  1. Setup MySQL on the school servers:
     1. Follow directions at: https://itconnect.uw.edu/connect/web-publishing/shared-hosting/using-mysql-on-shared-uw-hosting/install-mysql/
