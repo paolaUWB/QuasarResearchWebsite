@@ -9,7 +9,7 @@
 
 ### Instructions for school server setup:
 1. Activate your UW shared web hosting
-    1. Follow instructions at https://itconnect.uw.edu/connect/web-publishing/shared-hosting/activating-shared-web-hosting/
+    1. Follow instructions on this [page](https://itconnect.uw.edu/connect/web-publishing/shared-hosting/activating-shared-web-hosting/)
         * If you are a student, your server is Vergil and activate the Web Publishing service
         * If you are faculty, your server is Homer/Ovid and activate the Web Publishing service
         
