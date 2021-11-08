@@ -1,36 +1,38 @@
-# ReadMe
+
+## Hosting on Your Machine Locally
+___
+### Instructions for local setup (Mac and Windows):
     
-## Instructions for local setup (Mac and Windows):
-_ _ _ _
-1. Install MySQL https://dev.mysql.com/downloads/installer/ (install the second option useing all default options)
+1. Download and install MySQL using this [page](https://dev.mysql.com/downloads/workbench/)
     
-2. Install Visual Studio Code https://code.visualstudio.com/ (or whatever your preferred IDE is)
+2. Install Visual Studio Code using this [page](https://code.visualstudio.com/) (or whatever your preferred IDE is)
     
-3. Install Git if you don't already have it: https://git-scm.com/download/win
+3. Install Python using this [page](https://www.python.org/downloads/) FIX THIS?
+
+4. Install Git using this [page](https://git-scm.com/downloads)
          
-4. Clone this repository 
-     1. Open the command prompt
-     1. cd to whatever folder you want to have the project in 
-     1. `git clone https://<YOUR_GITHUB_USERNAME>@github.com/paolaUWB/QuasarResearchWebsite.git`
+5. Clone this repository 
+     1. Open the command prompt (Windows) or Terminal (macOS)
+     2. `cd` to whatever folder you want to have the project in 
+        * The `cd <folder name>` command allows you to access folders within your computer. Following the cd command should be the name of the folder you wish to enter. You must move through the folders as if you were opening them through Finder or your File Explorer. 
+        * `cd ..` allows you to move back the folder you were just previously in
+        * If you would like to see a list of the folders you can enter, use `ls`. The `ls` command lists all the available folders in your current directory. 
+
+     3. Use this command to clone the repository to your computer `git clone https://<YOUR_GITHUB_USERNAME>@github.com/paolaUWB/QuasarResearchWebsite.git`
          
-1. Check to see if all of the files were cloned
+6. Check to see if all of the files were cloned
      1. `dir`
-     1. You should see a new "QuasarResearchWebsite" directory
+     2. You should see a new "QuasarResearchWebsite" directory
          
-1. Open project in visual studio code
-     1. Open visual studio code
-     1. File -> Open folder and then navigate to the QuasarResearchWebsite folder that you just cloned
+7. Open project in Visual Studio Code
+     1. Open Visual Studio Code
+     2. File -> Open folder and then navigate to the QuasarResearchWebsite folder that you just cloned
          
-1. Set up flask environment:
-     1. Open a new terminal in visual studio
-     1. In the terminal `python3 -m venv flaskEnv` (this will take a couple of seconds to run)
-     1. WINDOWS ONLY: `flaskEnv/Scripts/activate` You should now see something like: `(flaskEnv) PS C:\Users\guine\Desktop\test\QuasarResearchWebsite> `
-         1. You may recieve an error message stating "running scripts is disabled on this system"
-         1. To fix this open Windows PowerShell with administration privileges
-             1. To open, search "PowerShell" in the Windows Start menu and select "Run as administrator" from the context menu
-         1. Enter 'set-executionpolicy remotesigned' to PowerShell
-         1. When asked "Do you want to change the execution policy?", respond with 'Y' for yes
-     1. MAC ONLY: `source venv/bin/activate` You should now see something like: `(flaskEnv) PS C:\Users\guine\Desktop\test\QuasarResearchWebsite> `
+8. Set up flask environment:
+     1. Open a new terminal in Visual Studio Code
+     1. For Mac: In the terminal `python3 -m venv flaskEnv` (this will take a couple of seconds to run)
+     1. For Windows: In the terminal run `py -3 -m venv venv`
+     1. Run the following command: `source venv/bin/activate` in the QuasarResarchWebsite folder. 
      1. `pip install flask`
      1. `pip install PyMySQL`
      1. `pip install Flask-WTF`
@@ -39,11 +41,17 @@ _ _ _ _
      1. `pip install flask-migrate`
      1. `pip install flask-login`
      1. `pip install email-validator`
+     
+     * On Windows you may recieve an error message stating "running scripts is disabled on this system"
+         1. To fix this open Windows PowerShell with administration privileges
+             * To open, search "PowerShell" in the Windows Start menu and select "Run as administrator" from the context menu
+         1. Enter 'set-executionpolicy remotesigned' to PowerShell
+         1. When asked "Do you want to change the execution policy?", respond with 'Y' for yes
               
-     1. For more instructions on using python environments in visual studio, see https://code.visualstudio.com/docs/python/environments
+     * For more instructions on using python environments in Visual Studio Code, see https://code.visualstudio.com/docs/python/environments
      
 1. Add the secret environment variables:
-    1. Create a new file in QuasarResearchWebsite/app/  and name it .env
+    1. Create a new file in QuasarResearchWebsite/app/ and name it .env
     1. Add your secrets to the file with the following: 
     ```
     SECRET_KEY=<WHATEVER YOU WANT>
@@ -58,7 +66,7 @@ _ _ _ _
     1. In the VSCode command line, start mysql with `& cmd.exe /c "mysql -u root -p --verbose --local-infile=1 < app/quasarDB_win.sql"`, and enter your password for root user
     1. `python app/updateDatabase_win.py` (this will update the paths to the images in the database)
     
-1. Now check to see if things are working. In the visual studio terminal type `flask run` 
+1. Now check to see if things are working. In the Visual Studio terminal type `flask run` 
     1. If everything is working you should see something like:
         ```
         (flaskEnv) PS C:\Users\guine\Desktop\test\QuasarResearchWebsite> flask run
@@ -139,109 +147,129 @@ _ _ _ _
 ### Necessary software:
 * Github account with access to this github page
 * Putty (if on windows)
-* SSH (if on Mac or Linux)
+* Terminal (if on Mac or Linux)
 
 ### Instructions for school server setup:
-1. Activate your UW shared web hosting.
-    1. Follow instructions at https://itconnect.uw.edu/connect/web-publishing/shared-hosting/activating-shared-web-hosting/
-        1. If you are a student, your server is Vergil
-        1. If you are faculty, your server is Homer/Ovid
+1. Activate your UW shared web hosting
+    1. Follow instructions on this [page](https://itconnect.uw.edu/connect/web-publishing/shared-hosting/activating-shared-web-hosting/)
+        * Ensure that you subscribe to and activate `Vergil Account`, `Homer/Ovid Account` and `Web Publishing`
         
+2. SSH into the school servers:
 
-1. SSH into the school servers:
-    1. If you are on Windows, open Putty
-    1. Under Host Name put "vergil.u.washington.edu"
+    ### If you are using Windows:
+    1. Connect to the UW network and open PuTTY
+        * If you are unsure how to connect to the UW network, it is reccomended to use Husky OnNet. More information and how to download and use the software can be found [here](https://www.lib.washington.edu/help/connect/husky-onnet)
+        * If you do not have PuTTY, download it from [here](https://www.chiark.greenend.org.uk/~sgtatham/putty/)
+    2. In PuTTY, under Host Name put `vergil.u.washington.edu`
         1. Port 22
-        1. Connection type SSH
-        1. Under Saved Sessions type whatever name you want
-        1. click "Save" (this will make it so that you can just double click or load next time you want to access the server)
-        1. click Open
-        1. Login as: `Your UW ID`
-        1. Password: `Your UW password`
-            1. If you are new to SSH, know that you won't actually see your password get typed. It'll look invisible but it is still getting input into the system.
-        1. Voila! You should be in now! Check that everything worked by typing `ls` into the command prompt. You should see one directory, "public_html"
-        
-    1. If you need more information, see https://itconnect.uw.edu/connect/web-publishing/shared-hosting/ssh/
+        2. Connection type SSH
+        3. Under Saved Sessions type whatever name you want
+        4. Click `Save` (this will make it so that you can just double click or load next time you want to access the server)
+        5. Click `Open`
+            * If prompted with a PuTTY Security Alert message, click `Accept`
+        6. Login as: `Your UW ID`
+        7. Password: `Your UW password`
+            * If you are new to SSH, know that you won't actually see your password get typed. It'll look invisible but it is still getting input into the system.
+        8. Voila! You should be in now! Check that everything worked by typing `ls` into the command prompt. You should see one directory, "public_html"
+    
+    ### If you are using macOS:
+    1. If you are on macOS, connect to the UW network and open Terminal
+        * If you are unsure how to connect to the UW network, it is reccomended to use Husky OnNet. More information and how to download and use the software can be found [here](https://www.lib.washington.edu/help/connect/husky-onnet)
+    2. Type and enter `ssh <YOUR_UW_NETID>@vergil.u.washington.edu`
+    3. When prompted for your password, use your UW password
+        * If you are new to SSH, know that you won't actually see your password get typed. It'll look invisible but it is still getting input into the system.
+    4. Voila! You should be in now! Check that everything worked by typing and entering `ls` into the command prompt. You should see one directory, "public_html"
+    
+    ### If you need more information, see [this page](https://itconnect.uw.edu/connect/web-publishing/shared-hosting/ssh/)
  
- 1. Setup MySQL on the school servers:
-    1. Follow directions at: https://itconnect.uw.edu/connect/web-publishing/shared-hosting/using-mysql-on-shared-uw-hosting/install-mysql/
-    1. Make sure to write down your root password and username
+3. Setup MySQL on the school servers:
+    ### If you are using Windows:
+
+    ### If you are using macOS:
+    1. Set up Localhome
+        1. Ensure you are still connected to UW's network and Vergil then type `localhome` in your Terminal
+            * To recconnect to Vergil, follow the directions in the previous step again
+        2. Exit from Vergil by typing and entering `exit` in your Terminal
+        3. SSH into `ovid` by typing and entering `<YOUR_UW_NETID>@ovid.u.washington.edu` in your Terminal
+    2. Make sure to write down your root password and username
+
+    ### If you need more inforamtion, see [this page](https://itconnect.uw.edu/connect/web-publishing/shared-hosting/using-mysql-on-shared-uw-hosting/install-mysql/)
              
- 1. Add files to the web server
+ 4. Add files to the web server
      1. In the terminal clone files from github with the following commands:
          1. `cd ~/public_html`
-         1. `git clone https://<YOUR_GITHUB_USERNAME>@github.com/paolaUWB/QuasarResearchWebsite.git`
-         1. Enter your github password when prompted
+         2. `git clone https://<YOUR_GITHUB_USERNAME>@github.com/paolaUWB/QuasarResearchWebsite.git`
+         3. Enter your github password when prompted
          
-     1. Check to see if all of the files were cloned
+     2. Check to see if all of the files were cloned
          1. `ls`
-         1. You should see a new "QuasarResearchWebsite" directory in your public_html folder 
+         2. You should see a new "QuasarResearchWebsite" directory in your public_html folder 
     
- 1. Set up a python virtual environment: 
+ 5. Set up a python virtual environment: 
      1. `cd ~/public_html`
-     1. type into the prompt:
+     2. type into the prompt:
          1. `python3 -m venv flaskEnv` (this will take a couple of seconds to run)
-         1. `source flaskEnv/bin/activate` You should now see something like: `(flaskEnv) vergil11$`
-         1. `pip install flask`
-         1. `pip install PyMySQL`
-         1. `pip install Flask-WTF`
-         1. `pip install python-dotenv`
-         1. `pip install flask-sqlalchemy`
-         1. `pip install flask-migrate`
-         1. `pip install flask-login`
-         1. `pip install email-validator`
+         2. `source flaskEnv/bin/activate` You should now see something like: `(flaskEnv) vergil11$`
+         3. `pip install flask`
+         4. `pip install PyMySQL`
+         5. `pip install Flask-WTF`
+         6. `pip install python-dotenv`
+         7. `pip install flask-sqlalchemy`
+         8. `pip install flask-migrate`
+         9. `pip install flask-login`
+         10. `pip install email-validator`
          
- 1. create a .env file to store secret information
+ 6. Create a .env file to store secret information
      1. `cd ~/public_html/QuasarResearchWebsite`
-     1. `nano .env`
-     1. type the following: 
+     2. `nano .env`
+     3. type the following: 
         ```
         SECRET_KEY= <WHATEVER_SECRET_KEY_YOU_WANT>
         MYSQL_DATABASE_PASSWORD=<YOUR_MYSQL_DATABASE_ROOT_PASSWORD>
         MYSQL_DATABASE_PORT = <YOUR_MYSQL_DATABASE_PORT>
             
         ```
-     1. Save and close with the following commands:
+     4. Save and close with the following commands:
          ```
          ctrl+x
          y
          enter
          ```
- 1. Add the path for downloads
+ 7. Add the path for downloads
     1. `cd ~/public_html/QuasarResearchWebsite/app`
-    1. `mkdir tmp`
-    1. `cd ~/public_html/QuasarResearchWebsite/app/tmp`
-    1. `touch quasars.csv`
+    2. `mkdir tmp`
+    3. `cd ~/public_html/QuasarResearchWebsite/app/tmp`
+    4. `touch quasars.csv`
  
- 1. Setup DB
+ 8. Setup DB
      1. `cd ~/public_html/QuasarResearchWebsite/app`
-     1. Create and update the database with the following command (it will run the commands in the .sql file) `~/mysql/bin/mysql < quasarDB.sql -u root -p --verbose`  
-     1. Update DB with graph images
+     2. Create and update the database with the following command (it will run the commands in the .sql file) `~/mysql/bin/mysql < quasarDB.sql -u root -p --verbose`  
+     3. Update DB with graph images
          1. `cd ~/public_html/QuasarResearchWebsite/app`
-         1. Make sure your flask enviroment is activated
-         1. `python updateDatabase.py`
+         2. Make sure your flask enviroment is activated
+         3. `python updateDatabase.py`
      
- 1. Edit htaccess and cgi files
+ 9. Edit htaccess and cgi files
      1. This next part is a little tricky and easy to make a mistake by leaving off slashes by accident. Be careful here!
-     1. Make sure you are in your 'public_html' directory `cd ~/public_html`
-     1. In the terminal create a new htaccess file by typing the following: `pico .htaccess`
+     2. Make sure you are in your 'public_html' directory `cd ~/public_html`
+     3. In the terminal create a new htaccess file by typing the following: `pico .htaccess`
          1. Enter the following into the file:
              ```
              RewriteEngine on
              
              RewriteRule ^/?$ /<YOUR_UW_NETID>/main.cgi [L]
              ```
-         1. Save and close with the following commands:
+         2. Save and close with the following commands:
              ```
              ctrl+x
              y
              enter
              ```
-     1. Now we need to create the CGI file
+     4. Now we need to create the CGI file
          1. `cd ~/public_html`
 
-         1. Type `pico main.cgi` into the terminal
-         1. Copy and paste this into the file (you can paste in Putty by clicking left and right mouse buttons at the same time) 
+         2. Type `pico main.cgi` into the terminal
+         3. Copy and paste this into the file (you can paste in Putty by clicking left and right mouse buttons at the same time) 
              ```
 
             #!flaskEnv/bin/python3
@@ -259,18 +287,18 @@ _ _ _ _
 
              ```
 
-         1. Save and close with:
+         4. Save and close with:
              ```
              ctrl+x
              y
              enter
              ```
-          1. Change the file permissions to allow the server to execute the program with `chmod 755 main.cgi`
-          1. Now change the file permissions for the python init file with the following commands: 
+          5. Change the file permissions to allow the server to execute the program with `chmod 755 main.cgi`
+          6. Now change the file permissions for the python init file with the following commands: 
               1. `cd ~/public_html/QuasarResearchWebsite/app`
               1. `chmod 755 __init__.py`
               
-     1. Check to see if it worked by going to your UW url. It will be https://students.washington.edu/<YOUR_UW_NETID>/
+     5. Check to see if it worked by going to your UW url. It will be https://students.washington.edu/<YOUR_UW_NETID>/
    
 ## Troubleshooting (School Server):
    1. Basic MySQL Administration: https://itconnect.uw.edu/connect/web-publishing/shared-hosting/using-mysql-on-shared-uw-hosting/basic-mysql-administration/
