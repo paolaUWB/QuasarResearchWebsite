@@ -2,21 +2,34 @@
 ## Hosting on Your Machine Locally
 ___
 ### Instructions for local setup (Mac and Windows):
-    
-1. Download and install MySQL using this [page](https://dev.mysql.com/downloads/workbench/)
-    
-2. Install Visual Studio Code using this [page](https://code.visualstudio.com/) (or whatever your preferred IDE is)
-    
-3. Install Python using this [page](https://www.python.org/downloads/) FIX THIS?
 
-4. Install Git using this [page](https://git-scm.com/downloads)
+Please ensure you have installed all of the software below: 
+
+1. MySQL -  use this [page](https://dev.mysql.com/downloads/workbench/) if you don't already have it
+    
+2. Visual Studio Code (VS Code) - use this [page](https://code.visualstudio.com/) if you don't already have it
+    * Please feel free to use a different IDE if you do not like/prefer VS Code
+    
+3. Install Python
+
+    * For Windows, please install Python using Microsoft Store Application if you don't already have it...this will help prevent future errors with Flask
+    * For macOS, please install Python using this [page](https://www.python.org/downloads/) if you don't already have it
+
+4. Git - use this [page](https://git-scm.com/downloads) if you don't already have it
          
 5. Clone this repository 
-     1. Open the command prompt (Windows) or Terminal (macOS)
+     1. Open the Command Prompt (Windows) or Terminal (macOS)
+        * When using the Command Prompt or Terminal, ensure that you enter after each command in order to complete and run the command
      2. `cd` to whatever folder you want to have the project in 
-        * The `cd <folder name>` command allows you to access folders within your computer. Following the cd command should be the name of the folder you wish to enter. You must move through the folders as if you were opening them through Finder or your File Explorer. 
-        * `cd ..` allows you to move back the folder you were just previously in
+        * The `cd <folder name>` command allows you to access folders within your computer. Following the cd command should be the name of the folder you wish to enter. You must move through the folders as if you were opening them 
+        through Finder or your File Explorer. 
+            * If you would your folders are configured like this: QuasarResearch > Git > Code and you are starting in the QuasarResarch folder but would like to move to the Code folder, then you would need to do `cd Git` then `cd Code`
+        
         * If you would like to see a list of the folders you can enter, use `ls`. The `ls` command lists all the available folders in your current directory. 
+        
+        * `cd ..` allows you to move back to the folder you were just previously in
+            * If you were in QuasarResearch > Git > Code folder and you used `cd ..` then you would move to the Quasar > Git folder
+
 
      3. Use this command to clone the repository to your computer `git clone https://<YOUR_GITHUB_USERNAME>@github.com/paolaUWB/QuasarResearchWebsite.git`
          
@@ -29,18 +42,20 @@ ___
      2. File -> Open folder and then navigate to the QuasarResearchWebsite folder that you just cloned
          
 8. Set up flask environment:
-     1. Open a new terminal in Visual Studio Code
-     1. For Mac: In the terminal `python3 -m venv flaskEnv` (this will take a couple of seconds to run)
-     1. For Windows: In the terminal run `py -3 -m venv venv`
-     1. Run the following command: `source venv/bin/activate` in the QuasarResarchWebsite folder. 
-     1. `pip install flask`
-     1. `pip install PyMySQL`
-     1. `pip install Flask-WTF`
-     1. `pip install python-dotenv`
-     1. `pip install flask-sqlalchemy`
-     1. `pip install flask-migrate`
-     1. `pip install flask-login`
-     1. `pip install email-validator`
+     1. Open a new terminal in Visual Studio Code and run `python3 -m venv flaskEnv`
+        * To verify if this command worked, you should see a new folder called "flaskEnv" in the QuasarResearchWebsite folder
+     2. Activate the environment
+        * For Windows: you can do this by running the following command: `flaskEnv\Scripts\activate` in the terminal. 
+        * For Mac: you can do this by running the following command: `source flaskEnv/bin/activate`
+     3. Install the necessary software using the commands below
+        * `pip install flask`
+        * `pip install PyMySQL`
+        * `pip install Flask-WTF`
+        * `pip install python-dotenv`
+        * `pip install flask-sqlalchemy`
+        * `pip install flask-migrate`
+        * `pip install flask-login`
+        * `pip install email-validator`
      
      * On Windows you may recieve an error message stating "running scripts is disabled on this system"
          1. To fix this open Windows PowerShell with administration privileges
@@ -50,21 +65,21 @@ ___
               
      * For more instructions on using python environments in Visual Studio Code, see https://code.visualstudio.com/docs/python/environments
      
-1. Add the secret environment variables:
+9. Add the secret environment variables:
     1. Create a new file in QuasarResearchWebsite/app/ and name it .env
-    1. Add your secrets to the file with the following: 
+    2. Add your secrets to the file with the following: 
     ```
     SECRET_KEY=<WHATEVER YOU WANT>
     MYSQL_DATABASE_PASSWORD=<YOUR MYSQL DB/ROOT PASSWORD>
     ```
     
-1. Add the path for downloads
-    1. Create a new directory in QuasarResearchWebsite/app/  and name it tmp
-    1. Create a new file in QuasarResearchWebsite/app/tmp  and name it quasars.csv
+10. Add the path for downloads
+    1. Create a new directory/folder in QuasarResearchWebsite/app/  and name it tmp
+    2. Create a new file in QuasarResearchWebsite/app/tmp  and name it quasars.csv
     
-1. Setup the MySQL database:
-    1. In the VSCode command line, start mysql with `& cmd.exe /c "mysql -u root -p --verbose --local-infile=1 < app/quasarDB_win.sql"`, and enter your password for root user
-    1. `python app/updateDatabase_win.py` (this will update the paths to the images in the database)
+11. Setup the MySQL database:
+    1. In the VSCode Terminal, start mysql with `& cmd.exe /c "mysql -u root -p --verbose --local-infile=1 < app/quasarDB_win.sql"`, and enter your password for root user
+    2. `python app/updateDatabase_win.py` (this will update the paths to the images in the database)
     
 1. Now check to see if things are working. In the Visual Studio terminal type `flask run` 
     1. If everything is working you should see something like:
@@ -77,10 +92,11 @@ ___
         * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
         ```
     1. Follow the link on the last line to see if it runs. Your default internet browser should open to the home page of the website. 
-    1. Check that the images are loading correctly by going to the "Data Access" page, clicking on a row and seeing if the image shows up.
-    1. Voila! Hopefully it is working :)
+    1. Check that the images are loading correctly by going to the "Data Access" page under "Research", clicking on a row and seeing if the image shows up.
+    1. Voila! 
    
    ## User Management
+   _ _ _ _
    1. The user database and login system follows these two tutorials
    
         1. https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-iv-database
