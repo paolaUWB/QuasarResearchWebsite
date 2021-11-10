@@ -81,7 +81,7 @@ Please ensure you have installed all of the software below:
     1. In the VSCode Terminal, start mysql with `& cmd.exe /c "mysql -u root -p --verbose --local-infile=1 < app/quasarDB_win.sql"`, and enter your password for root user
     2. `python app/updateDatabase_win.py` (this will update the paths to the images in the database)
     
-1. Now check to see if things are working. In the Visual Studio terminal type `flask run` 
+12. Now check to see if things are working. In the Visual Studio terminal type `flask run` 
     1. If everything is working you should see something like:
         ```
         (flaskEnv) PS C:\Users\guine\Desktop\test\QuasarResearchWebsite> flask run
@@ -91,9 +91,9 @@ Please ensure you have installed all of the software below:
         * Debug mode: off
         * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
         ```
-    1. Follow the link on the last line to see if it runs. Your default internet browser should open to the home page of the website. 
-    1. Check that the images are loading correctly by going to the "Data Access" page under "Research", clicking on a row and seeing if the image shows up.
-    1. Voila! 
+    2. Follow the link on the last line to see if it runs. Your default internet browser should open to the home page of the website. 
+    3. Check that the images are loading correctly by going to the "Data Access" page under "Research", clicking on a row and seeing if the image shows up.
+    4. Voila! 
    
    ## User Management
    _ _ _ _
