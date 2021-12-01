@@ -20,21 +20,25 @@ Please ensure you have installed all of the software below:
 5. Clone this repository 
      1. Open the Command Prompt (Windows) or Terminal (macOS)
         * When using the Command Prompt or Terminal, ensure that you enter after each command in order to complete and run the command
-     2. `cd` to whatever folder you want to have the project in 
+
+     2. Now we need to clone the repository onto your computer. Begin by using `cd` to whatever folder you want to have the project in 
         * The `cd <folder name>` command allows you to access folders within your computer. Following the cd command should be the name of the folder you wish to enter. You must move through the folders as if you were opening them 
         through Finder or your File Explorer. 
             * If you would your folders are configured like this: QuasarResearch > Git > Code and you are starting in the QuasarResarch folder but would like to move to the Code folder, then you would need to do `cd Git` then `cd Code`
         
-        * If you would like to see a list of the folders you can enter, use `ls`. The `ls` command lists all the available folders in your current directory. 
+
+        * If you would like to see a list of the folders you can enter, use `ls` (Mac) or `dir` (Windows). The `ls`/`dir` command lists all the available folders in your current directory. 
         
         * `cd ..` allows you to move back to the folder you were just previously in
             * If you were in QuasarResearch > Git > Code folder and you used `cd ..` then you would move to the Quasar > Git folder
 
 
      3. Use this command to clone the repository to your computer `git clone https://<YOUR_GITHUB_USERNAME>@github.com/paolaUWB/QuasarResearchWebsite.git`
+        * Make sure to replace <YOUR_GITHUB_USERNAME> with your GitHub username and remove the angled brackets (< >)
          
 6. Check to see if all of the files were cloned
-     1. `dir`
+     1. Run the `dir`/`ls` command
+
      2. You should see a new "QuasarResearchWebsite" directory
          
 7. Open project in Visual Studio Code
@@ -59,7 +63,8 @@ Please ensure you have installed all of the software below:
      
      * On Windows you may recieve an error message stating "running scripts is disabled on this system"
          1. To fix this open Windows PowerShell with administration privileges
-             * To open, search "PowerShell" in the Windows Start menu and select "Run as administrator" from the context menu
+             * To open, search "PowerShell" in the Windows Start menu and right click on "Powershell" then select "Run as administrator" from the context menu
+
          1. Enter 'set-executionpolicy remotesigned' to PowerShell
          1. When asked "Do you want to change the execution policy?", respond with 'Y' for yes
               
