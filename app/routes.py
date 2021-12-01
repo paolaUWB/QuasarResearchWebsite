@@ -1,5 +1,5 @@
 # TITLE: Routes
-# CONTRIBUTORS: Kathleen Guinee, Audrey Nguyen
+# CONTRIBUTORS: Kathleen Guinee, Audrey Nguyen, Aria Li
 # DESCRIPTION: Contains the website routes
 # IF YOU WANT TO LOCK A PAGE TO LOGGED IN USERS ONLY, USE @login_required UNDER ROUTE DECLARATION AND ABOVE ROUTE DEFINITION
 
@@ -106,12 +106,15 @@ def research_team():
         # David
         with app.open_resource('static/descriptionText/teamMembersDescriptions/davidDescription.txt') as f:
             davidContent = f.read().decode('utf-8')
+        # Aria
+        with app.open_resource('static/descriptionText/teamMembersDescriptions/ariaDescription.txt') as f:
+            ariaContent = f.read().decode('utf-8')
     except Exception as e:
         print(e)
     return render_template('researchTeam.html', paolaDescription=paolaContent, retikDescription=retikContent,
                            canDescription=canContent, dariaDescription=dariaContent, kathleenDescription=kathleenContent,
                            audreyDescription=audreyContent, wendyDescription=wendyContent, mikelDescription=mikelContent,
-                           davidDescription=davidContent,)
+                           davidDescription=davidContent,ariaDescription=ariaContent, )
 
 # Research about/description page route
 @app.route('/quasarresearchabout/')
